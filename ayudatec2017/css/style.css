@@ -437,9 +437,9 @@ body{
 	font-family: 'open_sanssemibold';
 }
 .panel-left span{
-	background: url(../images/pasos_ayudatec.png) no-repeat 0px 0px;
-	width: 239px;
-	height: 328px;
+	background: url(../images/pasos_ayudatec.jpg) no-repeat 0px 0px;
+	width: 700px;
+	height: 240px;
 	display: block;
 	margin: 0 auto;
 }
