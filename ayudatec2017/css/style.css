@@ -225,7 +225,7 @@ body{
 	content:url(../images/arrow.png) no-repeat 0px 0px;
 }
 .mid-grids-right h3 span{
-	color:#E95192;
+	color:#0094FF;
 	font-size: 1.4em;
 	font-family: 'open_sanssemibold';
 }
@@ -371,7 +371,7 @@ body{
 	border:1px solid #999;
 }
 .footer-grid input[type="submit"]{
-	background: #F36EA7;
+	background: #FFC32E;
 	padding: 0.8em;
 	display: block;
 	width: 93%;
