@@ -84,7 +84,7 @@ body{
 	margin-top: 1em;
 }
 .logo a{
-	color: #E95393;
+	color: #0094FF;
 	font-family: 'open_sanssemibold';
 	font-size: 2.8em;
 }
@@ -149,7 +149,7 @@ body{
 /*---End-header----*/
 /*--slider--*/
 .text-slider{
-	background:url(../images/slider.jpg) no-repeat 0px 0px;
+	background:url(../images/bannerPrincipal.jpg) no-repeat 0px 0px;
 	background-size: 100% 120%;
 }
 /*--//End-slider--*/
@@ -437,9 +437,9 @@ body{
 	font-family: 'open_sanssemibold';
 }
 .panel-left span{
-	background: url(../images/dual-divice.png) no-repeat 0px 0px;
-	width: 239px;
-	height: 328px;
+	background: url(../images/pasos_ayudatec.jpg) no-repeat 0px 0px;
+	width: 700px;
+	height: 240px;
 	display: block;
 	margin: 0 auto;
 }
