@@ -1,0 +1,247 @@
+
+body {
+        font-family: 'Montserrat', sans-serif;
+      }
+
+header{
+    font-weight: 100;
+    font-size: 0.9rem;
+}
+
+#menu-usuario {
+    background-color: #007EE5;
+}
+
+#menu_principal a{
+    color: #fff;
+}
+
+.btn-lineal {
+    color: #fff;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    font-size: 14px;
+    
+}
+
+.btn-lineal:hover {
+    background-color: #FEBD03;
+}
+
+.btn-lineal-big {
+    color: #999;
+    border: none;
+    background-color: #fff;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    height: 55px;
+    
+}
+
+.btn-yellow {
+    border: 2px solid #FFC80A;
+}
+
+.btn-blue {
+    color: #4DA1FF;
+    border: 2px solid #4DA1FF;
+}
+
+.btn-blue:hover {
+    color: #fff;
+    background-color: #4DA1FF;
+}
+
+.flex-1 {
+    flex:1 1 auto;
+}
+
+#banner-principal {
+    width: 100%;
+    height: 75vh;
+    padding-top: 190px;
+}
+
+#background {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 75vh;
+    background-image: url(../images/bannerAyudatec.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#texto-busqueda {
+    color: #fff;
+    text-align: center;
+}
+
+.titulo {
+    font-size: 2.6rem;
+}
+
+.subtitulo {
+    font-size: 1.9rem;
+    font-kerning: 300px;
+}
+
+.input-busqueda {
+    border: 1px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 55px;
+}
+
+
+.pasos ol li{
+    margin-top: 25px;
+}
+
+#testimonios {
+    background: #007EE5;
+    color: #fff;
+}
+
+.comillas {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    padding-top: 40px;
+    opacity: 0.5;
+}
+
+footer {
+    background: #5E6B75;
+    color: #fff;
+}
+
+.linea-hor {
+    border: 1px solid white;
+    opacity: 0.2;
+}
+
+.font-28px {
+    font-size: 28px !important;
+}
+
+.font-20px {
+    font-size: 20px !important;
+}
+
+.font-14px {
+    font-size: 14px !important;
+}
+
+.font-12px {
+    font-size: 12px !important;
+}
+
+.font-gray {
+    color: gray !important;
+    font-weight: 100;
+}
+
+.font-darkgray {
+    color: #212121 !important;
+}
+
+.font-lightgray {
+    color: #C8C8C8 !important;
+}
+
+.font-white {
+    color: #fff !important;
+}
+
+.font-blue {
+    color: #4DA1FF !important;
+}
+
+.font-w-100 {
+    font-weight: 100;
+}
+
+.bt-menu li{
+    margin-top: -17px;
+    padding-top: 1.5rem;
+}
+
+.bt-menu li:hover{
+    color: #fff !important;
+    border-bottom: 3px solid #FEBD03 !important;
+}
+
+
+.rotacion {
+    font-size: 250px;
+    
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+
+.btnUsuario button{
+    background-color: transparent;
+}
+
+.btnUsuario div{
+    background-color: #007EE5;
+}
+
+.btnUsuario div a:hover{
+    background-color: #FEBD03;
+}
+
+@media (max-width: 991.99px) {
+    #menu {
+        background-color: rgba(0,126,229,0.44);
+    }
+}
+
+
+.notifi {
+    background-color: red;
+    border-radius: 100%;
+    padding: 0 5px;
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+}
+
+.fondo-search {
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    z-index: 1000;
+}
+
+.fondo-x {
+    position: absolute;
+    right: 5px;
+    top: 6px;
+    z-index: 1000;
+    border: none;
+    background-color: transparent;
+}
+
+.input-text {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.tag-categoria {
+    background-color: #FDC912;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 8px 20px; 
+}
+
+.font-yellow {
+    color: #FDC912;
+}

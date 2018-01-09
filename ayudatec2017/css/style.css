@@ -144,6 +144,97 @@ body{
 	background: #999;
 }
 /*---End-header----*/
+
+
+
+
+/* ----------------- 9.3. Sections ----------------- */
+/* -------- Section Title -------- */
+.section {
+  margin-bottom: 80px;
+}
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 50px;
+  }
+}
+
+.section-title {
+  text-align: center;
+  display: block;
+  margin-bottom: 74px;
+}
+.section-title .title {
+  line-height: 1em;
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.04em;
+  color: #343435;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 0 15px;
+}
+.section-title .sub-title {
+  font-size: 16px;
+  line-height: 1.2em;
+  color: #717171;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .section-title {
+    margin-bottom: 45px;
+  }
+  .section-title .title {
+    font-size: 26px;
+  }
+}
+
+/* -------- Intro Section -------- */
+.hero-box {
+  background-image: url(../images/bannerPrincipal.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 300px 0;
+}
+.hero-box .hero-text h1,
+.hero-box .hero-text p {
+  text-transform: uppercase;
+  line-height: 1em;
+  color: #ffffff;
+}
+.hero-box .hero-text h1 {
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 1em;
+  margin: 0 0 15px;
+}
+.hero-box .hero-text p {
+  letter-spacing: 0.04em;
+  line-height: 1em;
+  font-size: 30px;
+  margin: 0 0 80px;
+}
+@media (max-width: 768px) {
+  .hero-box {
+    padding: 200px 0;
+  }
+  .hero-box .hero-text h1 {
+    font-size: 36px;
+  }
+  .hero-box .hero-text p {
+    font-size: 20px;
+  }
+}
+
+
+
+
+
+
+
 /*--slider--*/
 .text-slider{
 	background:url(../images/bannerPrincipal.jpg) no-repeat 0px 0px;
