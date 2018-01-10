@@ -21,8 +21,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu_principal" aria-controls="menu_principal" aria-expanded="false" aria-label="Toggle navigation"> <i class="icon-list-nested font-white"></i> </button>
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
-                        <li class="nav-item active"> <a class="nav-link" href="nosotros.html">TÉCNICOS </a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="#how-work">CÓMO FUNCIONA</a> </li>
+                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.html">TÉCNICOS </a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a> </li>
                         <li class="nav-item "> <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a> </li>
                     </ul>
                     <div class="btn-group font-white btnUsuario" role="group"> <span class="cursor-pointer align-self-center font-20px">
@@ -37,16 +37,19 @@
     <section id="tecnicos" class="mt-5 py-5">
         <div class="container">
             <div class="row">
-                <div class="col-12 font-28px"> Perfil </div>
+                <h3 class="col-12 font-28px"> Perfil </h3>
                 <div class="col-12">
                     <div class="row pt-4">
                         <div class="col-12 col-lg-8">
                             <div class="row">
                                 <div class="col-12 col-lg-auto text-center">
                                     <div> <img src="assets/images/tecnicos/juan-r001.png" alt="Ayudatec"> </div>
-                                    <div class="pt-3 d-none d-lg-block"> <a href="" class="btn btn-lineal btn-blue">
-                                       CONTACTARLO
-                                    </a> </div>
+                                    <div class="pt-3 d-none d-lg-block">  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  CONTACTARLO
+</button>
+
+</div>
                                 </div>
                                 <div class="col-12 col-lg text-center text-lg-left">
                                     <div> JUAN R. </div>
@@ -56,9 +59,16 @@
                                     </span> </div>
                                     <div class="font-12px"> CENTRO, SUR (GUAYAQUIL, ECUADOR) </div>
                                     <div class="pt-1 font-14px"> Soy un técnico en electricidad, responsable, trabajador. Tengo 6 años de experiencia. </div>
-                                    <div class="pt-3 d-block d-lg-none"> <a href="" class="btn btn-lineal btn-blue">
-                                       CONTACTARLO
-                                    </a> </div>
+                                    <div class="pt-3 d-block d-lg-none"> 
+                                     <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  CONTACTARLO
+</button>
+
+                             </div>
+                                    
+                                   
+                                    
                                 </div>
                             </div>
                         </div>
@@ -170,6 +180,53 @@
             </div>
         </div>
     </footer>
+    
+    
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Contáctalo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="container">
+           <div class="row">
+               <div class="col-12">
+                  <div> <img src="assets/images/tecnicos/juan-r001.png" alt="Ayudatec"> </div>
+                   <div> JUAN R. </div>
+                                    <div> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i></div>
+                                    <div><span class="pr-1 font-blue">Teléfono:</span>0998192271</div>
+                                    <div><span class="pr-1 font-blue">Zona:</span>Centro, Sur</div>
+                                    <div><span class="pr-1 font-blue">Opciones para contactarlo:</span>
+                                       <div class="font-yellow font-28px">
+                                            <i class="icon-phone"></i>
+                                        <i class="icon-mail"></i>
+                                        <i class="icon-whatsapp"></i>
+                                        <i class="icon-at "></i>
+                                       </div>
+                                    </div>             
+               </div>
+           </div>
+       </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+<!--
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Listo</button>
+        
+-->
+          <a href="gracias.html" class="btn btn-primary">Listo</a>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -73,6 +73,18 @@ header{
     background-size: cover;
 }
 
+
+@media (max-width: 575.99px) { 
+    #banner-principal {
+    height: 100vh;
+}
+
+    #background {
+        height: 100vh;
+    }
+
+}
+
 #texto-busqueda {
     color: #fff;
     text-align: center;
