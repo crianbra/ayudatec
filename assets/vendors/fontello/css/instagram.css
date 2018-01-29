@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'fontello';
-  src: url('../font/fontello.eot?51727809');
-  src: url('../font/fontello.eot?51727809#iefix') format('embedded-opentype'),
-       url('../font/fontello.woff2?51727809') format('woff2'),
-       url('../font/fontello.woff?51727809') format('woff'),
-       url('../font/fontello.ttf?51727809') format('truetype'),
-       url('../font/fontello.svg?51727809#fontello') format('svg');
+  font-family: 'instagram';
+  src: url('../font/instagram.eot?29281014');
+  src: url('../font/instagram.eot?29281014#iefix') format('embedded-opentype'),
+       url('../font/instagram.woff2?29281014') format('woff2'),
+       url('../font/instagram.woff?29281014') format('woff'),
+       url('../font/instagram.ttf?29281014') format('truetype'),
+       url('../font/instagram.svg?29281014#instagram') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,14 +14,14 @@
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?51727809#fontello') format('svg');
+    font-family: 'instagram';
+    src: url('../font/instagram.svg?29281014#instagram') format('svg');
   }
 }
 */
  
  [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
+  font-family: "instagram";
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -87,3 +87,4 @@
 .icon-whatsapp:before { content: '\f232'; } /* '' */
 .icon-twitter:before { content: '\f309'; } /* '' */
 .icon-facebook:before { content: '\f30c'; } /* '' */
+.icon-instagram-filled:before { content: '\f31f'; } /* '' */

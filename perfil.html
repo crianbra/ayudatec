@@ -14,16 +14,8 @@
     <title>AYUDATEC :: Técnicos recomendados</title>
 </head>
 
-<body>
-    <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11&appId=368884776917008&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-    
+<body onload="cargarUser()">
+    <!-- <body onload="cargarUser()"> -->
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
@@ -37,12 +29,12 @@
                         <li class="nav-item "> <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a> </li>
                     </ul>
                     <form class="form-inline mt-4 my-lg-0">
-                    <a href="registro.html" id="loginbtn" style.display="block" class="btn my-2 my-sm-0 btn-lineal">
+                    <a href="registro.html" id="loginbtn" class="btn my-2 my-sm-0 btn-lineal">
                             Inicio sesión o Registro 
                             <i class="icon-right-small"></i>
                     </a>
                     
-                    <div class="btn-group font-white btnUsuario" id="usuariopanel" style.display="none" role="group">
+                    <div class="btn-group font-white btnUsuario" id="usuariopanel" role="group">
 <!--                        <span class="cursor-pointer align-self-center font-20px">
                            <i class="icon-bell-alt font-white"></i><span class="notifi">1</span>
                         </span>
@@ -53,7 +45,7 @@
                           
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupUser">
-                            <a class="dropdown-item" href="perfil.html">Perfil</a>
+                            <a class="dropdown-item" href="#">Perfil</a>
                             <a class="dropdown-item" id="logout" href="index.html">Cerrar Sesión</a>
                         </div>
                     </div>
@@ -65,123 +57,123 @@
     <section id="tecnicos" class="mt-5 py-5">
         <div class="container">
             <div class="row">
-                <h3 class="col-12 font-24px"> Perfil del técnico</h3>
                 <div class="col-12">
                     <div class="row pt-4">
-                        <div class="col-12 col-lg-8">
-                            <div class="row">
-                                <div class="col-12 col-lg-auto text-center">
-                                    <div> <img id="fototecnicoA" src="" alt="Ayudatec"> </div>
-                                    
-                                    
-                                    <div id="tcnIniciar" class="pt-3" style="display: block">
-                                        Debes iniciar sesión para poder contactar al técnico<br>
-                                        <a href="registro.html" id="iniciaSesion" class="btn my-2 my-sm-0 btn-primary">
-                                            Inicio sesión o Registro 
-                                        <i class="icon-right-small"></i>
-                                        </a>
-                                    </div>
-                                    
-                                    <div id="tcnContacto" class="pt-3" style="display: none">
-                                        <!-- Button trigger modal -->
-                                        
-                                        <button type="button" class="btn btn-primary font-12px" data-toggle="modal" data-target="#exampleModalCenter"> CONTACTARLO </button>
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-12 col-lg text-center text-lg-left">
-                                    <div id="nombreA"> </div>
-                                    <div> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> (15) </div>
-                                    <div id="categoria" class="py-2 font-blue">
-                                       
-                                    </div>
-                                    
-                                    <div id="zonaA" class="font-12px"> </div>
-                                    <div class="pt-1 font-14px" id="descripcion"> </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 py-3 text-center text-lg-left">
-                            <div class="row">
-                                <div class="col-12 order-lg-2">
-                                    <div class="py-2 font-14px"> <span class="">
-                                       OTROS SERVICIOS <para></para>
-                                    </span> </div>
-                                    <div class="row justify-content-center justify-content-lg-start">
-                                        <div class="col-3">
-                                            <div class="row">
-                                                <div class="col-12"> <img src="assets/images/categorias/electricidad.png" alt="Electricidad"> </div>
-                                                <div class="col-12 font-12px"> Electricidad </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="row">
-                                                <div class="col-12"> <img src="assets/images/categorias/electricidad.png" alt="Electricidad"> </div>
-                                                <div class="col-12 font-12px"> Gasfitería </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--<div class="col-12 order-lg-1">
-                                    <div class="pt-4"> <img src="assets/images/clientes/ana-p.png" alt="Ayudatec"> </div>
-                                    <div class="font-12px"> <em>Ana R. recomienda a Juan R.</em> </div>
-                                </div>-->
-                            </div>
-                            <div class="pt-1 font-12px"> </div>
-                        </div>
+                        <img src="" alt="Foto" id="fotousuario2">
+                        <span id="nombreusuario2"> </span>
+                        
+                         
+                          
+                        <!--<div class="col-12 col-lg-8"> <img src="assets/images/clientes/lidia_a.png" alt="Ayudatec"> <span>Lidia Andrade</span> </div>-->
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <section id="comentarios">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item mr-md-3"> <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Comentarios</a> </li>
-                        <li class="nav-item mx-md-3"> <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Horario</a> </li>
-                        <li class="nav-item mx-md-3"> <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Acerca de mí</a> </li>
+                        <li class="nav-item mr-md-3"> <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Perfil</a> </li>
+                        <li class="nav-item mx-md-3"> <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Contraseña</a> </li>
+                        <li class="nav-item mx-md-3"> <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Notificaciones</a> </li>
+                        <!--<li class="nav-item mx-md-3"> <a class="nav-link" id="pills-history-tab" data-toggle="pill" href="#pills-history" role="tab" aria-controls="pills-history" aria-selected="false">Historial</a> </li>-->
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <div class="row">
-                                <!--<div class="col-12 font-14px py-2 font-gray"> 2 comentarios </div>
-                                <div class="col-12 font-14px font-darkgray"> <em>Quiero comunicar mi infinito agradecimiento al equipo de AYUDATEC por todo el soporte y la gran ayuda brindada!</em> </div>
-                                --><div class="col-12">
-                                    <form action="">
-                                        <div class="form-group py-2">
-                                            <!--<textarea class="form-control font-14px" id="exampleFormControlTextarea1" placeholder="Escribe tu comentario" rows="3"></textarea>-->
-                                            <div class="fb-comments" data-href="http://www.ayudatec.info/informacionTecnico.html" data-numposts="5" data-width="100%" data-order-by="social"></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!--<div class="row">
-                                    <div class="col-12 pb-3 text-center text-lg-right">
-                                        <button type="button" class="btn btn-lineal btn-blue font-12px">COMENTAR</button>
+                            <div class="row justify-content-center">
+                                <div class="col-8 font-14px">
+                                    <div class="form-group row">
+                                        <label for="txtNombre" class="col-sm-2 col-form-label">Nombre:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre"> </div>
                                     </div>
-                            </div>
-                        --></div>
-                        <div class="tab-pane fade py-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <div class="row pb-3 justify-content-center justify-content-lg-start">
-                                <div class="col-3 font-14px">
-                                   <div>8:00 - 17:00 Lunes a viernes</div>
-                                   <div>8:00 - 14:00 Sábados</div>
-                                   <div>8:00 - 13:00 Domingos</div>
+                                    <div class="form-group row">
+                                        <label for="txtCorreo" class="col-sm-2 col-form-label">Correo:</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="txtCorreo" placeholder="Correo"> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtTelefono" class="col-sm-2 col-form-label">Telefono:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="txtTelefono" placeholder="Telefono"> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtCiudad" class="col-sm-2 col-form-label">Ciudad:</label>
+                                        <div class="col-sm-10">
+                                            <select class="custom-select my-1 mr-sm-2" id="ciudad">
+                                                <option selected>Ciudad...</option>
+                                                <option value="1">Guayaquil</option>
+                                                <option value="2">Quito</option>
+                                                <option value="3">Cuenca</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtZona" class="col-sm-2 col-form-label">Ciudad:</label>
+                                        <div class="col-sm-10">
+                                            <select class="custom-select my-1 mr-sm-2" id="zona">
+                                                <option selected>Zona...</option>
+                                                <option value="1">Norte</option>
+                                                <option value="2">Sur</option>
+                                                <option value="3">Este</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtGenero" class="col-sm-2 col-form-label">Género:</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">Masculino</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">Femenino</label>
+                                        </div>
+                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade pb-5 font-14px" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        Soy un trabajador honrado y responsable. Tengo 10 años de experiencia en la jardinería. Tengo disponibilidad para movilizarme hasta donde el cliente lo necesite. Desde pequeño he trabajado en los jardines de las casa de mi familia. Puedo asesorarlo para el control de plagas y de plantas decorativas del jardín.
+                        <div class="tab-pane fade py-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="row justify-content-center">
+                                <div class="col-8">
+                                    <div class="form-group row">
+                                        <label for="txPasswordActual" class="col-sm-2 col-form-label font-14px">Contraseña Actual:</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="txPasswordActual" placeholder="Contraseña Actual"> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtPasswordNueva" class="col-sm-2 col-form-label font-14px">Contraseña nueva:</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="txtPasswordNueva" placeholder="Contraseña nueva"> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="txtPasswordNueva2" class="col-sm-2 col-form-label font-14px">Confirmar contraseña:</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="txtPasswordNueva2" placeholder="Confirmar nueva contraseña"> </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="btnGuardar" class="col-sm-2 col-form-label"></label>
+                                        <div class="col-sm-10 text-right">
+                                            <button id="btnGuardar" type="button" class="btn btn-primary">Guardar</button></div>
+                                    </div>
+                                
+                                </div>
+                            </div>
                         </div>
+                        <div class="tab-pane fade pb-5 font-14px" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> </div>
+                        <div class="tab-pane fade pb-5 font-14px" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab"> </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
-    <footer class="py-4 font-12px">
+
+
+
+    <footer id="fot-perfil" class="py-4 font-12px">
         <div class="container">
             <div class="row">
                 <div class="col-6 col-lg-8 text-lg-center align-self-center">
@@ -215,7 +207,7 @@
                         <div class="col-12">
                             <a class="navbar-brand" href="#"><img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"></a>
                         </div>
-                        <div class="col-12 font-lightgray font-w-100"> © 2018 AYUDATEC. Todos los derechos reservados. </div>
+                        <div class="col-12 font-lightgray font-w-100"> © 2018 Ayudatec. Todos los derechos reservados. </div>
                     </div>
                 </div>
             </div>
@@ -233,11 +225,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                                <div> <img id ="fototecnicoB" src="" alt="Ayudatec"> </div>
-                                <div id="nombreB"> </div>
+                                <div> <img src="assets/images/tecnicos/juan-r001.png" alt="Ayudatec"> </div>
+                                <div> JUAN R. </div>
                                 <div> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i> <i class="icon-star font-yellow"></i></div>
-                                <div><span class="pr-1 font-blue">Teléfono:</span><div id="telefono"></div></div>
-                                <div><span class="pr-1 font-blue">Zona:</span><div id="zonaB"></div></div>
+                                <div><span class="pr-1 font-blue">Teléfono:</span>0998192271</div>
+                                <div><span class="pr-1 font-blue">Zona:</span>Centro, Sur</div>
                                 <div><span class="pr-1 font-blue">Opciones para contactarlo:</span>
                                     <div class="font-yellow font-28px"> <i class="icon-phone"></i> <i class="icon-mail"></i> <i class="icon-whatsapp"></i> <i class="icon-at "></i> </div>
                                 </div>
@@ -258,7 +250,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
     
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 <script>
@@ -277,7 +268,6 @@
     
     
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/infoDB.js"></script>
     
 </body>
 

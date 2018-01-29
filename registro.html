@@ -27,14 +27,14 @@
                 </a>
                 <div class="btn-toolbar pt-2 justify-content-center" role="toolbar">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Correo" >
+                    <input type="text" id="email" class="form-control" placeholder="Correo" >
                   </div>
                   <div class="input-group mt-3 mt-sm-0 ml-sm-2">
-                    <input type="text" class="form-control" placeholder="Contraseña">
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña">
                   </div>
                   <div class="btn-group mt-3 mt-md-0 ml-lg-2" role="group">
-<!--                    <button type="button" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</button>-->
-                    <a href= "tecnicos.html" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</a>
+                    <button type="button" onclick="ingresar()" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</button>
+                    <!--<a href= "tecnicos.html" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</a>-->
                   </div>
                 </div>
             </div>
@@ -53,28 +53,26 @@
           </div>
           <div class="row">
               <div class="col-12 col-md-4 pb-4">
-                  <button type="button" class="btn btn-primary  font-white">
+                  <button type="button" id="fblogin" class="btn btn-primary  font-white">
                       Inicia sesión con <strong>Facebook</strong>
                   </button>
               </div>
               <div class="col-12 col-md">
                   <div class="row">
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" class="form-control " placeholder="Nombres">
-                            </div>
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" class="form-control " placeholder="Apellidos">
+                            <!--<div class="col-12 col-lg-7 pb-3">
+                                <input type="text" id="nombre" class="form-control " placeholder="Nombre">
                             </div>
                             <div class="col-12 col-lg-5 pb-3">
-                                <input type="text" class="form-control" placeholder="Cédula">
+                                <input type="text" id="telefono" class="form-control" placeholder="Telefono">
+                            </div>-->
+                            <div class="col-12 col-lg-6 pb-3">
+                                <input type="text" id="correo" class="form-control" placeholder="Correo">
                             </div>
-                            <div class="col-12 col-lg-7 pb-3">
-                                <input type="text" class="form-control" placeholder="E-mail">
+                            <div class="col-12 col-lg-6 pb-3">
+                                <input type="password" id="contrasena" class="form-control" placeholder="Contraseña">
                             </div>
-                            <div class="col-12 col-lg-4">
-                                <input type="text" class="form-control" placeholder="Teléfono">
-                            </div>
-                            <div class="col-12 col-lg-4">
+                            
+                           <!-- <div class="col-12 col-lg-4 pb-3">
                                 <select class="custom-select my-1 mr-sm-2" id="ciudad">
                                     <option selected>Ciudad...</option>
                                     <option value="1">Guayaquil</option>
@@ -89,8 +87,8 @@
                                     <option value="2">Sur</option>
                                     <option value="3">Este</option>
                                   </select>
-                            </div>
-                            <div class="col-12 mt-3">
+                            </div>-->
+                           <!-- <div class="col-12 mt-3">
                                <div class="form-check form-check-inline">
                                   <label class="form-check-label" for="inlineRadio1">Sexo:</label>
                                 </div>
@@ -103,16 +101,17 @@
                                   <label class="form-check-label" for="inlineRadio2">Mujer</label>
                                 </div>
                             </div>
-                            
+                            -->
                             <div class="col-12 font-12px font-red pt-3 ">
                             <strong>TODOS LOS DATOS SON OBLIGATORIOS</strong>
                             </div>
                             <div class="col-12 mt-4 text-center" role="group">
-                                <a href= "tecnicos.html" class="btn btn-lineal btn-blue font-12px">REGISTRARSE</a>
+                                <!--<a href= "tecnicos.html" class="btn btn-lineal btn-blue font-12px">REGISTRARSE</a>-->
+                                <button type="button" onclick="registrar()" class="btn btn-lineal btn-blue font-12px">REGISTRARSE</button>
                             </div>
                             
                             <div class="col-12 font-12px my-3">
-                                <em>Al dar click en "Guardar" estará de acuerdo con los Términos y Servicios de Privacidad de AYUDATEC</em>
+                                <em>Al dar click en "Registrarse" estará de acuerdo con los <a class="font-darkblue" href="politicas.html">Términos y política de privacidad</a> de AYUDATEC.</em>
                             </div>
               </div>
           </div>
@@ -156,7 +155,7 @@
                         </div>
                         <div class="col-12 font-lightgray font-w-100">
                             Si tienes alguna duda o inquietud puede contactarnos a
-                            <br> Telf.: 0998192272 Email soporte@ayudatec.info
+                            <br> Telf.: 0998192272 - Email soporte@ayudatec.info
                         </div>
                     </div>
                 </div>
@@ -166,7 +165,7 @@
                             <a class="navbar-brand" href="#"><img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" ></a>
                         </div>
                         <div class="col-12 font-lightgray font-w-100">
-                            © 2017 Ayudatec. Todos los derechos reservados.
+                            © 2018 AYUDATEC. Todos los derechos reservados.
                         </div>
                     </div>
                 </div>
@@ -185,7 +184,25 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+    
+    
+<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCrBbuj6yLwG_t_gyfhi1bi9ZjRuLnbSDA",
+    authDomain: "ayudatec-3e0ee.firebaseapp.com",
+    databaseURL: "https://ayudatec-3e0ee.firebaseio.com",
+    projectId: "ayudatec-3e0ee",
+    storageBucket: "ayudatec-3e0ee.appspot.com",
+    messagingSenderId: "5686820743"
+  };
+  firebase.initializeApp(config);
+  
+</script>
+
+<script src="assets/js/autenticar.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 
 </html>

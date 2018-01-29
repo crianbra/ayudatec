@@ -1,9 +1,14 @@
+html,
+body {
+    min-width: 100%;
+    min-height: 100%;
+}
 
 body {
-        font-family: 'Montserrat', sans-serif;
-      }
+    font-family: 'Montserrat', sans-serif;
+}
 
-header{
+header {
     font-weight: 100;
     font-size: 0.9rem;
 }
@@ -12,7 +17,7 @@ header{
     background-color: #007EE5;
 }
 
-#menu_principal a{
+#menu_principal a {
     color: #fff;
 }
 
@@ -22,11 +27,24 @@ header{
     border: 1px solid #fff;
     background-color: transparent;
     font-size: 14px;
-    
 }
 
 .btn-lineal:hover {
     background-color: #FEBD03;
+    color: #fff;
+}
+
+.btn-lineal-blue {
+    border-radius: 20px;
+    background-color: #007EE5;
+    color: #fff;
+    font-size: 14 px;
+    height: 40px;
+}
+
+.btn-lineal-blue:hover {
+    background-color: #FEBD03;
+    color: #fff;
 }
 
 .btn-lineal-big {
@@ -36,7 +54,6 @@ header{
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     height: 55px;
-    
 }
 
 .btn-yellow {
@@ -54,7 +71,7 @@ header{
 }
 
 .flex-1 {
-    flex:1 1 auto;
+    flex: 1 1 auto;
 }
 
 #banner-principal {
@@ -73,16 +90,13 @@ header{
     background-size: cover;
 }
 
-
-@media (max-width: 575.99px) { 
+@media (max-width: 575.99px) {
     #banner-principal {
-    height: 100vh;
-}
-
+        height: 100vh;
+    }
     #background {
         height: 100vh;
     }
-
 }
 
 #texto-busqueda {
@@ -106,22 +120,77 @@ header{
     height: 55px;
 }
 
+.input-busqueda-tec {
+    border: 1px solid #007EE5;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 40px;
+}
 
-.pasos ol li{
+.btn-lineal-nor {
+    color: #999;
+    border: none;
+    background-color: #fff;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: 1px solid #007EE5;
+    border-right: 1px solid #007EE5;
+    border-bottom: 1px solid #007EE5;
+    height: 40px;
+}
+
+.pasos ol li {
     margin-top: 25px;
 }
 
-#testimonios {
-    background: #007EE5;
+#ventajas {
+    background-color: rgba(219, 219, 219, 0.514);
+}
+
+
+/* #testimonios {
+    background-color: rgba(219, 219, 219, 0.514);
+}
+
+#ventajas {
+    background: #56ABF1;
     color: #fff;
+} */
+
+#testimonios {
+    background-color: rgb(67, 143, 230);
+    color: #ffffff;
+}
+
+#carouselComentarios {
+    min-height: 160px;
+    padding-bottom: 45px;
+}
+
+#carouselComentarios img {
+    height: 100px;
 }
 
 .comillas {
     position: absolute;
-    text-align: center;
     width: 100%;
-    padding-top: 40px;
+    margin-top: 250px;
     opacity: 0.5;
+    font-size: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rotacion {
+    display: inline-block;
+    -ms-transform: rotate(180deg);
+    -ms-transform: rotateY(180deg);
+    /* IE 9 */
+    -webkit-transform: rotate(180deg);
+    -webkit-transform: rotateY(180deg);
+    /* Safari 3-8 */
+    transform: rotate(180deg);
+    transform: rotateY(180deg);
 }
 
 footer {
@@ -134,8 +203,24 @@ footer {
     opacity: 0.2;
 }
 
+.linea-hor-gray {
+    border: 1px solid #C8C8C8;
+    opacity: 0.3;
+}
+
+
+/*FONT*/
+
 .font-28px {
     font-size: 28px !important;
+}
+
+.font-26px {
+    font-size: 26px !important;
+}
+
+.font-24px {
+    font-size: 24px !important;
 }
 
 .font-20px {
@@ -148,6 +233,10 @@ footer {
 
 .font-12px {
     font-size: 12px !important;
+}
+
+.font-11px {
+    font-size: 11px !important;
 }
 
 .font-gray {
@@ -171,49 +260,57 @@ footer {
     color: #4DA1FF !important;
 }
 
+.font-darkblue {
+    color: #007EE5 !important;
+}
+
+.font-red {
+    color: #FF0000 !important;
+}
+
 .font-w-100 {
     font-weight: 100;
 }
 
-.bt-menu li{
+.font-bold {
+    font-weight: bold;
+}
+
+
+/*END FONT*/
+
+.bt-menu li {
     margin-top: -17px;
     padding-top: 1.5rem;
+    border-bottom: 3px solid transparent !important;
 }
 
-.bt-menu li:hover{
+.bt-menu li:hover {
     color: #fff !important;
     border-bottom: 3px solid #FEBD03 !important;
-}
-
-
-.rotacion {
-    font-size: 250px;
-    
 }
 
 .cursor-pointer {
     cursor: pointer !important;
 }
 
-
-.btnUsuario button{
+.btnUsuario button {
     background-color: transparent;
 }
 
-.btnUsuario div{
+.btnUsuario div {
     background-color: #007EE5;
 }
 
-.btnUsuario div a:hover{
+.btnUsuario div a:hover {
     background-color: #FEBD03;
 }
 
 @media (max-width: 991.99px) {
     #menu {
-        background-color: rgba(0,126,229,0.44);
+        background-color: rgba(0, 126, 229, 0.44);
     }
 }
-
 
 .notifi {
     background-color: red;
@@ -251,13 +348,44 @@ footer {
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    padding: 8px 20px; 
+    padding: 8px 20px;
+    font-size: 12px;
 }
 
 .font-yellow {
     color: #FDC912;
 }
 
-.font-red {
-    color: #FF0000;
+.btn-rect {
+    background-color: #007EE5;
+}
+
+@media (max-width: 575.99px) {
+    .btn-toolbar .input-group {
+        width: 100%;
+    }
+}
+
+.nav-pills .nav-link.active {
+    color: #007EE5;
+    background-color: transparent;
+    border-bottom: 3px solid #FDC912;
+    border-radius: 0px;
+}
+
+.iconos-white-a a {
+    color: #fff;
+}
+
+.iconos-white-a a:hover {
+    color: #FFC80A;
+}
+
+.input-zona {
+    background-color: #007EE5;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    border-radius: 0px;
 }
