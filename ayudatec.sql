@@ -49,3 +49,27 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.estado_cita
     OWNER to postgres;
+    
+    -- Table: public.calificacion
+
+-- DROP TABLE public.calificacion;
+
+CREATE TABLE public.calificacion
+(
+    idcalificacion integer NOT NULL,
+    rating integer,
+    comentario text COLLATE pg_catalog."default",
+    usuarioid integer,
+    CONSTRAINT calificacion_pkey PRIMARY KEY (idcalificacion),
+    CONSTRAINT idcalificacion_idusuario FOREIGN KEY (usuarioid)
+        REFERENCES public.usuario (idusuario) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.calificacion
+    OWNER to postgres;
