@@ -25,3 +25,27 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.cita
     OWNER to postgres;
+    
+    
+    -- Table: public.estado_cita
+
+-- DROP TABLE public.estado_cita;
+
+CREATE TABLE public.estado_cita
+(
+    idestadocita integer NOT NULL,
+    descripcion text COLLATE pg_catalog."default",
+    citaid integer,
+    CONSTRAINT estado_cita_pkey PRIMARY KEY (idestadocita),
+    CONSTRAINT idestadocita_idcita FOREIGN KEY (citaid)
+        REFERENCES public.cita (idcita) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.estado_cita
+    OWNER to postgres;
