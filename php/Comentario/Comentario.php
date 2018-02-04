@@ -40,7 +40,7 @@ class Comentario
        return $this->usuarioid;
      } 
     
-    unction setFecha($fecha){
+    function setFecha($fecha){
        $this->fecha = $fecha;
      } 
      function getFecha(){

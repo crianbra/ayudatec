@@ -7,7 +7,7 @@ class T_Categoria
     
      function __construct($idCategoria, $descripcion) {
        $this->idCategoria = $idCategoria;
-       $this->nombre = $descripcion;
+       $this->descripcion = $descripcion;
      }
     
      function setIdCategoria($idCategoria){
