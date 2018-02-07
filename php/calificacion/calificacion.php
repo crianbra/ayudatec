@@ -1,6 +1,6 @@
 <?php
 
-class Calificacion
+class calificacion
 {
     private $idcalificacion;
     private $rating;

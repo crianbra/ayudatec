@@ -1,9 +1,9 @@
 <?php
 
-include_once('Cita.php');
-include_once('Collector.php');
+include_once('cita.php');
+include_once('collector.php');
 
-class CitaCollector extends Collector
+class citaCollector extends collector
 {
   
   function showCitas() {

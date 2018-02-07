@@ -1,9 +1,9 @@
 <?php
 
-include_once('Rol.php');
-include_once('Collector.php');
+include_once('rol.php');
+include_once('collector.php');
 
-class RolCollector extends Collector
+class rolCollector extends collector
 {
   
   function showRols() {

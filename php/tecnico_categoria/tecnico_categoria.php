@@ -1,6 +1,6 @@
 <?php
 
-class Tecnico_x_Categoria
+class tecnico_categoria
 {
     private $idTecnicoxCategoria;
     private $usuarioid;

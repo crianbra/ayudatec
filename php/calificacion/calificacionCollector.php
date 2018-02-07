@@ -1,9 +1,9 @@
 <?php
 
-include_once('Calificacion.php');
-include_once('Collector.php');
+include_once('calificacion.php');
+include_once('collector.php');
 
-class CalificacionCollector extends Collector
+class calificacionCollector extends collector
 {
   
   function showCalificaciones() {

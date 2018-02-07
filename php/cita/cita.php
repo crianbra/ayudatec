@@ -1,6 +1,6 @@
 <?php
 
-class Cita
+class cita
 {
     private $idcita;
     private $descripcion;

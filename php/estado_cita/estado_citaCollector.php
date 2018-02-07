@@ -1,9 +1,9 @@
 <?php
 
-include_once('Estado_cita.php');
-include_once('Collector.php');
+include_once('estado_cita.php');
+include_once('collector.php');
 
-class Estado_CitaCollector extends Collector
+class estado_citaCollector extends collector
 {
   
   function showEstado_citas() {

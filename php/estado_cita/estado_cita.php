@@ -1,6 +1,6 @@
 <?php
 
-class Estado_cita
+class estado_cita
 {
     private $idestadocita;
     private $descripcion;

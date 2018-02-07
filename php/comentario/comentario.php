@@ -1,5 +1,5 @@
 <?php
-class Comentario
+class comentario
 {
     private $idComentario
     private $nombre

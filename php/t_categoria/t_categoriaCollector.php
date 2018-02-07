@@ -1,9 +1,9 @@
 <?php
 
-include_once('T_Categoria.php');
-include_once('Collector.php');
+include_once('t_categoria.php');
+include_once('collector.php');
 
-class T_CategoriaCollector extends Collector
+class t_categoriaCollector extends collector
 {
   
   function showT_Categorias() {
