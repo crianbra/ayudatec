@@ -11,7 +11,7 @@ class citaCollector extends collector
     
     $arrayCita = array();        
     foreach ($rows as $c){
-      $aux = new Cita($c{'idcita'},$c{'descripcion'});
+      $aux = new Cita($c{'idcita'},$c{'descripcion'}, $c{'fecha'}, $c{'hora'}, $c{'usuarioid'});
       array_push($arrayCita, $aux);
     }
     return $arrayCita;        
@@ -20,14 +20,13 @@ class citaCollector extends collector
   function showCita($id){
     $row = self::$db->getRows("SELECT * FROM cita where idcita= ? ", array("{$id}"));
 
-    $ObjRol = new Rol($row[0]{'idcita'},$row[0]{'descripcion'});
+    $ObjRol = new Rol($row[0]{'idcita'},$row[0]{'descripcion'},$row[0]{'fecha'},$row[0]{'hora'},$row[0]{'usuarioid'});
     return $ObjRol;
-
 }
 
 
-function updateCita($id,$descripcion){
-	$insertrow = self::$db->updateRow("UPDATE public.cita SET descripcion= ? WHERE idcita= ?", array("{$descripcion}", $id));
+function updateCita($id,$descripcion,$fecha,$hora,$usuarioid){
+	$insertrow = self::$db->updateRow("UPDATE public.cita SET descripcion= ?, fecha= ?, hora= ?, usuarioid= ? WHERE idcita= ?", array("{$descripcion}", "{$fecha}", "{$hora}", "{$usuarioid}", $id));
 
 }
 
@@ -36,8 +35,8 @@ function deleteCita($id){
 
 }
 
-function createCita($descripcion){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.cita (descripcion) VALUES (?)", array ("{$descripcion}"));
+function createCita($descripcion,$fecha,$hora,$usuarioid){
+	$insertarrow = self::$db->insertRow("INSERT INTO public.cita (descripcion, hora, fecha, usuarioid) VALUES (?, ?, ?, ?)", array ("{$descripcion}","{$fecha}","{$hora}","{$usuarioid}"));
 
 }
 
