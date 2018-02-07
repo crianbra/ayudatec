@@ -9,12 +9,12 @@ class t_categoriaCollector extends collector
   function showT_Categorias() {
     $rows = self::$db->getRows("SELECT * FROM t_categoria");        
     
-    $arrayT_Categoria= array();        
+    $array t_categoria= array();        
     foreach ($rows as $c){
-      $aux = new T_Categoria($c{'idcategoria'},$c{'descripcion'});
+      $aux = new t_categoria($c{'idcategoria'},$c{'descripcion'});
       array_push($arrayT_Categoria, $aux);
     }
-    return $arrayT_Categoria;        
+    return $array t_categoria;        
   }
 
   function showT_Categoria($id){
