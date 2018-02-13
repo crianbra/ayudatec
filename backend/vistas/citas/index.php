@@ -95,7 +95,7 @@
                                         <td><?=$c->getCliente()->getNombreusuario();?></td>
                                         <td><?=$c->getEstadocita()->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a class="edit" href="nuevaCita.php"><i class="fa fa-edit"></i></a>
+                                            <a href="edit.php?id=<?=$c->getIdcita();?>"><i class="fa fa-edit"></i></a>
                                             <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
