@@ -11,9 +11,8 @@ class Persona
     private $ciudad;
     private $zona;
     private $sexo;
-    private $foto;
     
-	function __construct($idpersona,$nombre,$apellido,$cedula,$email,$telefono,$ciudad,$zona,$sexo,$foto) {
+	function __construct($idpersona,$nombre,$apellido,$cedula,$email,$telefono,$ciudad,$zona,$sexo) {
 	$this->idpersona = $idpersona;
 	$this->nombre = $nombre;
 	$this->apellido = $apellido;
@@ -23,7 +22,6 @@ class Persona
 	$this->ciudad = $ciudad;
 	$this->zona = $zona;
 	$this->sexo = $sexo;
-	$this->foto = $foto;
 
 	}
   
@@ -81,12 +79,7 @@ class Persona
      function getSexo(){
        return $this->sexo;
      }
-    function setFoto($foto){
-       $this->foto = $foto;
-     } 
-     function getFoto(){
-       return $this->foto;
-     }
+    
 }
 
 ?>

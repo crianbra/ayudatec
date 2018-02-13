@@ -81,7 +81,7 @@
                                     <th>Ciudad</th>
                                     <th>Zona</th>
                                     <th>Sexo</th>
-                                    <th>Foto</th>
+                                    
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -92,25 +92,26 @@
                                     $PersonaCollectorObj = new PersonaCollector();
                                     $personas = $PersonaCollectorObj->showPersonas();
                                     foreach ($personas as $c){
+                                        $idpersona = $_GET['idpersona'];
                                 ?>
                                     <tr class="b-filas">
                                         <td><?=$c->getIdpersona();?></td>
                                         <td><?=$c->getNombre();?></td>
                                         <td><?=$c->getApellido();?></td>
                                         <td><?=$c->getCedula();?></td>
-                                        <td><?=$c->getEmail();?></td>
+                                        <td><?=$c->getEmail();?></td> 
                                         <td><?=$c->getTelefono();?></td>
                                         <td><?=$c->getCiudad();?></td>
                                         <td><?=$c->getZona();?></td>
                                         <td><?=$c->getSexo();?></td>
-                                        <td><?=$c->getFoto();?></td>
                                         <td class="b-acciones">
-                                            <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
-                                            <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" class="edit" href="editar.php"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id="><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php
-                                    }
+                                echo "<a href='eliminar.php?id=".$c->getIdpersona()."'>Eliminar</a>";
+                                    }      
                                 ?>
                                
                                
