@@ -3,7 +3,7 @@
 include_once('rol.php');
 include_once('collector.php');
 
-class rolCollector extends collector
+class RolCollector extends collector
 {
   
   function showRols() {

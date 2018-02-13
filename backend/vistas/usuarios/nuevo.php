@@ -2,6 +2,36 @@
     define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 
+    $guardado = false;
+    $msg = "";
+    if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
+        session_start();
+        /*include_once("../../collectors/usuarioCollector.php");
+        $usuarioCollectorObj = new UsuarioCollector();
+        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+         var_dump($_SESSION["user"]->getIdusuario());
+        exit(); */
+
+        /* echo "descripcion". $_POST['descripcion'];
+        exit(); */
+
+        include_once("../../collectors/UsuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $usuario = $UsuarioCollectorObj->createUsuario($_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
+        /* echo "Resultado: <br>";
+        var_dump($citas); */
+        if ($usuario == true) {
+            $msg = "El usuario fue guardado con éxito";
+            $guardado = true;
+        } else {
+            $msg = "Error:".$usuario;
+        }
+
+    } else {
+        $guardado = false;
+    }
+    /* session_start();
+    $_SESSION["exito"] = "true"; */
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +43,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../images/favicon.png">
 
-    <title>Personas</title>
+    <title>Nueva Persona</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +75,6 @@
 </div>
 <!--logo end-->
 
-</div>
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
@@ -58,7 +87,7 @@
                 <img alt="" src="../../assets/images/avatar1_small.jpg">
                 <span class="username">John Doe</span>
                 <b class="caret"></b>
-            </a>ProyectoPHP-AYUDATEC
+            </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-male"></i>Perfil</a></li>
                 <li><a href="#"><i class="fa fa-lock"></i> Seguridad</a></li>
@@ -75,7 +104,7 @@
 <aside>
     <div id="sidebar" class="nav-collapse">
         <!-- sidebar menu start-->            <div class="leftside-navigation">
-            <ul class="sidebar-menu" id="nav-accordion">
+        <ul class="sidebar-menu" id="nav-accordion">
             <li class="sub-menu">
                 <a href="../personas/index.php">
                     <i class="fa fa-user"></i>
@@ -121,83 +150,91 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
+         <!--breadcrumbs start -->
+                    <ul class="breadcrumb">
+                        <li><a href="index.php">Usuarios</a></li>
+                        <li class="active">Nuevo Usuario</li>
+                    </ul>
+                    <!--breadcrumbs end -->
 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>PERSONAS</strong> </h4>
+                    <h4> <strong>NUEVO USUARIO</strong> </h4>
 
                     </header>
-                    <div class="panel-body">
-                        <div class="adv-table editable-table ">
-                            <div class="clearfix">
-                                <div class="btn-group">
-                                    <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva Persona <i class="fa fa-plus"></i>
-                                    </a>
-                                </div>
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Acciones <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">Imprimir</a></li>
-                                        <li><a href="#">Guardar como PDF</a></li>
-                                        <li><a href="#">Exportar a Excel</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="space15"></div>
-                            <table class="table table-striped table-hover table-bordered" id="editable-sample">
-                                <thead>
-                                <tr>
-                                    <th>IdPersona</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Cedula</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
-                                    <th>Ciudad</th>
-                                    <th>Zona</th>
-                                    <th>Sexo</th>
-                                    <th>Foto</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    include_once("../../collectors/personaCollector.php");
+
+                    <?php
+                    if ($guardado == false) {
+                    ?>
+                        <div class="panel-body">
+                        <?php
+                        if ($msg !== "") {
+                            echo $msg;
+                        }
+                        ?>
+                            <div class="form">
+
+                                <form class="cmxform form-horizontal " id="personaForm" method="post" action="">
+                                    <div class="form-group ">
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre Usuario</label>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" id="nombreusuario" name="nombreusuario" type="text" placeholder="Nombre Usuario"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" id="contrasenia" name="contrasenia" type="text" placeholder="Contrasenia"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="personaid" class="control-label col-lg-3">Persona ID</label>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" id="personaid" name="personaid" type="text" placeholder="Persona Id"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="rolid" class="control-label col-lg-3">Rol ID</label>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" id="rolid" name="rolid" type="text" placeholder="Rol ID"/>
+                                        </div>
+                                    </div>
                                     
-                                    $personaCollectorObj = new personaCollector();
-                                    $personas = $personaCollectorObj->showPersonas();
-                                    foreach ($personas as $c){
-                                ?>
-                                    <tr class="b-filas">
-                                        <td><?=$c->getIdpersona();?></td>
-                                        <td><?=$c->getNombre();?></td>
-                                        <td><?=$c->getApellido();?></td>
-                                        <td><?=$c->getCedula();?></td>
-                                        <td><?=$c->getEmail();?></td>
-                                        <td><?=$c->getTelefono();?></td>
-                                        <td><?=$c->getCiudad();?></td>
-                                        <td><?=$c->getZona();?></td>
-                                        <td><?=$c->getSexo();?></td>
-                                        <td><?=$c->getFoto();?></td>
-                                        <td class="b-acciones">
-                                            <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
-                                            <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                    }
-                                ?>
-                               
-                               
-                                </tbody>
-                            </table>
+                                    
+                                    <!-- 
+                                    <div class="form-group ">
+                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
+                                        <div class="col-lg-6 col-sm-9">
+                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-6">
+                                            <button class="btn btn-primary" type="submit">Guardar</button>
+                                            <button class="btn btn-default" type="reset">Limpiar</button>
+                                            <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </section>
+
+                        
+
+                
+                    <?php
+                    } else {
+                        ?>
+                        <div class="panel-body">
+                            <h2><?=$msg?></h2>
+                            <a href="index.php">Volver a buscar técnicos</a>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                    </section>
             </div>
         </div>
         <!-- page end-->

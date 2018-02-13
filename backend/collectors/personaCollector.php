@@ -3,7 +3,7 @@
 include_once('persona.php');
 include_once('collector.php');
 
-class personaCollector extends collector
+class PersonaCollector extends collector
 {
   
   function showPersonas() {

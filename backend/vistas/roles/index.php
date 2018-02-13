@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../images/favicon.png">
 
-    <title>Personas</title>
+    <title>Roles</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
 </div>
 <!--logo end-->
 
-</div>
+
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
@@ -58,7 +58,7 @@
                 <img alt="" src="../../assets/images/avatar1_small.jpg">
                 <span class="username">John Doe</span>
                 <b class="caret"></b>
-            </a>ProyectoPHP-AYUDATEC
+            </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-male"></i>Perfil</a></li>
                 <li><a href="#"><i class="fa fa-lock"></i> Seguridad</a></li>
@@ -126,7 +126,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>PERSONAS</strong> </h4>
+                    <h4> <strong>ROLES</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -134,7 +134,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva Persona <i class="fa fa-plus"></i>
+                                        Nueva Rol <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -151,38 +151,22 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>IdPersona</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Cedula</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
-                                    <th>Ciudad</th>
-                                    <th>Zona</th>
-                                    <th>Sexo</th>
-                                    <th>Foto</th>
+                                    <th>IdRol</th>
+                                    <th>Descripcion</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/personaCollector.php");
+                                    include_once("../../collectors/RolCollector.php");
                                     
-                                    $personaCollectorObj = new personaCollector();
-                                    $personas = $personaCollectorObj->showPersonas();
-                                    foreach ($personas as $c){
+                                    $RolCollectorObj = new RolCollector();
+                                    $roles = $RolCollectorObj->showRoles();
+                                    foreach ($roles as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdpersona();?></td>
-                                        <td><?=$c->getNombre();?></td>
-                                        <td><?=$c->getApellido();?></td>
-                                        <td><?=$c->getCedula();?></td>
-                                        <td><?=$c->getEmail();?></td>
-                                        <td><?=$c->getTelefono();?></td>
-                                        <td><?=$c->getCiudad();?></td>
-                                        <td><?=$c->getZona();?></td>
-                                        <td><?=$c->getSexo();?></td>
-                                        <td><?=$c->getFoto();?></td>
+                                        <td><?=$c->getIdrol();?></td>
+                                        <td><?=$c->getDescripcion();?></td>
                                         <td class="b-acciones">
                                             <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
                                             <a class="delete" href=""><i class="fa fa-trash-o"></i></a>

@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../images/favicon.png">
 
-    <title>Personas</title>
+    <title>Usuarios</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,6 @@
 </div>
 <!--logo end-->
 
-</div>
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
@@ -126,7 +125,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>PERSONAS</strong> </h4>
+                    <h4> <strong>USUARIOS</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -134,7 +133,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva Persona <i class="fa fa-plus"></i>
+                                        Nuevo Usuario <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -151,38 +150,28 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>IdPersona</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Cedula</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
-                                    <th>Ciudad</th>
-                                    <th>Zona</th>
-                                    <th>Sexo</th>
-                                    <th>Foto</th>
+                                    <th>IdUsuario</th>
+                                    <th>NombreUsuario</th>
+                                    <th>Contrasenia</th>
+                                    <th>PersonaId</th>
+                                    <th>RolId</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/personaCollector.php");
+                                    include_once("../../collectors/UsuarioCollector.php");
                                     
-                                    $personaCollectorObj = new personaCollector();
-                                    $personas = $personaCollectorObj->showPersonas();
-                                    foreach ($personas as $c){
+                                    $UsuarioCollectorObj = new UsuarioCollector();
+                                    $usuarios = $UsuarioCollectorObj->showUsuarios();
+                                    foreach ($usuarios as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdpersona();?></td>
-                                        <td><?=$c->getNombre();?></td>
-                                        <td><?=$c->getApellido();?></td>
-                                        <td><?=$c->getCedula();?></td>
-                                        <td><?=$c->getEmail();?></td>
-                                        <td><?=$c->getTelefono();?></td>
-                                        <td><?=$c->getCiudad();?></td>
-                                        <td><?=$c->getZona();?></td>
-                                        <td><?=$c->getSexo();?></td>
-                                        <td><?=$c->getFoto();?></td>
+                                        <td><?=$c->getIdusuario();?></td>
+                                        <td><?=$c->getNombreusuario();?></td>
+                                        <td><?=$c->getContrasenia();?></td>
+                                        <td><?=$c->getPersonaid()->getNombre();?></td>
+                                        <td><?=$c->getRolid()->getDescripcion();?></td>
                                         <td class="b-acciones">
                                             <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
                                             <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
