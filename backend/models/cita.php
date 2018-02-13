@@ -10,7 +10,7 @@ class Cita
     private $cliente;
     private $estadocita;
     
-	function __construct($idcita, $descripcion, $fecha, $hora, $tecnico, $cliente, $estadocita) {
+	function __construct($idcita, $descripcion, $fecha, $hora, $tecnico, $cliente = null, $estadocita = null) {
         $this->idcita = $idcita;
         $this->descripcion = $descripcion;
         $this->fecha = $fecha;

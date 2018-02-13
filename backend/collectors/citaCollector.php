@@ -31,34 +31,39 @@ class CitaCollector extends Collector
         
       /* var_dump($c);
       exit(); */
-      $tecnicoObj = new Usuario($c{'tecnicoid'}, $c{'nombreusuario'});
+      $tecnicoObj = new Usuario($c{'tecnicoid'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
       
       $cliente = self::$db->getRows("SELECT * FROM usuario where idusuario= ? ", array("{$c{'clienteid'}}"));
-      $clienteObj = new Usuario($cliente[0]{'idusuario'}, $cliente[0]{'nombreusuario'});
+      $clienteObj = new Usuario($cliente[0]{'idusuario'}, $cliente[0]{'nombreusuario'}, $cliente[0]{'contrasenia'}, $cliente[0]{'personaid'}, $cliente[0]{'rolid'});
       /* var_dump($cliente);
       exit(); */
       $estadoCitaObj = new EstadoCita($c{'estadocitaid'}, $c{'ec_descripcion'});
       $aux = new Cita($c{'idcita'},$c{'descripcion'}, $c{'fecha'}, $c{'hora'}, $tecnicoObj, $clienteObj, $estadoCitaObj);
       array_push($arrayCita, $aux);
     }
-    return $arrayCita;        
+    return $arrayCita;
   }
 
   function showCita($id){
-    $row = self::$db->getRows("SELECT * FROM cita where idcita= ? ", array("{$id}"));
+    $row = self::$db->getRows("SELECT * FROM cita
+                              INNER JOIN usuario
+                              ON (cita.tecnicoid = idusuario)
+                              where idcita= ?", array("{$id}"));
 
-    $ObjRol = new Rol($row[0]{'idcita'},$row[0]{'descripcion'},$row[0]{'fecha'},$row[0]{'hora'},$row[0]{'usuarioid'});
-    return $ObjRol;
+    $tecnicoObj = new Usuario($row[0]{'tecnicoid'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
+
+    $ObjCita = new Cita($row[0]{'idcita'},$row[0]{'descripcion'},$row[0]{'fecha'},$row[0]{'hora'},$tecnicoObj);
+    return $ObjCita;
 }
 
 
-function updateCita($id,$descripcion,$fecha,$hora,$usuarioid){
-	$insertrow = self::$db->updateRow("UPDATE public.cita SET descripcion= ?, fecha= ?, hora= ?, usuarioid= ? WHERE idcita= ?", array("{$descripcion}", "{$fecha}", "{$hora}", "{$usuarioid}", $id));
+function updateCita($id,$descripcion,$fecha,$hora,$tecnicoid){
+	return $insertrow = self::$db->updateRow("UPDATE public.cita SET descripcion= ?, fecha= ?, hora= ?, tecnicoid= ? WHERE idcita= ?", array("{$descripcion}", "{$fecha}", "{$hora}", $tecnicoid, $id));
 
 }
 
 function deleteCita($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.cita WHERE idcita= ?", array("{$id}"));
+	return $deleterow = self::$db->deleteRow("DELETE FROM public.cita WHERE idcita= ?", array("{$id}"));
 
 }
 

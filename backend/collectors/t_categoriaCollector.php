@@ -3,24 +3,24 @@
 include_once('t_categoria.php');
 include_once('collector.php');
 
-class t_categoriaCollector extends collector
+class TecnicoCategoriaCollector extends Collector
 {
   
   function showT_Categorias() {
     $rows = self::$db->getRows("SELECT * FROM t_categoria");        
     
-    $array t_categoria= array();        
+    $arrayTecnicoCategoria = array();
     foreach ($rows as $c){
-      $aux = new t_categoria($c{'idcategoria'},$c{'descripcion'});
-      array_push($arrayT_Categoria, $aux);
+      $aux = new TecnicoCategoria($c{'idcategoria'},$c{'descripcion'});
+      array_push($arrayTecnicoCategoria, $aux);
     }
-    return $array t_categoria;        
+    return $arrayTecnicoCategoria;        
   }
 
   function showT_Categoria($id){
     $row = self::$db->getRows("SELECT * FROM t_categoria where idcategoria= ? ", array("{$id}"));
 
-    $ObjT_Categoria = new T_Categoria($row[0]{'idcategoria'},$row[0]{'descripcion'});
+    $ObjT_Categoria = new TecnicoCategoria($row[0]{'idcategoria'},$row[0]{'descripcion'});
     return $ObjT_Categoria;
 
 }

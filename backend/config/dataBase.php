@@ -48,7 +48,7 @@ class dataBase
       return $stmt->fetchAll();       
       }catch(PDOException $e){
       throw new Exception($e->getMessage());
-    }       
+    }
   }
 
   public function insertRow($query, $params){
