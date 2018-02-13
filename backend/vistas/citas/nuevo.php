@@ -43,7 +43,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
     <title>Nueva cita</title>
 
@@ -119,23 +119,23 @@
                                             <input class="form-control " id="hora" name="hora" type="time" />
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group ">
-                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
+                                    <div class="form-group ">
+                                        <label for="tecnico" class="control-label col-lg-3">Categoría</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="sel1" name="tecnico">
+                                                <select class="form-control" id="sel1" name="categoria">
                                                     <?php
-                                                        include_once("../../collectors/t_categoriaCollector.php");
-                                                        $t_categoriaCollectorObj = new t_categoriaCollector();
-                                                        $t_categoria = $t_categoriaCollectorObj->showUsuarios();
-                                                        foreach ($t_categoria as $tc){
+                                                        include_once("../../collectors/categoriaCollector.php");
+                                                        $categoriaCollectorObj = new CategoriaCollector();
+                                                        $categorias = $categoriaCollectorObj->showCategorias();
+                                                        foreach ($categorias as $ca){
                                                     ?>
-                                                    <option value="<?=$tc->getIdusuario();?>"><?=$tc->getNombreusuario();?></option>
+                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
                                                     <?php
                                                         }
                                                     ?>
                                                 </select>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group ">
                                         <label for="tecnico" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
@@ -143,7 +143,7 @@
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
                                                         $usuarioCollectorObj = new UsuarioCollector();
-                                                        $tecnicos = $usuarioCollectorObj->showUsuarios();
+                                                        $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios(1);
                                                         foreach ($tecnicos as $t){
                                                     ?>
                                                     <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>

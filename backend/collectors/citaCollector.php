@@ -48,7 +48,7 @@ class CitaCollector extends Collector
     $row = self::$db->getRows("SELECT * FROM cita
                               INNER JOIN usuario
                               ON (cita.tecnicoid = idusuario)
-                              where idcita= ?", array("{$id}"));
+                              WHERE idcita= ?", array("{$id}"));
 
     $tecnicoObj = new Usuario($row[0]{'tecnicoid'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
 

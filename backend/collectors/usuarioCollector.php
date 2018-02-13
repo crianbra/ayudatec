@@ -21,11 +21,10 @@ class UsuarioCollector extends Collector
     $arrayUsuario = array();        
     foreach ($rows as $c){
         
-    $personaObj = new Persona($c{'idpersona'},$c{'nombre'},$c{'apellido'},$c{'cedula'},$c{'email'},$c{'telefono'},$c{'ciudad'},$c{'zona'},$c{'sexo'},$c{'foto'}); 
+      $personaObj = new Persona($c{'idpersona'},$c{'nombre'},$c{'apellido'},$c{'cedula'},$c{'email'},$c{'telefono'},$c{'ciudad'},$c{'zona'},$c{'sexo'},$c{'foto'}); 
                 
-    $rolObj = new Rol ($c{'idrol'},$c{'descripcion'});
-            
-        
+      $rolObj = new Rol ($c{'idrol'},$c{'descripcion'});
+
       $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'},$c{'contrasenia'},$personaObj,$rolObj);
       array_push($arrayUsuario, $aux);
     }
@@ -38,6 +37,23 @@ class UsuarioCollector extends Collector
     $ObjUsuario = new Usuario($row[0]{'idusuario'},$row[0]{'nombreusuario'},$row[0]{'contrasenia'},$row[0]{'personaid'},$row[0]{'rolid'});
     return $ObjUsuario;
 
+}
+
+function showCategoriaUsuarios($id) {
+  $rows = self::$db->getRows(
+    "SELECT * 
+    FROM profesion 
+    INNER JOIN usuario
+    ON (profesion.usuarioid = usuario.idusuario)
+    WHERE categoriaid= ? ", array("{$id}"));
+    
+  $arrayUsuario = array();        
+  foreach ($rows as $c){
+
+    $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'});
+    array_push($arrayUsuario, $aux);
+  }
+  return $arrayUsuario;        
 }
 
 
