@@ -1,6 +1,8 @@
+<!--constantes start-->
+<?=include_once("../constantes.php");?>
+<!--constantes end-->
+
 <?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ProyectoPHP-AYUDATEC/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 
     $guardado = false;
     $msg = "";

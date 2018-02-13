@@ -1,7 +1,6 @@
-<?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ProyectoPHP-AYUDATEC/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-?>
+<!--constantes start-->
+<?=include_once("../constantes.php");?>
+<!--constantes end-->
 
 <!DOCTYPE html>
 <html lang="es">
