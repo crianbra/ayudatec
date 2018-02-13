@@ -4,7 +4,7 @@
         <!-- sidebar menu start-->            <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
             <li class="sub-menu">
-                <a href="../roles/index.php">
+                <a href="../roles/index.php" >
                     <i class="fa fa-shield"></i>
                     <span>Roles</span>
                 </a>
@@ -34,13 +34,13 @@
                 </a>
             </li>
             <li class=" ">
-                <a href="../estado_citas/index.php" class="active">
+                <a href="../estado_citas/index.php" >
                     <i class="fa fa-book"></i>
                     <span>Estado de citas</span>
                 </a>
             </li>
             <li class=" ">
-                <a href="index.php">
+                <a href="../citas/index.php">
                     <i class="fa fa-calendar-o"></i>
                     <span>Citas agendadas</span>
                 </a>

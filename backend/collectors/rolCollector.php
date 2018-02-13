@@ -1,9 +1,9 @@
 <?php
 
-include_once('rol.php');
-include_once('collector.php');
+include_once(RUTA_BACKEND.'models/rol.php');
+include_once(RUTA_BACKEND.'config/collector.php');
 
-class RolCollector extends collector
+class RolCollector extends Collector
 {
   
   function showRols() {

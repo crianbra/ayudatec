@@ -1,9 +1,9 @@
 <?php
 
-include_once('persona.php');
-include_once('collector.php');
+include_once(RUTA_BACKEND.'models/persona.php');
+include_once(RUTA_BACKEND.'config/collector.php');
 
-class PersonaCollector extends collector
+class PersonaCollector extends Collector
 {
   
   function showPersonas() {

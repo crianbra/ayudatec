@@ -10,11 +10,11 @@ class Rol
 	$this->descripcion = $descripcion;     
 	}
   
-     function setIdRol($idRol){
-       $this->idRol = $idRol;
+     function setIdrol($idrol){
+       $this->idrol = $idrol;
      } 
-     function getIdRol(){
-       return $this->idRol;
+     function getIdrol(){
+       return $this->idrol;
      } 
      function setDescripcion($descripcion){
        $this->descripcion = $descripcion;

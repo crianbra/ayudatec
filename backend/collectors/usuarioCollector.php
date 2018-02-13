@@ -2,16 +2,31 @@
 
 include_once(RUTA_BACKEND.'config/collector.php'); 
 include_once(RUTA_BACKEND.'models/usuario.php');
+include_once(RUTA_BACKEND.'models/persona.php');
+include_once(RUTA_BACKEND.'models/rol.php');
 
 class UsuarioCollector extends Collector
 {
   
   function showUsuarios() {
-    $rows = self::$db->getRows("SELECT * FROM usuario ");        
-    
+    $rows = self::$db->getRows("SELECT * 
+      FROM usuario 
+      INNER JOIN persona
+      ON (usuario.personaid = persona.idpersona)
+      INNER JOIN rol
+      ON (usuario.rolid = idrol) ");
+      
+      
+      
     $arrayUsuario = array();        
     foreach ($rows as $c){
-      $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'},$c{'contrasenia'},$c{'personaid'},$c{'rolid'});
+        
+    $personaObj = new Persona($c{'idpersona'},$c{'nombre'},$c{'apellido'},$c{'cedula'},$c{'email'},$c{'telefono'},$c{'ciudad'},$c{'zona'},$c{'sexo'},$c{'foto'}); 
+                
+    $rolObj = new Rol ($c{'idrol'},$c{'descripcion'});
+            
+        
+      $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'},$c{'contrasenia'},$personaObj,$rolObj);
       array_push($arrayUsuario, $aux);
     }
     return $arrayUsuario;        
