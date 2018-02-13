@@ -2,7 +2,7 @@
 
 
 
-class dataBase
+class DataBase
 {
   public $isConnected;
   protected $datab;

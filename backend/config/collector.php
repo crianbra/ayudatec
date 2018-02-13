@@ -8,7 +8,7 @@ define("DB_PASS", "postgres");
 define("DB_NAME", "ayudatec");
 
 
-class Collector extends dataBase
+class Collector extends DataBase
 {
   public static $db;
   private $host      = DB_HOST;

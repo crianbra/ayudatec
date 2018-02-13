@@ -1,7 +1,7 @@
 <?php
 
-include_once('t_categoria.php');
-include_once('collector.php');
+include_once(RUTA_BACKEND.'config/collector.php'); 
+include_once(RUTA_BACKEND.'models/tecnico_categoria.php');
 
 class TecnicoCategoriaCollector extends Collector
 {

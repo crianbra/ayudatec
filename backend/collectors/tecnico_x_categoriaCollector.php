@@ -1,9 +1,9 @@
 <?php
 
-include_once('tecnico_x_categoria.php');
-include_once('collector.php');
+include_once(RUTA_BACKEND.'config/collector.php'); 
+include_once(RUTA_BACKEND.'models/tecnico_x_categoria.php');
 
-class tecnico_x_categoriaCollector extends collector
+class TecnicoPorCategoriaCollector extends Collector
 {
   
   function showTecnico_x_Categorias() {
@@ -11,7 +11,7 @@ class tecnico_x_categoriaCollector extends collector
     
     $arrayTecnico_x_Categoria= array();        
     foreach ($rows as $c){
-      $aux = new Tecnico_x_Categoria($c{'idtecnicoxcategoria'},$c{'usuarioid'},$c{'categoriaid'});
+      $aux = new TecnicoPorCategoria($c{'idtecnicoxcategoria'},$c{'usuarioid'},$c{'categoriaid'});
       array_push($arrayTecnico_x_Categoria, $aux);
     }
     return $arrayTecnico_x_Categoria;        
@@ -20,7 +20,7 @@ class tecnico_x_categoriaCollector extends collector
   function showTecnico_x_Categoria($id){
     $row = self::$db->getRows("SELECT * FROM tecnico_x_categoria where idtecnicoxcategoria= ? ", array("{$id}"));
 
-    $ObjTecnico_x_Categoria = new Tecnico_x_Categoria($row[0]{'idtecnicoxcategoria'},$row[0]{'usuarioid'},$row[0]{'categoriaid'});
+    $ObjTecnico_x_Categoria = new TecnicoPorCategoria($row[0]{'idtecnicoxcategoria'},$row[0]{'usuarioid'},$row[0]{'categoriaid'});
     return $ObjTecnico_x_Categoria;
 
 }
