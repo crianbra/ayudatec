@@ -117,24 +117,40 @@
                                             <input class="form-control " id="hora" name="hora" type="time" />
                                         </div>
                                     </div>
+                                    <!-- <div class="form-group ">
+                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="sel1" name="tecnico">
+                                                    <?php
+                                                        include_once("../../collectors/t_categoriaCollector.php");
+                                                        $t_categoriaCollectorObj = new t_categoriaCollector();
+                                                        $t_categoria = $t_categoriaCollectorObj->showUsuarios();
+                                                        foreach ($t_categoria as $tc){
+                                                    ?>
+                                                    <option value="<?=$tc->getIdusuario();?>"><?=$tc->getNombreusuario();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                    </div> -->
                                     <div class="form-group ">
                                         <label for="tecnico" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="sel1">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
+                                                <select class="form-control" id="sel1" name="tecnico">
+                                                    <?php
+                                                        include_once("../../collectors/usuarioCollector.php");
+                                                        $usuarioCollectorObj = new UsuarioCollector();
+                                                        $tecnicos = $usuarioCollectorObj->showUsuarios();
+                                                        foreach ($tecnicos as $t){
+                                                    ?>
+                                                    <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
                                                 </select>
-                                            <!-- <input class="form-control " id="tecnico" name="tecnico" type="text" /> -->
                                         </div>
-                                    </div><!-- 
-                                    <div class="form-group ">
-                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
-                                        <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
-                                        </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>

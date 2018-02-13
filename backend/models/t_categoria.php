@@ -1,6 +1,6 @@
 <?php
 
-class T_Categoria
+class TecnicoCategoria
 {
     private $idCategoria;
     private $descripcion;

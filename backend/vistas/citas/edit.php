@@ -140,15 +140,8 @@
                                                         }
                                                     ?>
                                                 </select>
-                                            <!-- <input class="form-control " id="tecnico" name="tecnico" type="text" /> -->
                                         </div>
-                                    </div><!-- 
-                                    <div class="form-group ">
-                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
-                                        <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
-                                        </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
