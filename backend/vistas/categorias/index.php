@@ -9,9 +9,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="../images/favicon.png">
+    <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Citas agendadas</title>
+    <title>Categoria</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>CITAS AGENDADAS</strong> </h4>
+                    <h4> <strong>Categorias</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -52,7 +52,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva cita <i class="fa fa-plus"></i>
+                                        Nueva categoria <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">

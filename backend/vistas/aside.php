@@ -22,13 +22,13 @@
                 </a>
             </li>
             <li>
-                <a href="../tecnico_x_categoria/index.php">
+                <a href="../categorias/index.php">
                     <i class="fa fa-th"></i>
                     <span>Categorias de Técnicos</span>
                 </a>
             </li>
             <li>
-                <a href="../tecnicos/index.php">
+                <a href="../profesionales/index.php">
                     <i class="fa fa-gavel"></i>
                     <span>Técnicos</span>
                 </a>
