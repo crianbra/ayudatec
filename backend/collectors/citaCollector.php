@@ -37,7 +37,7 @@ class CitaCollector extends Collector
       $clienteObj = new Usuario($cliente[0]{'idusuario'}, $cliente[0]{'nombreusuario'}, $cliente[0]{'contrasenia'}, $cliente[0]{'personaid'}, $cliente[0]{'rolid'});
       /* var_dump($cliente);
       exit(); */
-      $estadoCitaObj = new EstadoCita($c{'estadocitaid'}, $c{'ec_descripcion'});
+      $estadoCitaObj = new EstadoCita($c{'estadocitaid'}, $c{'ec_descripcion'}, $c{'estado'});
       $aux = new Cita($c{'idcita'},$c{'descripcion'}, $c{'fecha'}, $c{'hora'}, $tecnicoObj, $clienteObj, $estadoCitaObj);
       array_push($arrayCita, $aux);
     }
