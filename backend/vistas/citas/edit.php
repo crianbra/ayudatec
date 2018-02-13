@@ -1,5 +1,5 @@
 <!--constantes start-->
-<?=include_once("../constantes.php");?>
+<?include_once("../constantes.php");?>
 <!--constantes end-->
 
 <?php
@@ -67,10 +67,10 @@
 <section id="container" >
 <!--header end-->
 <!--header start-->
-<?=include_once("../header.php");?>
+<?include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?=include_once("../aside.php");?>
+<?include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">

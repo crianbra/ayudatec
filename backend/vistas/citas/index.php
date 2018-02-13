@@ -1,6 +1,4 @@
-<!--constantes start-->
-<?=include_once("../constantes.php");?>
-<!--constantes end-->
+<?include_once("../constantes.php");?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -30,10 +28,10 @@
 
 <section id="container" >
 <!--header start-->
-<?=include_once("../header.php");?>
+<?include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?=include_once("../aside.php");?>
+<?include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">

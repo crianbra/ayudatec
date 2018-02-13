@@ -3,18 +3,18 @@
 include_once(RUTA_BACKEND.'config/collector.php'); 
 include_once(RUTA_BACKEND.'models/categoria.php');
 
-class TecnicoCategoriaCollector extends Collector
+class CategoriaCollector extends Collector
 {
   
   function showCategorias() {
     $rows = self::$db->getRows("SELECT * FROM categoria");        
     
-    $arrayTecnicoCategoria = array();
+    $arrayCategoria = array();
     foreach ($rows as $c){
       $aux = new Categoria($c{'idcategoria'},$c{'descripcion'});
-      array_push($arrayTecnicoCategoria, $aux);
+      array_push($arrayCategoria, $aux);
     }
-    return $arrayTecnicoCategoria;        
+    return $arrayCategoria;        
   }
 
   function showCategoria($id){

@@ -1,5 +1,5 @@
 <!--constantes start-->
-<?=include_once("../constantes.php");?>
+<?include_once("../constantes.php");?>
 <!--constantes end-->
 
 <!DOCTYPE html>
@@ -30,10 +30,10 @@
 
 <section id="container" >
 <!--header start-->
-<?=include_once("../header.php");?>
+<?include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?=include_once("../aside.php");?>
+<?include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">
@@ -69,33 +69,25 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Descripción</th>
-                                    <th>Fecha</th>
-                                    <th>Hora</th>
-                                    <th>Técnico</th>
-                                    <th>Cliente</th>
-                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/citaCollector.php");
+                                    include_once("../../collectors/categoriaCollector.php");
                                     
-                                    $CitaCollectorObj = new CitaCollector();
-                                    $citas = $CitaCollectorObj->showCitas();
-                                    foreach ($citas as $c){
+                                    $CategoriaCollectorObj = new CategoriaCollector();
+                                    $categorias = $CategoriaCollectorObj->showCategorias();
+                                    foreach ($categorias as $c){
                                 ?>
                                     <tr class="b-filas">
+                                        <td><?=$c->getIdcategoria();?></td>
                                         <td><?=$c->getDescripcion();?></td>
-                                        <td><?=$c->getFecha();?></td>
-                                        <td><?=$c->getHora();?></td>
-                                        <td><?=$c->getTecnico()->getNombreusuario();?></td>
-                                        <td><?=$c->getCliente()->getNombreusuario();?></td>
-                                        <td><?=$c->getEstadocita()->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a href="edit.php?id=<?=$c->getIdcita();?>"><i class="fa fa-edit"></i></a>
-                                            <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" href="edit.php?id=<?=$c->getIdcategoria();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" class="delete" href=""><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php
