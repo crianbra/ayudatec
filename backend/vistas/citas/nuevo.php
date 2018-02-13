@@ -4,32 +4,62 @@
 
 <?php
 
+    if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
+?>
+        <label for="stecnico" class="control-label col-lg-3">Técnico</label>
+            <div class="col-lg-6">
+                <select class="form-control" id="tecnico" name="tecnico">
+                    <option hidden>Seleccione el técnico</option>
+                    <?php
+                        include_once("../../collectors/usuarioCollector.php");
+                        $usuarioCollectorObj = new UsuarioCollector();
+                        $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios($_POST['idcategoria']);
+                        foreach ($tecnicos as $t){
+                    ?>
+                            <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+            </div>
+
+<?php
+        exit();
+    }
+
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
-        include_once("../../collectors/usuarioCollector.php");
-        $usuarioCollectorObj = new UsuarioCollector();
-        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
-        /* var_dump($_SESSION["user"]->getIdusuario());
-        exit(); */
-
-        /* echo "descripcion". $_POST['descripcion'];
-        exit(); */
-
-        include_once("../../collectors/citaCollector.php");
-        $CitaCollectorObj = new CitaCollector();
-        $cita = $CitaCollectorObj->createCita(4, $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico'], $_SESSION['user']->getIdusuario());
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($cita == true) {
-            $msg = "La cita fue guardada con éxito";
-            $guardado = true;
+    if (isset($_POST['descripcion']) && isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['categoria']))
+    {
+        if ($_POST['descripcion'] == "" || $_POST['fecha'] == "" || $_POST['hora'] == "" || $_POST['tecnico'] == "" || $_POST['categoria'] == "")
+        {
+            $msg = "Por favor completar todo los datos";
         } else {
-            $msg = "Error:".$cita;
+            session_start();
+            include_once("../../collectors/usuarioCollector.php");
+            $usuarioCollectorObj = new UsuarioCollector();
+            $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+            /* var_dump($_SESSION["user"]->getIdusuario());
+            exit(); */
+
+            /* echo "descripcion". $_POST['descripcion'];
+            exit(); */
+
+            include_once("../../collectors/citaCollector.php");
+            $CitaCollectorObj = new CitaCollector();
+            $cita = $CitaCollectorObj->createCita(4, $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico'], $_SESSION['user']->getIdusuario());
+            /* echo "Resultado: <br>";
+            var_dump($citas); */
+            if ($cita == true) {
+                $msg = "La cita fue guardada con éxito";
+                $guardado = true;
+            } else {
+                $msg = "Error:".$cita;
+            }
         }
 
     } else {
+        
         $guardado = false;
     }
     /* session_start();
@@ -120,9 +150,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="tecnico" class="control-label col-lg-3">Categoría</label>
+                                        <label for="categoria" class="control-label col-lg-3">Categoría</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="sel1" name="categoria">
+                                                <select class="form-control" id="categoria" name="categoria">
+                                                    <option hidden>Seleccione la profesión que busca</option>
                                                     <?php
                                                         include_once("../../collectors/categoriaCollector.php");
                                                         $categoriaCollectorObj = new CategoriaCollector();
@@ -136,22 +167,8 @@
                                                 </select>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="sel1" name="tecnico">
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios(1);
-                                                        foreach ($tecnicos as $t){
-                                                    ?>
-                                                    <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
+                                    <div class="form-group " id="select_tecnico">
+                                        
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
@@ -218,6 +235,24 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
+    /* $('#categoria').val(); */
+    $('#categoria').on('change', function() {
+        /* alert( this.value ); */
+        var id_categoria = this.value;
+        $.ajax({
+            url: 'nuevo.php',
+            type: 'POST',
+            dataType : 'text',
+            data : 'idcategoria='+id_categoria,
+            success: function(result) {
+                $("#select_tecnico").html(result);
+            },
+            error : function(xhr, status) {
+                alert('Disculpe, existió un problema');
+            }
+        });
+
+    })
 //    
 //     $(document).ready(function() {
 //    $('#editable-sample').DataTable( {
