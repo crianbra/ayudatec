@@ -8,9 +8,12 @@ class Usuario
     private $personaid;
     private $rolid;
         
-	function __construct($idusuario, $nombreusuario) {
+	function __construct($idusuario,$nombreusuario,$contrasenia,$personaid,$rolid) {
         $this->idusuario = $idusuario;
         $this->nombreusuario = $nombreusuario;
+	$this->contrasenia = $contrasenia;
+	$this->personaid = $personaid;
+	$this->rolid = $rolid;
      }
   
      function setIdusuario($idusuario){

@@ -13,8 +13,19 @@ class persona
     private $sexo;
     private $foto;
     
-	function __construct() {
-     }
+	function __construct($idpersona,$nombre,$apellido,$cedula,$email,$telefono,$ciudad,$zona,$sexo,$foto) {
+	$this->idpersona = $idpersona;
+	$this->nombre = $nombre;
+	$this->apellido = $apellido;
+	$this->cedula = $cedula;
+	$this->email = $email;
+	$this->telefono = $telefono;
+	$this->ciudad = $ciudad;
+	$this->zona = $zona;
+	$this->sexo = $sexo;
+	$this->foto = $foto;
+
+	}
   
      function setIdpersona($idpersona){
        $this->idpersona = $idpersona;
