@@ -6,23 +6,32 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        //session_start();
-        
-        
-        include_once("../../collectors/categoriaCollector.php");
-        $categoriaCollectorObj = new categoriaCollector();
-        $categoria = $categoriaCollectorObj->createCategoria($_POST['descripcion']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($categoria == true) {
-            $msg = "La categoria fue guardada con éxito";
-            $guardado = true;
-        } else {
-            $msg = "Error:".$categoria;
+    if (isset($_GET['id']) && $_GET['id'] ==! "") {
+
+        include_once("../../collectors/citaCollector.php");
+        $CitaCollectorObj = new CitaCollector();
+        $cita = $CitaCollectorObj->showCita($_GET['id']);
+
+        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") ||
+            (isset($_POST['fecha']) && $_POST['fecha'] ==! "") ||
+            (isset($_POST['hora']) && $_POST['hora'] ==! "") ||
+            (isset($_POST['tecnico']) && $_POST['tecnico'] ==! ""))
+        {
+    
+            include_once("../../collectors/citaCollector.php");
+            $CitaCollectorObj = new CitaCollector();
+            $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico']);
+
+            if ($resp == true) {
+                $msg = "La cita fue modificada con éxito";
+                $guardado = true;
+            } else {
+                $msg = "Error:".$resp;
+            }
         }
 
     } else {
+        $msg = "No ha llegado ningún ID del Técnico";
         $guardado = false;
     }
     /* session_start();
@@ -38,7 +47,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva categoria</title>
+    <title>Nueva cita</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -69,8 +78,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Categorias</a></li>
-                        <li class="active">Nueva categorias</li>
+                        <li><a href="index.php">Citas</a></li>
+                        <li class="active">Editar cita</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -78,7 +87,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVA CATEGORIA</strong> </h4>
+                    <h4> <strong>EDITAR CITA</strong> </h4>
 
                     </header>
 
@@ -97,10 +106,44 @@
                                     <div class="form-group ">
                                         <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Nueva categoria"/>
+                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$cita->getDescripcion();?>" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-group ">
+                                        <label for="fecha" class="control-label col-lg-3">Fecha</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="fecha" name="fecha" type="date" value="<?=$cita->getFecha();?>" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="hora" class="control-label col-lg-3">Hora</label>
+                                        <div class="col-lg-6">
+                                            <input class="form-control " id="hora" name="hora" type="time" value="<?=$cita->getHora();?>" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="sel1" name="tecnico">
+                                                    <?php
+                                                        include_once("../../collectors/usuarioCollector.php");
+                                                        $usuarioCollectorObj = new UsuarioCollector();
+                                                        $tecnicos = $usuarioCollectorObj->showUsuarios();
+                                                        foreach ($tecnicos as $t){
+                                                            if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){
+                                                    ?>
+                                                    <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option>
+                                                    <?php
+                                                            } else {
+                                                    ?>
+                                                    <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
+                                                    <?php
+                                                            }
+                                                        }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -112,12 +155,15 @@
                             </div>
                         </div>
 
+                        
+
+                
                     <?php
                     } else {
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a ingresar otra categoria</a>
+                            <a href="index.php">Volver a buscar técnicos</a>
                         </div>
                         <?php
                     }
@@ -163,14 +209,9 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
+
+
+
 </script>
 
 </body>
