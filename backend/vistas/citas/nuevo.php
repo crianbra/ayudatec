@@ -9,7 +9,7 @@
         <label for="stecnico" class="control-label col-lg-3">Técnico</label>
             <div class="col-lg-6">
                 <select class="form-control" id="tecnico" name="tecnico">
-                    <option hidden>Seleccione el técnico</option>
+                    <option value="" hidden>Seleccione el técnico</option>
                     <?php
                         include_once("../../collectors/usuarioCollector.php");
                         $usuarioCollectorObj = new UsuarioCollector();
@@ -31,14 +31,16 @@
     $msg = "";
     if (isset($_POST['descripcion']) && isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['categoria']))
     {
-        if ($_POST['descripcion'] == "" || $_POST['fecha'] == "" || $_POST['hora'] == "" || $_POST['tecnico'] == "" || $_POST['categoria'] == "")
+        if ($_POST['descripcion'] == "" || $_POST['fecha'] == "" || $_POST['hora'] == "" || (!isset($_POST['tecnico']) || $_POST['tecnico'] == "") || $_POST['categoria'] == "")
         {
+            /* echo $_POST['tecnico'] == "";
+            exit(); */
             $msg = "Por favor completar todo los datos";
         } else {
             session_start();
             include_once("../../collectors/usuarioCollector.php");
             $usuarioCollectorObj = new UsuarioCollector();
-            $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+            $_SESSION["user"] = $usuarioCollectorObj->showUsuario(1);
             /* var_dump($_SESSION["user"]->getIdusuario());
             exit(); */
 
@@ -47,7 +49,7 @@
 
             include_once("../../collectors/citaCollector.php");
             $CitaCollectorObj = new CitaCollector();
-            $cita = $CitaCollectorObj->createCita(4, $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico'], $_SESSION['user']->getIdusuario());
+            $cita = $CitaCollectorObj->createCita($_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico'], $_SESSION['user']->getIdusuario(), $_POST['categoria']);
             /* echo "Resultado: <br>";
             var_dump($citas); */
             if ($cita == true) {
@@ -153,7 +155,7 @@
                                         <label for="categoria" class="control-label col-lg-3">Categoría</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="categoria" name="categoria">
-                                                    <option hidden>Seleccione la profesión que busca</option>
+                                                    <option value="" hidden>Seleccione la profesión que busca</option>
                                                     <?php
                                                         include_once("../../collectors/categoriaCollector.php");
                                                         $categoriaCollectorObj = new CategoriaCollector();

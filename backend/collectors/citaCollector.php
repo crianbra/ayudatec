@@ -10,6 +10,7 @@ include_once(RUTA_BACKEND.'config/collector.php');
 include_once(RUTA_BACKEND.'models/cita.php');
 include_once(RUTA_BACKEND."models/estado_cita.php");
 include_once(RUTA_BACKEND."models/usuario.php");
+include_once(RUTA_BACKEND."models/categoria.php");
 
 class CitaCollector extends Collector
 {
@@ -51,6 +52,9 @@ class CitaCollector extends Collector
                               WHERE idcita= ?", array("{$id}"));
 
     $tecnicoObj = new Usuario($row[0]{'tecnicoid'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
+    
+    
+    $categoriaObj = new Categoria($row[0]{'descripcion'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
 
     $ObjCita = new Cita($row[0]{'idcita'},$row[0]{'descripcion'},$row[0]{'fecha'},$row[0]{'hora'},$tecnicoObj);
     return $ObjCita;
@@ -67,10 +71,10 @@ function deleteCita($id){
 
 }
 
-function createCita($idcita, $descripcion,$fecha,$hora,$tecnicoid, $clienteid, $estadocitaid = "1"){
+function createCita($descripcion,$fecha,$hora,$tecnicoid, $clienteid, $categoriaid, $estadocitaid = "1"){
 	return $insertarrow = self::$db->insertRow(
-      "INSERT INTO public.cita (idcita ,descripcion, fecha, hora, tecnicoid, clienteid, estadocitaid)
-       VALUES (?, ?, ?, ?, ?, ?, ?)", array ("{$idcita}","{$descripcion}","{$fecha}","{$hora}","{$tecnicoid}","{$clienteid}","{$estadocitaid}"
+      "INSERT INTO public.cita (descripcion, fecha, hora, tecnicoid, clienteid, categoriaid, estadocitaid)
+       VALUES (?, ?, ?, ?, ?, ?, ?)", array ("{$descripcion}","{$fecha}","{$hora}","{$tecnicoid}","{$clienteid}","{$estadocitaid}","{$categoriaid}"
     ));
 
 }

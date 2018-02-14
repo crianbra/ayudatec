@@ -17,8 +17,7 @@
             (isset($_POST['hora']) && $_POST['hora'] ==! "") ||
             (isset($_POST['tecnico']) && $_POST['tecnico'] ==! ""))
         {
-    
-            include_once("../../collectors/citaCollector.php");
+            
             $CitaCollectorObj = new CitaCollector();
             $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico']);
 
@@ -119,6 +118,30 @@
                                         <label for="hora" class="control-label col-lg-3">Hora</label>
                                         <div class="col-lg-6">
                                             <input class="form-control " id="hora" name="hora" type="time" value="<?=$cita->getHora();?>" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="categoria" class="control-label col-lg-3">Categoría</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="categoria" name="categoria">
+                                                    <option hidden>Seleccione la profesión que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/categoriaCollector.php");
+                                                        $categoriaCollectorObj = new CategoriaCollector();
+                                                        $categorias = $categoriaCollectorObj->showCategorias();
+                                                        foreach ($categorias as $ca){
+                                                            if ($ca->getIdcategoria() == $cita->getCategoria()->getIdcategoria()){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdcategoria();?>" selected><?=$ca->getDescripcion();?></option>
+                                                    <?php
+                                                            } else {
+                                                    ?>
+                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
+                                                    <?php
+                                                            }
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="form-group ">

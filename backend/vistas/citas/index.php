@@ -93,7 +93,7 @@
                                         <td><?=$c->getEstadocita()->getDescripcion();?></td>
                                         <td class="b-acciones">
                                             <a title="Editar" href="edit.php?id=<?=$c->getIdcita();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdcita();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php
