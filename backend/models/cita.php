@@ -8,15 +8,17 @@ class Cita
     private $hora;
     private $tecnico;
     private $cliente;
+    private $categoria;
     private $estadocita;
     
-	function __construct($idcita, $descripcion, $fecha, $hora, $tecnico, $cliente = null, $estadocita = null) {
+	function __construct($idcita, $descripcion, $fecha, $hora, $tecnico = null, $cliente = null, $categoria, $estadocita = null) {
         $this->idcita = $idcita;
         $this->descripcion = $descripcion;
         $this->fecha = $fecha;
         $this->hora = $hora;
         $this->tecnico = $tecnico;
         $this->cliente= $cliente;
+        $this->categoria= $categoria;
         $this->estadocita = $estadocita;
      }
   
@@ -52,10 +54,16 @@ class Cita
      }
     function setCliente($cliente){
        $this->cliente = $cliente;
-     } 
+     }
      function getCliente(){
        return $this->cliente;
      }
+     function setCategoria($categoria){
+      $this->categoria = $categoria;
+    }
+    function getCategoria(){
+      return $this->categoria;
+    }
      function setEstadocita($estadocita){
       $this->estadocita = $estadocita;
     } 

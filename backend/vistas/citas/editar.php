@@ -4,6 +4,29 @@
 
 <?php
 
+    if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
+?>
+            <label for="stecnico" class="control-label col-lg-3">Técnico</label>
+                <div class="col-lg-6">
+                    <select class="form-control" id="tecnico" name="tecnico">
+                        <option value="" hidden>Seleccione el técnico</option>
+                        <?php
+                            include_once("../../collectors/usuarioCollector.php");
+                            $usuarioCollectorObj = new UsuarioCollector();
+                            $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios($_POST['idcategoria']);
+                            foreach ($tecnicos as $t){
+                        ?>
+                                <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                </div>
+    
+<?php
+        exit();
+    }
+
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
@@ -17,9 +40,9 @@
             (isset($_POST['hora']) && $_POST['hora'] ==! "") ||
             (isset($_POST['tecnico']) && $_POST['tecnico'] ==! ""))
         {
-            
+
             $CitaCollectorObj = new CitaCollector();
-            $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico']);
+            $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['categoria'], $_POST['tecnico']);
 
             if ($resp == true) {
                 $msg = "La cita fue modificada con éxito";
@@ -124,7 +147,7 @@
                                         <label for="categoria" class="control-label col-lg-3">Categoría</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="categoria" name="categoria">
-                                                    <option hidden>Seleccione la profesión que busca</option>
+                                                    <option value="" hidden>Seleccione la profesión que busca</option>
                                                     <?php
                                                         include_once("../../collectors/categoriaCollector.php");
                                                         $categoriaCollectorObj = new CategoriaCollector();
@@ -132,10 +155,11 @@
                                                         foreach ($categorias as $ca){
                                                             if ($ca->getIdcategoria() == $cita->getCategoria()->getIdcategoria()){
                                                     ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>" selected><?=$ca->getDescripcion();?></option>
+                                                                <option value="<?=$ca->getIdcategoria();?>" selected><?=$ca->getDescripcion();?></option>
                                                     <?php
                                                             } else {
                                                     ?>
+                                                    
                                                     <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
                                                     <?php
                                                             }
@@ -144,29 +168,17 @@
                                                 </select>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
+                                    <div class="form-group " id="select_tecnico">
                                         <label for="tecnico" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="sel1" name="tecnico">
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $tecnicos = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($tecnicos as $t){
-                                                            if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){
-                                                    ?>
-                                                    <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option>
-                                                    <?php
-                                                            } else {
-                                                    ?>
-                                                    <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
-                                                    <?php
-                                                            }
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
+                                            <select class="form-control" id="tecnico" name="tecnico">
+                                                <?php 
+                                                    include_once("../../collectors/usuarioCollector.php");
+                                                    $usuarioCollectorObj = new UsuarioCollector();
+                                                    $tecnicos = $usuarioCollectorObj->showUsuarios();
+                                                    foreach ($tecnicos as $t){
+                                                        if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){ ?> <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option> <?php } else { ?> <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option> <?php } } ?> </select> </div> </div>
+                                    
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -232,7 +244,23 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
+    $('#categoria').on('change', function() {
+        /* alert( this.value ); */
+        var id_categoria = this.value;
+        $.ajax({
+            url: 'nuevo.php',
+            type: 'POST',
+            dataType : 'text',
+            data : 'idcategoria='+id_categoria,
+            success: function(result) {
+                $("#select_tecnico").html(result);
+            },
+            error : function(xhr, status) {
+                alert('Disculpe, existió un problema');
+            }
+        });
 
+    })
 
 
 </script>

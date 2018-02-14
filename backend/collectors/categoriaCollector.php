@@ -11,7 +11,7 @@ class CategoriaCollector extends Collector
     
     $arrayCategoria = array();
     foreach ($rows as $c){
-      $aux = new Categoria($c{'idcategoria'},$c{'descripcion'});
+      $aux = new Categoria($c{'idcategoria'},$c{'ca_descripcion'});
       array_push($arrayCategoria, $aux);
     }
     return $arrayCategoria;        
@@ -20,13 +20,13 @@ class CategoriaCollector extends Collector
   function showCategoria($id){
     $row = self::$db->getRows("SELECT * FROM categoria where idcategoria= ? ", array("{$id}"));
 
-    $ObjCategoria = new Categoria($row[0]{'idcategoria'},$row[0]{'descripcion'});
+    $ObjCategoria = new Categoria($row[0]{'idcategoria'},$row[0]{'ca_descripcion'});
     return $ObjCategoria;
 
   }
 
   function updateCategoria($id,$descripcion){
-    return $insertrow = self::$db->updateRow("UPDATE public.categoria SET descripcion= ? WHERE idcategoria= ?", array("{descripcion}", $id));
+    return $insertrow = self::$db->updateRow("UPDATE public.categoria SET ca_descripcion= ? WHERE idcategoria= ?", array("{ca_descripcion}", $id));
 
   }
 
@@ -36,7 +36,7 @@ class CategoriaCollector extends Collector
   }
 
   function createCategoria($descripcion){
-    return $insertarrow = self::$db->insertRow("INSERT INTO public.categoria (descripcion) VALUES (?)", array ("{$descripcion}"));
+    return $insertarrow = self::$db->insertRow("INSERT INTO public.categoria (ca_descripcion) VALUES (?)", array ("{$descripcion}"));
 
   }
 
