@@ -1,11 +1,15 @@
 <?php
 
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/usuario.php');
-include_once(RUTA_BACKEND.'models/persona.php');
-include_once(RUTA_BACKEND.'models/rol.php');
+include_once("../config/collector.php");
+include_once("../models/usuario.php");
+include_once("../models/persona.php");
+include_once("../models/rol.php");
+//include_once(RUTA_BACKEND.'config/collector.php'); 
+//include_once(RUTA_BACKEND.'models/usuario.php');
+//include_once(RUTA_BACKEND.'models/persona.php');
+//include_once(RUTA_BACKEND.'models/rol.php');
 
-class UsuarioCollector extends Collector
+class UsuarioCollector extends collector
 {
   
   function showUsuarios() {
@@ -15,9 +19,7 @@ class UsuarioCollector extends Collector
       ON (usuario.personaid = persona.idpersona)
       INNER JOIN rol
       ON (usuario.rolid = idrol) ");
-      
-      
-      
+       
     $arrayUsuario = array();        
     foreach ($rows as $c){
         
@@ -30,6 +32,7 @@ class UsuarioCollector extends Collector
     }
     return $arrayUsuario;        
   }
+    
 
   function showUsuario($id){
     $row = self::$db->getRows("SELECT * FROM usuario where idusuario= ? ", array("{$id}"));

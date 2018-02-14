@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!doctype html>
 <html lang="es">
 
@@ -25,18 +29,24 @@
                 <a class="navbar-brand" href="index.html">
                     <img src="assets/images/logo_ayudatec.png" alt="Ayudatec" >
                 </a>
-                <div class="btn-toolbar pt-2 justify-content-center" role="toolbar">
+                
+                <form class="form-signin" action="backend/collectors/validarusuario.php" method="post">
+                                
+                    <div class="btn-toolbar pt-2 justify-content-center" role="toolbar">
                   <div class="input-group">
-                    <input type="text" id="email" class="form-control" placeholder="Correo" >
+                    <input type="text" id="nombreusuario" name="nombreusuario" class="form-control" placeholder="Usuario" >
                   </div>
                   <div class="input-group mt-3 mt-sm-0 ml-sm-2">
-                    <input type="password" id="password" class="form-control" placeholder="Contraseña">
+                    <input type="password" id="contrasenia" name="contrasenia" class="form-control" placeholder="Contraseña">
                   </div>
                   <div class="btn-group mt-3 mt-md-0 ml-lg-2" role="group">
-                    <button type="button" onclick="ingresar()" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</button>
-                    <!--<a href= "tecnicos.html" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</a>-->
+                    <button type="button" id="login" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</button>
+                    
                   </div>
+                    <input type="submit" class="btn btn-success" name="login" value="Entrar">
                 </div>
+                </form>
+                
             </div>
         </nav>
     </header>

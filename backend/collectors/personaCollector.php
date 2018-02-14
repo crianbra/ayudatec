@@ -32,7 +32,7 @@ function updatePersona($id, $nombre, $apellido, $cedula, $email, $telefono, $ciu
 }
 
 function deletePersona($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.persona WHERE idpersona= ? ", array("{$id}"));
+	$deleterow = self::$db->deleteRow("DELETE FROM public.persona WHERE idpersona= ?", array("{$id}"));
 
 }
 

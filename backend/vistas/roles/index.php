@@ -1,6 +1,16 @@
 <?php
+session_start();
+
     define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
+
+
+    if (!isset($_SESSION['MiSession'])){
+            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
+        }else{
+            if(!$_SESSION['rol']==1){
+                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
+            }else{
 
 ?>
 
@@ -110,6 +120,8 @@
     <!--main content end-->
 
 </section>
+    
+   
 
 <!-- Placed js at the end of the document so the pages load faster -->
 
@@ -151,6 +163,15 @@
 //    } );
 //} );
 </script>
+    
+    
 
 </body>
 </html>
+
+  <?php
+
+}
+
+    }
+?>

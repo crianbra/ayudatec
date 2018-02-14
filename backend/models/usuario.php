@@ -15,7 +15,7 @@ class Usuario
         $this->personaid = $personaid;
         $this->rolid = $rolid;
      }
-  
+      
      function setIdusuario($idusuario){
        $this->idusuario = $idusuario;
      } 
