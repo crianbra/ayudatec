@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a href="../calificacion/index.php">
+                <a href="../calificaciones/index.php">
                     <i class="fa fa-star-o"></i>
                     <span>Calificaciones </span>
                 </a>

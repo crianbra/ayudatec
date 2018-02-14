@@ -1,21 +1,33 @@
 <?php
-
-include_once('Calificacion.php');
-include_once('Collector.php');
+include_once(RUTA_BACKEND.'config/collector.php'); 
+include_once(RUTA_BACKEND.'models/calificacion.php');
+include_once(RUTA_BACKEND."models/usuario.php");
 
 class CalificacionCollector extends Collector
 {
   
   function showCalificaciones() {
-    $rows = self::$db->getRows("SELECT * FROM calificacion ");        
+    /* $rows = self::$db->getRows("SELECT * FROM calificacion ");   */
+    
+    $rows = self::$db->getRows(
+      "SELECT * 
+      FROM calificacion 
+      INNER JOIN usuario
+      ON (calificacion.tecnicoid = idusuario)"
+    );
     
     $arrayCalificacion = array();        
     foreach ($rows as $c){
-      $aux = new Calificacion($c{'idcalificacion'},$c{'rating'});
+
+      $tecnicoObj = new Usuario($c{'tecnicoid'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
+      
+      $aux = new Calificacion($c{'idcalificacion'},$c{'promedio'},$tecnicoObj);
       array_push($arrayCalificacion, $aux);
+
     }
     return $arrayCalificacion;        
   }
+
 
   function showCalificacion($id){
     $row = self::$db->getRows("SELECT * FROM calificacion where idcalificacion= ? ", array("{$id}"));

@@ -3,11 +3,13 @@
 class Calificacion
 {
     private $idcalificacion;
-    private $rating;
-    private $comentario;
-    private $usuarioid;
+    private $promedio;
+    private $tecnicoid;
     
-	function __construct() {
+	function __construct($idcalificacion,$promedio,$tecnicoid) {
+      $this->idcalificacion = $idcalificacion;
+      $this->promedio = $promedio;
+      $this->tecnicoid = $tecnicoid;
      }
   
      function setIdcalificacion($idcalificacion){
@@ -16,23 +18,17 @@ class Calificacion
      function getIdcalificacion(){
        return $this->idcalificacion;
      } 
-    function setRating($rating){
-       $this->rating = $rating;
+    function setPromedio($promedio){
+       $this->promedio = $promedio;
      } 
-     function getRating(){
-       return $this->rating;
+     function getPromedio(){
+       return $this->promedio;
      }
-    function setComentario($comentario){
-       $this->comentario = $comentario;
+    function setTecnicoid($tecnicoid){
+       $this->tecnicoid = $tecnicoid;
      } 
-     function getComentario(){
-       return $this->comentario;
-     }
-    function setUsuarioid($usuarioid){
-       $this->usuarioid = $usuarioid;
-     } 
-     function getUsuarioid(){
-       return $this->usuarioid;
+     function getTecnicoid(){
+       return $this->tecnicoid;
      }
 }
     
