@@ -3,34 +3,30 @@
 <!--constantes end-->
 
 <?php
+    include_once("../../collectors/calificacionCollector.php");
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
-        include_once("../../collectors/usuarioCollector.php");
-        $usuarioCollectorObj = new UsuarioCollector();
-        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
-        /* var_dump($_SESSION["user"]->getIdusuario());
-        exit(); */
+    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
-        /* echo "descripcion". $_POST['descripcion'];
-        exit(); */
+        if (isset($_POST['id']) && $_POST['id'] ==! "") {
+            $CalificacionCollectorObj = new CalificacionCollector();
+            $resp = $CalificacionCollectorObj->deleteCalificacion($_POST['id']);
+            if ($resp == true) {
+                $msg = "La calificación fue eliminada con éxito";
+                $guardado = true;
+            } else {
 
-        include_once("../../collectors/estadocitaCollector.php");
-        $CalificacionCollectorObj = new CalificacionCollector();
-        $calificacion = $CalificacionCollectorObj->createCalificacion($_POST['promedio'], $_POST['desempenioid']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($calificacion == true) {
-            $msg = "La calificación del técnico fue guardada con éxito";
-            $guardado = true;
+                $msg = "error";
+                }
         } else {
-            $msg = "Error:".$calificacion;
+            $CalificacionCollectorObj = new CalificacionCollector();
+            $calificacion = $CalificacionCollectorObj->showCalificacion($_GET['id']);
         }
 
     } else {
-        $guardado = false;
+            $msg = "No ha llegado ningún ID de calificación";
+            $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -45,7 +41,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva calificación</title>
+    <title>Eliminar calificación</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -65,10 +61,10 @@
 <section id="container" >
 <!--header end-->
 <!--header start-->
-<?=include_once("../header.php");?>
+<?include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?=include_once("../aside.php");?>
+<?include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">
@@ -76,16 +72,16 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Calificación técnico</a></li>
-                        <li class="active">Nueva calificación de técnico</li>
+                        <li><a href="index.php">Calificación</a></li>
+                        <li class="active">Eliminar calificación</li>
                     </ul>
-        <!--breadcrumbs end -->
+                    <!--breadcrumbs end -->
 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVA CALIFICACIÓN DE TÉCNICO</strong> </h4>
+                    <h4> <strong>ELIMINAR CALIFICACIÓN</strong> </h4>
 
                     </header>
 
@@ -100,19 +96,35 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="promedioForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="calificacionForm" method="post" action="">
+                                    <input type="text" name="id" hidden value="<?=$calificacion->getIdcalificacion();?>">
+                                    <div class="form-group ">
+                                        <h3 class="text-center">¿Seguro que desea eliminar esta calificación?</h3>
+                                    </div>
                                     <div class="form-group ">
                                         <label for="promedio" class="control-label col-lg-3">Promedio</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="promedio" name="promedio" type="text" placeholder=""/>
+                                            <h5 id="promedio"><?=$calificacion->getPromedio();?></h5>
                                         </div>
                                     </div>
-
+                                    <div class="form-group ">
+                                        <label for="desempenioid" class="control-label col-lg-3">Desempeño</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="desempenioid"><?=$calificacion->getDesempenioid();?></h5>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="usuarioid" class="control-label col-lg-3">Técnico</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="usuarioid"><?=$calificacion->getUsuarioid();?></h5>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
+                                            <button class="btn btn-primary" type="submit">Aceptar</button>
                                             <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
                                         </div>
                                     </div>
                                 </form>
@@ -127,7 +139,9 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+
+                            <a href="index.php">Volver a profesión</a>
+
                         </div>
                         <?php
                     }
@@ -173,14 +187,9 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
+
+
+
 </script>
 
 </body>
