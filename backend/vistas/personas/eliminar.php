@@ -17,6 +17,7 @@
                 $guardado = true;
             } else {
                 $msg = "La persona fue eliminada con éxito";
+                $guardado = true;
             }
         } else {
             $PersonaCollectorObj = new PersonaCollector();

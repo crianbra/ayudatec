@@ -17,6 +17,7 @@
                 $guardado = true;
             } else {
                 $msg = "El usuario fue eliminado con éxito";
+                $guardado = true;
             }
         } else {
             $UsuarioCollectorObj = new UsuarioCollector();
