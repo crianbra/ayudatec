@@ -1,31 +1,37 @@
+<!--constantes start-->
+<?include_once("../constantes.php");?>
+<!--constantes end-->
+
 <?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
+    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
         session_start();
-        /*include_once("../../collectors/usuarioCollector.php");
+        include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
         $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
-         var_dump($_SESSION["user"]->getIdusuario());
+        /* var_dump($_SESSION["user"]->getIdusuario());
         exit(); */
 
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
-        include_once("../../collectors/personaCollector.php");
-        $personaCollectorObj = new personaCollector();
-        $persona = $personaCollectorObj->createPersona($_POST['nombre'], $_POST['apellido'], $_POST['cedula'], $_POST['email'], $_POST['telefono'], $_POST['ciudad'], $_POST['zona'], $_POST['sexo']);
+        $estado = 0;
+        if (isset($_POST['activo'])) {
+            $estado = 1;
+        }
+
+        include_once("../../collectors/estadocitaCollector.php");
+        $EstadoCitaCollectorObj = new EstadoCitaCollector();
+        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $estado);
         /* echo "Resultado: <br>";
         var_dump($citas); */
-        if ($persona == true) {
-            $msg = "La persona fue guardada con éxito";
+        if ($estadocita == true) {
+            $msg = "El estado de cita fue guardado con éxito";
             $guardado = true;
         } else {
-            $msg = "La persona fue guardada con éxito";
-            $guardado = true;
+            $msg = "Error:".$estadocita;
         }
 
     } else {
@@ -44,7 +50,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva Persona</title>
+    <title>Nuevo parámetro de desempeño</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -62,6 +68,7 @@
 <body>
 
 <section id="container" >
+<!--header end-->
 <!--header start-->
 <?=include_once("../header.php");?>
 <!--header end-->
@@ -72,19 +79,18 @@
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Personas</a></li>
-                        <li class="active">Nueva Persona</li>
+                        <li><a href="index.php">Estado de citas</a></li>
+                        <li class="active">Nuevo estado de cita</li>
                     </ul>
-                    <!--breadcrumbs end -->
+        <!--breadcrumbs end -->
 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVA PERSONA</strong> </h4>
+                    <h4> <strong>NUEVO ESTADO DE CITA</strong> </h4>
 
                     </header>
 
@@ -99,63 +105,19 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="personaForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="nombre" class="control-label col-lg-3">Nombre</label>
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre"/>
+                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Ejemplo: Anulada"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="apellido" class="control-label col-lg-3">Apellido</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="apellido" name="apellido" type="text" placeholder="Apellido"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="cedula" class="control-label col-lg-3">Cedula</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="cedula" name="cedula" type="text" placeholder="Cedula"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-3">Email</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="email" name="email" type="text" placeholder="Email"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="telefono" class="control-label col-lg-3">Telefono</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="telefono" name="telefono" type="text" placeholder="Telefono"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="ciudad" class="control-label col-lg-3">Ciudad</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="ciudad" name="ciudad" type="text" placeholder="Ciudad"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="zona" class="control-label col-lg-3">Zona</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="zona" name="zona" type="text" placeholder="Zona"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="sexo" class="control-label col-lg-3">Sexo</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="sexo" name="sexo" type="text" placeholder="Sexo"/>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 
-                                    <div class="form-group ">
-                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
+                                        <label for="activo" class="control-label col-lg-3 col-sm-3">Activo</label>
                                         <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
+                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked="true" value="true"/>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>

@@ -1,19 +1,6 @@
-<?php
-session_start();
-
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-
-
-    /*if (!isset($_SESSION['MiSession'])){
-            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
-        }else{
-            if(!$_SESSION['rol']==1){
-                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
-            }else{
-            */
-
-?>
+<!--constantes start-->
+<?include_once("../constantes.php");?>
+<!--constantes end-->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -24,7 +11,7 @@ session_start();
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Roles</title>
+    <title>Parámetros de desempeño</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -43,10 +30,10 @@ session_start();
 
 <section id="container" >
 <!--header start-->
-<?=include_once("../header.php");?>
+<?include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?=include_once("../aside.php");?>
+<?include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">
@@ -57,7 +44,7 @@ session_start();
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ROLES</strong> </h4>
+                    <h4> <strong>ESTADO DE CITAS</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -65,7 +52,7 @@ session_start();
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva Rol <i class="fa fa-plus"></i>
+                                        Nuevo estado de cita <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -82,25 +69,35 @@ session_start();
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>IdRol</th>
-                                    <th>Descripcion</th>
+                                    <th>ID</th>
+                                    <th>Descripción</th>
+                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/rolCollector.php");
+                                    include_once("../../collectors/estadocitaCollector.php");
                                     
-                                    $RolCollectorObj = new RolCollector();
-                                    $roles = $RolCollectorObj->showRols();
-                                    foreach ($roles as $c){
+                                    $EstadocitaCollectorObj = new EstadoCitaCollector();
+                                    $estadocitas = $EstadocitaCollectorObj->showEstadoCitas();
+                                    foreach ($estadocitas as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdrol();?></td>
+                                        <td><?=$c->getIdestadocita();?></td>
                                         <td><?=$c->getDescripcion();?></td>
+                                        <td>
+                                            <?php
+                                                if ($c->getEstado() == 1) {
+                                                    echo "Activo";
+                                                }else {
+                                                    echo "Inactivo";
+                                                }
+                                            ?>
+                                        </td>
                                         <td class="b-acciones">
-                                            <a title="edit" href="editar.php?id=<?=$c->getIdrol();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="delete" href="eliminar.php?id=<?=$c->getIdrol();?>"><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIdestadocita();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdestadocita();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -121,8 +118,6 @@ session_start();
     <!--main content end-->
 
 </section>
-    
-   
 
 <!-- Placed js at the end of the document so the pages load faster -->
 
@@ -164,9 +159,6 @@ session_start();
 //    } );
 //} );
 </script>
-    
-    
 
 </body>
 </html>
-
