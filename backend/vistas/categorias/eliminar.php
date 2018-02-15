@@ -3,36 +3,29 @@
 <!--constantes end-->
 
 <?php
+    include_once("../../collectors/categoriaCollector.php");
 
     $guardado = false;
     $msg = "";
-    if (isset($_GET['id']) && $_GET['id'] ==! "") {
+    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
-        include_once("../../collectors/citaCollector.php");
-        $CitaCollectorObj = new CitaCollector();
-        $cita = $CitaCollectorObj->showCita($_GET['id']);
-
-        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") ||
-            (isset($_POST['fecha']) && $_POST['fecha'] ==! "") ||
-            (isset($_POST['hora']) && $_POST['hora'] ==! "") ||
-            (isset($_POST['tecnico']) && $_POST['tecnico'] ==! ""))
-        {
-    
-            include_once("../../collectors/citaCollector.php");
-            $CitaCollectorObj = new CitaCollector();
-            $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico']);
-
+        if (isset($_POST['id']) && $_POST['id'] ==! "") {
+            $CategoriaCollectorObj = new CategoriaCollector();
+            $resp = $CategoriaCollectorObj->deleteCategoria($_POST['id']);
             if ($resp == true) {
-                $msg = "La cita fue modificada con éxito";
+                $msg = "La categoria fue eliminada con éxito";
                 $guardado = true;
             } else {
                 $msg = "Error:".$resp;
             }
+        } else {
+            $CategoriaCollectorObj = new CategoriaCollector();
+            $categoria = $CategoriaCollectorObj->showCategoria($_GET['id']);
         }
 
     } else {
-        $msg = "No ha llegado ningún ID del Técnico";
-        $guardado = false;
+            $msg = "No ha llegado ningún ID del Técnico";
+            $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -79,7 +72,7 @@
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="index.php">Citas</a></li>
-                        <li class="active">Editar cita</li>
+                        <li class="active">Eliminar cita</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -87,7 +80,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR CITA</strong> </h4>
+                    <h4> <strong>ELIMINAR CITA</strong> </h4>
 
                     </header>
 
@@ -103,52 +96,40 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
+                                    <input type="text" name="id" hidden value="<?=$cita->getIdcita();?>">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                        <h3 class="text-center">¿Seguro que desea eliminar esta cita?</h3>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción:</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$cita->getDescripcion();?>" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
+                                            <h5 id="descripcion"><?=$cita->getDescripcion();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="fecha" class="control-label col-lg-3">Fecha</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="fecha" name="fecha" type="date" value="<?=$cita->getFecha();?>" />
+                                            <h5 id="fecha"><?=$cita->getFecha();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="hora" class="control-label col-lg-3">Hora</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control " id="hora" name="hora" type="time" value="<?=$cita->getHora();?>" />
+                                            <h5 id="hora"><?=$cita->getHora();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="tecnico" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="sel1" name="tecnico">
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $tecnicos = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($tecnicos as $t){
-                                                            if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){
-                                                    ?>
-                                                    <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option>
-                                                    <?php
-                                                            } else {
-                                                    ?>
-                                                    <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
-                                                    <?php
-                                                            }
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <h5 id="tecnico"><?=$cita->getTecnico()->getNombreusuario();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
+                                            <button class="btn btn-primary" type="submit">Aceptar</button>
                                             <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
                                         </div>
                                     </div>
                                 </form>
@@ -209,9 +190,6 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-
-
-
 </script>
 
 </body>

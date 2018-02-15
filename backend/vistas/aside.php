@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li>
-                <a href="../profesionales/index.php">
+                <a href="../profesiones/index.php">
                     <i class="fa fa-gavel"></i>
                     <span>Técnicos</span>
                 </a>

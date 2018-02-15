@@ -1,6 +1,4 @@
-<!--constantes start-->
 <?include_once("../constantes.php");?>
-<!--constantes end-->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -11,7 +9,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Categoria</title>
+    <title>Profesiones</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +42,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>Categorias</strong> </h4>
+                    <h4> <strong>PROFESIONALES</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -52,7 +50,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva categoria <i class="fa fa-plus"></i>
+                                        Nueva profesión <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -69,25 +67,31 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Descripción</th>
+<!--                                <th>Profesión</th>-->
+                                    <th>Nombre</th>
+                                    <th>Categoria</th>
+                                    <!--<th>Técnico</th>
+                                    <th>Cliente</th>
+                                    <th>Estado</th>-->
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/categoriaCollector.php");
+                                    include_once("../../collectors/profesionCollector.php");
                                     
-                                    $CategoriaCollectorObj = new CategoriaCollector();
-                                    $categorias = $CategoriaCollectorObj->showCategorias();
-                                    foreach ($categorias as $c){
+                                    $ProfesionCollectorObj = new ProfesionCollector();
+                                    $profesiones = $ProfesionCollectorObj->showProfesiones();
+                                    foreach ($profesiones as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdcategoria();?></td>
-                                        <td><?=$c->getDescripcion();?></td>
+                                       
+                                        <td><?=$c->getUsuarioid()-> getNombreusuario();?></td>
+                                        <td><?=$c->getCategoriaid()-> getDescripcion();?></td>
+                                        
                                         <td class="b-acciones">
-                                            <a title="Editar" href="editar.php?id=<?=$c->getIdcategoria();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIdProfesion();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdProfesion();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php
