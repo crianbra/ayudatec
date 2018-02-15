@@ -6,11 +6,11 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
+    if (isset($_POST['maximo']) && $_POST['maximo'] ==! "") {
+        /* session_start();
         include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
-        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3); */
         /* var_dump($_SESSION["user"]->getIdusuario());
         exit(); */
 

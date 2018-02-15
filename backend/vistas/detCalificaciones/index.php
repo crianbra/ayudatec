@@ -74,6 +74,7 @@
                                     <th>Calificación</th>
                                     <th>Nombre de usuario</th>
                                     <th></th>
+                                    
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -90,11 +91,11 @@
                                         <td><?=$c->getValoracion();?></td>
                                         <td><?=$c->getComentario();?></td>
                                         <td><?=$c->getCalificacionid()->getPromedio();?></td>
-                                        <td><?=$c->getUsuarioid()->getNombreusuario();?></td>
+                                        <td><?=$c->getClienteid()->getNombreusuario();?></td>
                                         
                                         <td class="b-acciones">
-                                            <a title="Editar" href="editar.php?id=<?=$c->getIdprofesion();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdprofesion();?>"><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIddetallecalificacion();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIddetallecalificacion();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php

@@ -13,23 +13,13 @@ class DetallecalificacionCollector extends Collector
       INNER JOIN calificacion
       ON (detalle_calificacion.calificacionid = calificacion.idcalificacion)
       INNER JOIN usuario
-      ON (detalle_calificacion.clienteid = idusuario)"
+      ON (detalle_calificacion.clienteid = usuario.idusuario)"
     );
     
       echo "Hola";
       
     $arrayDetallecalificacion = array();        
     foreach ($rows as $c){
-<<<<<<< HEAD:backend/collectors/detcalificacionCollector.php
-
-      $calificacionObj = new Calificacion($c{'idcalificacion'},$c{'promedio'},$c{'tecnicoid'});
-      $clienteObj = new Usuario($c{'clienteid'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
-
-
-      $aux = new Detallelificacion($c{'iddetallecalificacion'},$c{'fecha'},$c{'valoracion'},$c{'comentario'},$calificacionObj,$clienteObj);
-      array_push($arrayDetcalificacion, $aux);
-=======
-        
         
       $calificacionObj = new Calificacion($c{'idcalificacion'},$c{'promedio'},$c{'desempenioid'},$c{'tecnicoid'});
       $usuarioObj = new Usuario($c{'idusuario'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
@@ -37,7 +27,7 @@ class DetallecalificacionCollector extends Collector
       
       $aux = new Detallecalificacion($c{'iddetallecalificacion'},$c{'fecha'},$c{'valoracion'},$c{'comentario'},$calificacionObj,$usuarioObj);
       array_push($arrayDetallecalificacion, $aux);
->>>>>>> 92ff9bd1982d1d08ac6df91b511fc7f971f3f790:backend/collectors/detallecalificacionCollector.php
+
 
     }
     return $arrayDetallecalificacion;        

@@ -50,11 +50,6 @@
                     <div class="panel-body">
                         <div class="adv-table editable-table ">
                             <div class="clearfix">
-                                <div class="btn-group">
-                                    <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva calificación <i class="fa fa-plus"></i>
-                                    </a>
-                                </div>
                                 <div class="btn-group pull-right">
                                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Acciones <i class="fa fa-angle-down"></i>
                                     </button>
@@ -71,8 +66,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Promedio</th>
+                                    <th>Desempeño</th>
                                     <th>Técnico</th>
-                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -86,11 +81,17 @@
                                     <tr class="b-filas">
                                         <td><?=$c->getIdcalificacion();?></td>
                                         <td><?=$c->getPromedio();?> de 5</td>
+                                        <td>
+                                            <?php
+                                                if(($c->getPromedio() >= $c->getDesempenioid()->getMinimo()) ||
+                                                ($c->getPromedio() >= $c->getDesempenioid()->getMinimo())){
+
+                                                    echo $c->getDesempenioid()->getEscala();
+
+                                                }
+                                            
+                                            ?></td>
                                         <td><?=$c->getTecnicoid()->getNombreusuario();?></td>
-                                        <td class="b-acciones">
-                                            <a title="Editar" href="edit.php?id=<?=$c->getIdcalificacion();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" class="delete" href=""><i class="fa fa-trash-o"></i></a>
-                                        </td>
                                     </tr>
                                 <?php
                                     }

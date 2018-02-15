@@ -8,7 +8,7 @@
     $guardado = false;
     $msg = "";
     if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
-
+        
         if (isset($_POST['id']) && $_POST['id'] ==! "") {
             $PersonaCollectorObj = new PersonaCollector();
             $resp = $PersonaCollectorObj->deletePersona($_POST['id']);

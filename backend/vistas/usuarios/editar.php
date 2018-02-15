@@ -8,7 +8,7 @@
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/usuarioCollector.php");
+        include_once("usuarioCollector.php");
         $UsuarioCollectorObj = new UsuarioCollector();
         $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
 
