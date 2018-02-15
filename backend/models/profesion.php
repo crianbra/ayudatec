@@ -16,7 +16,7 @@ class Profesion
        $this->idprofesion = $idprofesion;
      } 
      function getIdProfesion(){
-       return $this->$idprofesion;
+       return $this->idprofesion;
      } 
      function setUsuarioid($usuarioid){
        $this->usuarioid = $usuarioid;

@@ -39,17 +39,17 @@ class ProfesionCollector extends Collector
 
 
 function updateProfesion($id,$usuarioid,$categoriaid){
-	$insertrow = self::$db->updateRow("UPDATE public.profesion SET usuarioid= ?, categoriaid= ? WHERE idprofesion= ?", array("{usuarioid}","{categoriaid}", $id));
+	return $insertrow = self::$db->updateRow("UPDATE public.profesion SET usuarioid= ?, categoriaid= ? WHERE idprofesion= ?", array("{$usuarioid}","{$categoriaid}", $id));
 
 }
 
 function deleteProfesion($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.profesion WHERE idprofesion= ?", array("{$id}"));
+	return $deleterow = self::$db->deleteRow("DELETE FROM public.profesion WHERE idprofesion= ?", array("{$id}"));
 
 }
 
 function createProfesion($usuarioid,$categoriaid){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.profesion (usuarioid, categoriaid) VALUES (?,?) ", array ("{$usuarioid}", "{$categoriaid}"));
+	return $insertarrow = self::$db->insertRow("INSERT INTO public.profesion (usuarioid, categoriaid) VALUES (?,?) ", array ("{$usuarioid}", "{$categoriaid}"));
 
 }
 
