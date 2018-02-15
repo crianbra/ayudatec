@@ -26,7 +26,7 @@ class CategoriaCollector extends Collector
   }
 
   function updateCategoria($id,$descripcion){
-    return $insertrow = self::$db->updateRow("UPDATE public.categoria SET ca_descripcion= ? WHERE idcategoria= ?", array("{ca_descripcion}", $id));
+    return $insertrow = self::$db->updateRow("UPDATE public.categoria SET ca_descripcion= ? WHERE idcategoria= ?", array("{$descripcion}", $id));
 
   }
 

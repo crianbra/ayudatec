@@ -1,22 +1,22 @@
 <?php
 
-class TecnicoPorCategoria
+class Profesion
 {
-    private $idTecnicoxCategoria;
+    private $idprofesion;
     private $usuarioid;
     private $categoriaid;
     
-     function __construct($idTecnicoxCategoria, $usuarioid, $categoriaid) {
-       $this->idTecnicoxCategoria = $idTecnicoxCategoria;
+     function __construct($idprofesion, $usuarioid, $categoriaid) {
+       $this->idprofesion = $idprofesion;
        $this->usuarioid = $usuarioid;
        $this->categoriaid = $categoriaid;
      }
     
-     function setIdTecnicoxCategoria($idTecnicoxCategoria){
-       $this->idTecnicoxCategoria = $idTecnicoxCategoria;
+     function setIdProfesion($idprofesion){
+       $this->idprofesion = $idprofesion;
      } 
-     function getIdTecnicoxCategoria(){
-       return $this->idTecnicoxCategoria;
+     function getIdProfesion(){
+       return $this->$idprofesion;
      } 
      function setUsuarioid($usuarioid){
        $this->usuarioid = $usuarioid;
