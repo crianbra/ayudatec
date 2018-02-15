@@ -30,7 +30,7 @@
             <li>
                 <a href="../profesiones/index.php">
                     <i class="fa fa-gavel"></i>
-                    <span>Técnicos</span>
+                    <span>Profesionales</span>
                 </a>
             </li>
             <li class=" ">
