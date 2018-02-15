@@ -18,15 +18,15 @@
         exit(); */
 
         include_once("../../collectors/estadocitaCollector.php");
-        $EstadoCitaCollectorObj = new EstadoCitaCollector();
-        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $_POST['activo']);
+        $CalificacionCollectorObj = new CalificacionCollector();
+        $calificacion = $CalificacionCollectorObj->createCalificacion($_POST['promedio'], $_POST['desempenioid']);
         /* echo "Resultado: <br>";
         var_dump($citas); */
-        if ($estadocita == true) {
-            $msg = "El estado de cita fue guardada con éxito";
+        if ($calificacion == true) {
+            $msg = "La calificación del técnico fue guardada con éxito";
             $guardado = true;
         } else {
-            $msg = "Error:".$estadocita;
+            $msg = "Error:".$calificacion;
         }
 
     } else {
@@ -76,8 +76,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Estado de citas</a></li>
-                        <li class="active">Nuevo estado de cita</li>
+                        <li><a href="index.php">Calificación técnico</a></li>
+                        <li class="active">Nueva calificación de técnico</li>
                     </ul>
         <!--breadcrumbs end -->
 
@@ -85,7 +85,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO ESTADO DE CITA</strong> </h4>
+                    <h4> <strong>NUEVA CALIFICACIÓN DE TÉCNICO</strong> </h4>
 
                     </header>
 
@@ -100,11 +100,11 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="promedioForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                        <label for="promedio" class="control-label col-lg-3">Promedio</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Ejemplo: Anulada"/>
+                                            <input class=" form-control" id="promedio" name="promedio" type="text" placeholder=""/>
                                         </div>
                                     </div>
                                     <div class="form-group ">

@@ -8,21 +8,17 @@
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/estadocitaCollector.php");
-        $EstadoCitaCollectorObj = new EstadoCitaCollector();
-        $estadocita = $EstadoCitaCollectorObj->showEstadoCita($_GET['id']);
+        include_once("../../collectors/desempenioCollector.php");
+        $DesempenioCollectorObj = new DesempenioCollector();
+        $desempenio = $DesempenioCollectorObj->showDesempenio($_GET['id']);
 
-        if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "")
+        if (isset($_POST['maximo']) && $_POST['maximo'] ==! "")
         {
-            $estado = 0;
-            if (isset($_POST['activo'])) {
-                $estado = 1;
-            }
-            $EstadoCitaCollectorObj = new EstadoCitaCollector();
-            $resp = $EstadoCitaCollectorObj->updateEstadoCita($_GET['id'], $_POST['descripcion'], $estado);
+            $DesempenioCollectorObj = new DesempenioCollector();
+            $resp = $DesempenioCollectorObj->updateDesempenio($_GET['id'], $_POST['maximo'], $_POST['minimo'],$_POST['escala']);
 
             if ($resp == true) {
-                $msg = "El estado de cita fue modificada con éxito";
+                $msg = "El parámetro de desempeño fue modificado con éxito";
                 $guardado = true;
             } else {
                 $msg = "Error:".$resp;
@@ -30,7 +26,7 @@
         }
 
     } else {
-        $msg = "No ha llegado ningún ID del estado de cita";
+        $msg = "No ha llegado ningún ID del parámetro de desempeño";
         $guardado = false;
     }
     /* session_start();
@@ -77,8 +73,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Estado de Citas</a></li>
-                        <li class="active">Editar estado de cita</li>
+                        <li><a href="index.php">Parámetros de desempeño</a></li>
+                        <li class="active">Editar parámetros de desempeño</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -86,7 +82,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR ESTADO DE CITA</strong> </h4>
+                    <h4> <strong>EDITAR PARÁMETRO DE DESEMPEÑO</strong> </h4>
 
                     </header>
 
@@ -101,17 +97,23 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="desempenioForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                        <label for="maximo" class="control-label col-lg-3">Máximo</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$estadocita->getDescripcion();?>" type="text" placeholder="Ejemplo: Cancelada"/>
+                                            <input class=" form-control" id="maximo" name="maximo" value="<?=$desempenio->getMaximo();?>" type="text" placeholder="Ejemplo: 5"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="fecha" class="control-label col-lg-3">Estado</label>
+                                        <label for="minimo" class="control-label col-lg-3">Mínimo</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="activo" name="activo" type="checkbox" <?=($estadocita->getEstado()== 1) ? "checked":"";?> value="true"/>
+                                            <input class=" form-control" id="minimo" name="minimo" value="<?=$desempenio->getMinimo();?>" type="text" placeholder="Ejemplo: 1"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="escala" class="control-label col-lg-3">Escala</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="escala" name="escala" value="<?=$desempenio->getEscala();?>" type="text" placeholder="Ejemplo: Sobresaliente"/>
                                         </div>
                                     </div>
                                     
@@ -134,7 +136,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a listar los estados de cita</a>
+                            <a href="index.php">Volver a listar los parámetros de desempeño</a>
                         </div>
                         <?php
                     }

@@ -17,21 +17,16 @@
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
-        $estado = 0;
-        if (isset($_POST['activo'])) {
-            $estado = 1;
-        }
-
-        include_once("../../collectors/estadocitaCollector.php");
-        $EstadoCitaCollectorObj = new EstadoCitaCollector();
-        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $estado);
+        include_once("../../collectors/desempenioCollector.php");
+        $DesempenioCollectorObj = new DesempenioCollector();
+        $desempenio = $DesempenioCollectorObj->createDesempenio($_POST['maximo'], $_POST['minimo'],$_POST['escala']);
         /* echo "Resultado: <br>";
         var_dump($citas); */
-        if ($estadocita == true) {
-            $msg = "El estado de cita fue guardado con éxito";
+        if ($desempenio == true) {
+            $msg = "El parámetro de desempeño fue guardado con éxito";
             $guardado = true;
         } else {
-            $msg = "Error:".$estadocita;
+            $msg = "Error:".$desempenio;
         }
 
     } else {
@@ -81,8 +76,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Estado de citas</a></li>
-                        <li class="active">Nuevo estado de cita</li>
+                        <li><a href="index.php">Parámetros de desempeño</a></li>
+                        <li class="active">Nuevo parámetro de desempeño</li>
                     </ul>
         <!--breadcrumbs end -->
 
@@ -90,7 +85,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO ESTADO DE CITA</strong> </h4>
+                    <h4> <strong>NUEVO PARÁMETRO DE DESEMPEÑO</strong> </h4>
 
                     </header>
 
@@ -105,17 +100,23 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="desempenioForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                        <label for="maximo" class="control-label col-lg-3">Máximo</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Ejemplo: Anulada"/>
+                                            <input class=" form-control" id="maximo" name="maximo" type="text" placeholder="Ejemplo:5"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="activo" class="control-label col-lg-3 col-sm-3">Activo</label>
-                                        <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked="true" value="true"/>
+                                        <label for="minimo" class="control-label col-lg-3">Mínimo</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="minimo" name="minimo" type="text" placeholder="Ejemplo:1"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="escala" class="control-label col-lg-3">Escala</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="escala" name="escala" type="text" placeholder="Sobresaliente"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -137,7 +138,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+                            <a href="index.php">Volver a listar los parámetros de desempeño</a>
                         </div>
                         <?php
                     }

@@ -44,7 +44,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ESTADO DE CITAS</strong> </h4>
+                    <h4> <strong>PARÁMETROS DE DESEMPEÑO</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -52,7 +52,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nuevo estado de cita <i class="fa fa-plus"></i>
+                                        Nuevo parámetro de desempeño <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -70,34 +70,28 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Descripción</th>
-                                    <th>Estado</th>
+                                    <th>Puntuación máxima</th>
+                                    <th>Puntuación mínima</th>
+                                    <th>Escala</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/estadocitaCollector.php");
+                                    include_once("../../collectors/desempenioCollector.php");
                                     
-                                    $EstadocitaCollectorObj = new EstadoCitaCollector();
-                                    $estadocitas = $EstadocitaCollectorObj->showEstadoCitas();
-                                    foreach ($estadocitas as $c){
+                                    $DesempenioCollectorObj = new DesempenioCollector();
+                                    $desempenios = $DesempenioCollectorObj->showDesempenios();
+                                    foreach ($desempenios as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdestadocita();?></td>
-                                        <td><?=$c->getDescripcion();?></td>
-                                        <td>
-                                            <?php
-                                                if ($c->getEstado() == 1) {
-                                                    echo "Activo";
-                                                }else {
-                                                    echo "Inactivo";
-                                                }
-                                            ?>
-                                        </td>
+                                        <td><?=$c->getIddesempenio();?></td>
+                                        <td><?=$c->getMaximo();?></td>
+                                        <td><?=$c->getMinimo();?></td>
+                                        <td><?=$c->getEscala();?></td>
                                         <td class="b-acciones">
-                                            <a title="Editar" href="editar.php?id=<?=$c->getIdestadocita();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdestadocita();?>"><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIddesempenio();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIddesempenio();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php

@@ -3,28 +3,28 @@
 <!--constantes end-->
 
 <?php
-    include_once("../../collectors/estadocitaCollector.php");
+    include_once("../../collectors/desempenioCollector.php");
 
     $guardado = false;
     $msg = "";
     if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
         if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $EstadoCitaCollectorObj = new EstadoCitaCollector();
-            $resp = $EstadoCitaCollectorObj->deleteEstadocita($_POST['id']);
+            $DesempenioCollectorObj = new DesempenioCollector();
+            $resp = $DesempenioCollectorObj->deleteDesempenio($_POST['id']);
             if ($resp == true) {
-                $msg = "El estado de cita fue eliminado con éxito";
+                $msg = "El parámetro de desempeño fue eliminado con éxito";
                 $guardado = true;
             } else {
                 $msg = "Error:".$resp;
             }
         } else {
-            $EstadoCitaCollectorObj = new EstadoCitaCollector();
-            $estadocita = $EstadoCitaCollectorObj->showEstadocita($_GET['id']);
+            $DesempenioCollectorObj = new DesempenioCollector();
+            $desempenio = $DesempenioCollectorObj->showDesempenio($_GET['id']);
         }
 
     } else {
-            $msg = "No ha llegado ningún ID del Estado de cita";
+            $msg = "No ha llegado ningún ID del parámetro de desempeño";
             $guardado = false;
     }
     /* session_start();
@@ -71,8 +71,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Estado de Citas</a></li>
-                        <li class="active">Eliminar Estado de cita</li>
+                        <li><a href="index.php">Parámetros de desempeño</a></li>
+                        <li class="active">Eliminar parámetro de desempeño</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -80,7 +80,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR ESTADO DE CITA</strong> </h4>
+                    <h4> <strong>ELIMINAR PARÁMETRO DE DESEMPEÑO</strong> </h4>
 
                     </header>
 
@@ -95,21 +95,27 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$estadocita->getIdestadocita();?>">
+                                <form class="cmxform form-horizontal " id="desempenioForm" method="post" action="">
+                                    <input type="text" name="id" hidden value="<?=$desempenio->getIddesempenio();?>">
                                     <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar este Estado de cita?</h3>
+                                        <h3 class="text-center">¿Seguro que desea eliminar este parámetro de desempeño?</h3>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción:</label>
+                                        <label for="maximo" class="control-label col-lg-3">Máximo:</label>
                                         <div class="col-lg-6">
-                                            <h5 id="descripcion"><?=$estadocita->getDescripcion();?></h5>
+                                            <h5 id="maximo"><?=$desempenio->getMaximo();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="estado" class="control-label col-lg-3">Estado</label>
+                                        <label for="minimo" class="control-label col-lg-3">Mínimo:</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="activo" name="activo" type="checkbox" <?=($estadocita->getEstado()== 1) ? "checked":"";?> value="true"/>
+                                            <h5 id="minimo"><?=$desempenio->getMinimo();?></h5>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="escala" class="control-label col-lg-3">Escala:</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="escala"><?=$desempenio->getEscala();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group">
