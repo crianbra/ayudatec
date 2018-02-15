@@ -2,6 +2,7 @@
 include_once(RUTA_BACKEND.'config/collector.php'); 
 include_once(RUTA_BACKEND.'models/calificacion.php');
 include_once(RUTA_BACKEND."models/usuario.php");
+include_once(RUTA_BACKEND."models/desempenio.php");
 
 class CalificacionCollector extends Collector
 {
@@ -13,15 +14,19 @@ class CalificacionCollector extends Collector
       "SELECT * 
       FROM calificacion 
       INNER JOIN usuario
-      ON (calificacion.tecnicoid = idusuario)"
+      ON (calificacion.tecnicoid = usuario.idusuario)
+      INNER JOIN desempenio
+      ON (calificacion.desempenioid = desempenio.iddesempenio)"
+
     );
     
     $arrayCalificacion = array();        
     foreach ($rows as $c){
 
       $tecnicoObj = new Usuario($c{'tecnicoid'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
-      
-      $aux = new Calificacion($c{'idcalificacion'},$c{'promedio'},$tecnicoObj);
+      $desempenioObj = new Desempenio($c{'iddesempenio'}, $c{'maximo'}, $c{'minimo'}, $c{'escala'});
+
+      $aux = new Calificacion($c{'idcalificacion'},$c{'promedio'},$desempenioObj,$tecnicoObj);
       array_push($arrayCalificacion, $aux);
 
     }
