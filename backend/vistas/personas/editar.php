@@ -3,7 +3,7 @@
     include_once("../constantes.php");
     $guardado = false;
     $msg = "";
-    if (isset($_GET['id']) && $_GET['id'] ==! "") {
+    if (isset($_GET['id']) && $_GET['nombre'] ==! "") {
         session_start();
         include_once("../../collectors/personaCollector.php");
         $PersonaCollectorObj = new PersonaCollector();
