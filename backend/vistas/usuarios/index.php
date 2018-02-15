@@ -81,7 +81,7 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/usuarioCollector.php");
+                                    include_once("usuarioCollector.php");
                                     
                                     $UsuarioCollectorObj = new UsuarioCollector();
                                     $usuarios = $UsuarioCollectorObj->showUsuarios();
@@ -94,8 +94,8 @@
                                         <td><?=$c->getPersonaid()->getNombre();?></td>
                                         <td><?=$c->getRolid()->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
-                                            <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
+                                            <a title="delete" href="eliminar.php?id=<?=$c->getIdusuario();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php

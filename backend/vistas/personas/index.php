@@ -106,14 +106,13 @@
                                         <td><?=$c->getSexo();?></td>
                                         <td class="b-acciones">
                                             <a title="Editar" class="edit" href="editar.php"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" href="eliminar.php?id="><i class="fa fa-trash-o"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdpersona();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
-                                    </tr>
-                                <?php
-                                echo "<a href='eliminar.php?id=".$c->getIdpersona()."'>Eliminar</a>";
-                                    }      
+                                    </tr> 
+                                    
+                                    <?php
+                                    }
                                 ?>
-                               
                                
                                 </tbody>
                             </table>

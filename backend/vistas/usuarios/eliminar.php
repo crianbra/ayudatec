@@ -3,28 +3,28 @@
 <!--constantes end-->
 
 <?php
-    include_once("../../collectors/personaCollector.php");
+    include_once("usuarioCollector.php");
 
     $guardado = false;
     $msg = "";
     if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
         if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $PersonaCollectorObj = new PersonaCollector();
-            $resp = $PersonaCollectorObj->deletePersona($_POST['id']);
+            $UsuarioCollectorObj = new UsuarioCollector();
+            $resp = $UsuarioCollectorObj->deleteUsuario($_POST['id']);
             if ($resp == true) {
-                $msg = "La persona fue eliminada con éxito";
+                $msg = "El usuario fue eliminado con éxito";
                 $guardado = true;
             } else {
                 $msg = "Error:".$resp;
             }
         } else {
-            $PersonaCollectorObj = new PersonaCollector();
-            $persona = $PersonaCollectorObj->showPersona($_GET['id']);
+            $UsuarioCollectorObj = new UsuarioCollector();
+            $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
         }
 
     } else {
-            $msg = "No ha llegado ningún ID del Técnico";
+            $msg = "No ha llegado ningún ID de Usuario";
             $guardado = false;
     }
     /* session_start();
@@ -40,7 +40,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva Persona</title>
+    <title>Eliminar Usuario</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -71,8 +71,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Persona</a></li>
-                        <li class="active">Eliminar Persona</li>
+                        <li><a href="index.php">Usuario</a></li>
+                        <li class="active">Eliminar usuario</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -80,7 +80,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR PERSONA</strong> </h4>
+                    <h4> <strong>ELIMINAR USUARIO</strong> </h4>
 
                     </header>
 
@@ -96,32 +96,32 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$persona->getIdpersona();?>">
+                                    <input type="text" name="id" hidden value="<?=$usuario->getIdusuario();?>">
                                     <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar esta persona?</h3>
+                                        <h3 class="text-center">¿Seguro que desea eliminar este usuario?</h3>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="nombre" class="control-label col-lg-3">Nombre</label>
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre de Usuario</label>
                                         <div class="col-lg-6">
-                                            <h5 id="nombre"><?=$persona->getNombre();?></h5>
+                                            <h5 id="nombreusuario"><?=$usuario->getNombreusuario();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="apellido" class="control-label col-lg-3">Apellido</label>
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
                                         <div class="col-lg-6">
-                                            <h5 id="apellido"><?=$persona->getApellido();?></h5>
+                                            <h5 id="contrasenia"><?=$usuario->getContrasenia();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="cedula" class="control-label col-lg-3">Cedula</label>
+                                        <label for="personaid" class="control-label col-lg-3">Persona Id</label>
                                         <div class="col-lg-6">
-                                            <h5 id="cedula"><?=$persona->getCedula();?></h5>
+                                            <h5 id="personaid"><?=$usuario->getPersonaid();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="telefono" class="control-label col-lg-3">Telefono</label>
+                                        <label for="rolid" class="control-label col-lg-3">Rol Id</label>
                                         <div class="col-lg-6">
-                                            <h5 id="telefono"><?=$persona->getTelefono();?></h5>
+                                            <h5 id="rolid"><?=$usuario->getRolid();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -144,7 +144,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a personas</a>
+                            <a href="index.php">Volver a usuarios</a>
                         </div>
                         <?php
                     }
