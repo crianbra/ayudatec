@@ -63,7 +63,7 @@ session_start();
                         <div class="adv-table editable-table ">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <a href="insertar.php" class="btn btn-primary">
+                                    <a href="nuevo.php" class="btn btn-primary">
                                         Nueva Rol <i class="fa fa-plus"></i>
                                     </a>
                                 </div>

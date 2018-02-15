@@ -9,7 +9,7 @@ session_start();
 <div id="main">
 
 <?php
-$descripcion = $_POST["descripcion"];
+$descripcion = $_POST['descripcion'];
 
 //echo 'Hola ' .htmlspecialchars($descripcion) . '!';
 include_once("../../collectors/rolCollector.php");
