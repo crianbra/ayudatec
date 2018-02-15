@@ -9,7 +9,7 @@
 $descripcion = $_POST["descripcion"];
 
 //echo 'Hola ' .htmlspecialchars($descripcion) . '!';
-include_once("../../rolCollector.php");
+include_once("../../collectors/rolCollector.php");
 
 $RolCollectorObj = new RolCollector();
 $ObjRol = $RolCollectorObj->createRol($descripcion);
