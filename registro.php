@@ -30,7 +30,7 @@
                     <img src="assets/images/logo_ayudatec.png" alt="Ayudatec" >
                 </a>
                 
-                <form class="form-signin" action="backend/collectors/validarusuario.php" method="post">
+                <form class="form-signin" action="backend/vistas/usuarios/validarusuario.php" method="post">
                                 
                     <div class="btn-toolbar pt-2 justify-content-center" role="toolbar">
                   <div class="input-group">

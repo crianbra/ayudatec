@@ -1,13 +1,13 @@
 <?php
 
-include_once("../config/collector.php");
+/*include_once("../config/collector.php");
 include_once("../models/usuario.php");
 include_once("../models/persona.php");
-include_once("../models/rol.php");
-//include_once(RUTA_BACKEND.'config/collector.php'); 
-//include_once(RUTA_BACKEND.'models/usuario.php');
-//include_once(RUTA_BACKEND.'models/persona.php');
-//include_once(RUTA_BACKEND.'models/rol.php');
+include_once("../models/rol.php");*/
+include_once(RUTA_BACKEND.'config/collector.php'); 
+include_once(RUTA_BACKEND.'models/usuario.php');
+include_once(RUTA_BACKEND.'models/persona.php');
+include_once(RUTA_BACKEND.'models/rol.php');
 
 class UsuarioCollector extends collector
 {
