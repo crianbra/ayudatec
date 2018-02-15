@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -14,7 +17,7 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>AYUDATEC :: Contáctenos</title>
+    <title>AYUDATEC :: Cómo Funciona</title>
 </head>
 
 <body>
@@ -22,7 +25,7 @@
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" >
                 </a>
 
@@ -32,17 +35,17 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
-			<li class="nav-item active">
-                            <a class="nav-link" href="conocenos.html">CONÓCENOS </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="tecnicos.html">TÉCNICOS </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a>
+			            <li class="nav-item active">
+                            <a class="nav-link" href="conocenos.php">CONÓCENOS </a>
+                        </li>                        
+			            <li class="nav-item active">
+                            <a class="nav-link" href="tecnicos.php">TÉCNICOS </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a>
+                            <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a>
                         </li>
                     </ul>
                     <div class="btn-group font-white btnUsuario" role="group">
@@ -51,7 +54,7 @@
                         </span>
                         <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <img style="width: 30px;" src="assets/images/ft_testimonio1.png" alt="Ayudatec">
-                        
+                          Lidia
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupUser">
                             <a class="dropdown-item" href="#">Dropdown link</a>
@@ -65,46 +68,34 @@
         </nav>
     </header>
 
-	<section id="formulario" class="py-5">
-        <div class="container">
-          <div class="row pb-5">
-              <div class="col-12 font-20px text-center">
-                -
-                </div>
-                <h3 class="col-12 font-20px text-center">
-                    Por favor, deja tu comentario por cualquier inquietud
+    <section id="how-work" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <h3 class="col-12 pt-3 text-center titulo font-darkgray">
+                    ¿Cómo funciona AYUDATEC?
                 </h3>
-          </div>
-          <div class="row">
-              <div class="col-12 col-md">
-                  <div class="row">
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" class="form-control " placeholder="Nombres">
-                            </div>
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" class="form-control " placeholder="Apellidos">
-                            </div>
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" class="form-control" placeholder="Asunto">
-                            </div>
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" class="form-control" placeholder="E-mail">
-                            </div>
-			    <div class="col-12 col-lg-12">
-				<textarea class="form-control" name="mensaje" id="message" placeholder="Escriba su inquietud o sugerencia aqui..." style="height:100px;"></textarea><br />
-                            </div>
-                           
-                            <div class="col-12 mt-4 text-center" role="group">
-                                <button type="button" class="btn btn-lineal btn-blue font-12px">Enviar</button>
-                            </div>
-                            
-              </div>
-          </div>
+                <div class="col-12 col-lg-8 pt-3 text-center font-gray">
+                    <span> 
+En Ayudatec estamos firmemente comprometidos con nuestros clientes y trabajamos para ofrecerles un servicio y una experiencia excelente gracias a nuestra apuesta por la calidad y la innovación. Poseemos la certificación ISO 9.001, con la que AENOR confirma la capacidad de la empresa para ofrecer productos y servicios basados en un sistema de gestión de calidad apoyado en el ciclo de mejora continua de los procesos.</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-4 text-center align-self-center pt-5 pt-lg-0">
+                    <img src="assets/images/mascota.svg" alt="Ayudatin">
+                </div>
+                <div class="col-12 col-lg-8 pt-4 pasos font-gray ">
+                    <ol>
+                        <li> <div class="font-bold">Indica que servicio o profesional necesitas.</div> En el buscador de la Web escribe qué necesitas solucionar o qué tipo de profesional necesitas.
+                        </li>
+                        <li><div class="font-bold">Escoge al profesional que más te gusta.</div> Revisa perfiles de los profesionales interesados, elige al que más te gusta
+                        </li>
+                        <li><div class="font-bold"> Llama al profesional y acuerden una cita.</div> Pregunta por precio y disponibilidad. </li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    </div>
-    </section>    
 
-
+    </section>
 
     <footer class="py-4 font-12px">
         <div class="container">
@@ -167,8 +158,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
             </div>
         </div>

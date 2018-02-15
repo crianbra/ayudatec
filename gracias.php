@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -5,18 +8,16 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="ayudatec, tecnicos, ecuador, ayuda, cerrajeros, albañiles, mecanico, refrigeradoras, electricista, pintor, tecnico recomendado, guayaquil">
-    <meta name="description" content="AYUDATEC es una empresa que busca proporcionar a nuestros clientes la mejor asistencia del hogar y la tranquilidad de no tener que preocuparse en caso de averías urgentes, garantizándoles los mejores reparadores a precios competitivos">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/vendors/fontello/css/instagram.css">
+    <link rel="stylesheet" href="assets/vendors/fontello/css/fontello.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/fav-icon.png" />
 
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>AYUDATEC :: Envío exitoso</title>
+    <title>AYUDATEC :: Gracias</title>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" >
                 </a>
 
@@ -35,40 +36,31 @@
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
 			<li class="nav-item active">
-                            <a class="nav-link" href="conocenos.html">CONÓCENOS </a>
+                            <a class="nav-link" href="conocenos.php">CONÓCENOS </a>
                         </li>                        
 			<li class="nav-item active">
-                            <a class="nav-link" href="tecnicos.html">TÉCNICOS </a>
+                            <a class="nav-link" href="tecnicos.php">TÉCNICOS </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a>
+                            <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a>
+                            <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a>
                         </li>
                     </ul>
-                    <form class="form-inline mt-4 my-lg-0">
-                    <a href="registro.html" id="loginbtn" class="btn my-2 my-sm-0 btn-lineal">
-                            Inicio sesión o Registro 
-                            <i class="icon-right-small"></i>
-                    </a>
-                    
-                    <div class="btn-group font-white btnUsuario" id="usuariopanel" role="group">
-<!--                        <span class="cursor-pointer align-self-center font-20px">
+                    <div class="btn-group font-white btnUsuario" role="group">
+                        <span class="cursor-pointer align-self-center font-20px">
                            <i class="icon-bell-alt font-white"></i><span class="notifi">1</span>
                         </span>
--->
-                        <span id="nombreusuario"> </span>
                         <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <img style="width: 30px;" src="" alt="Ayudatec" id="fotousuario">
-                          
+                         <img style="width: 30px;" src="assets/images/ft_testimonio1.png" alt="Ayudatec">
+                          Lidia
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupUser">
-                            <a class="dropdown-item" href="#">Perfil</a>
-                            <a class="dropdown-item" id="logout" href="index.html">Cerrar Sesión</a>
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
                         </div>
                     </div>
-                    </form>
                 </div>
 
             </div>
@@ -80,18 +72,22 @@
         <div class="container">
             <div class="row justify-content-center">
                 <h3 class="col-12 text-center font-28px">
-                    Su mensaje ha sido enviado con éxito
+                    Gracias por utilizar nuestros servicios
                 </h3>
                 <div class="col-12 col-md-8 text-center font-blue font-20px">
-                   <strong>Gracias por escribirnos, en breve un asesor de AYUDATEC se pondrá en contacto con usted</strong>    
+                   <strong>Pronto te llegará un correo para que puedas evaluar tu satisfacción con el servicio</strong>    
                 </div>
             </div>
             <div class="row">
-                <div class="col-12  text-center text-lg-center align-self-center pt-5">
+                <div class="col-12 col-lg-6 text-center text-lg-right pr-lg-5 align-self-center pt-5">
                     <img src="assets/images/mascota.svg" alt="Ayudatin">
                 </div>
             
-            
+                <div class="col-12 col-lg-6 text-center text-lg-left align-self-center pl-lg-5">
+                  <a href= "tecnicos.html" class="btn btn-primary font-white font-12px px-5">
+                     BUSCAR OTRO TÉCNICO
+                  </a>
+                </div>
             </div>
             
         </div>
@@ -103,20 +99,20 @@
                 <div class="col-6 col-lg-8 text-lg-center align-self-center">
                     <div class="row">
                         <div class="col-12 col-lg  mb-3 mb-lg-0">
-                            <a class="font-white" href="conocenos.html">¿Quiénes somos?</a>
+                            ¿Cómo funciona?
                         </div>
                         <div class="col-12 col-lg mb-3 mb-lg-0">
-                            <a class="font-white" href="faq.html">Preguntas frecuentes</a>
+                            Preguntas frecuentes
                         </div>
                         <div class="col-12 col-lg mb-3 mb-lg-0">
-                            <a class="font-white" href="politicas.html">Términos y Condiciones</a>
+                            Términos y Condiciones
                         </div>
                     </div>
                 </div>
-               <div class="col-6 col-lg-4 text-center align-self-center iconos-white-a ">
-                    <a href="https://www.facebook.com/AyudatecLatam/" target="_blank"><i class="icon-facebook font-28px"></i></a>
-                    <a href="https://twitter.com/miayudatec" target="_blank"><i class="icon-twitter font-28px"></i></a>
-                    <a href="https://www.instagram.com/miayudatec/" target="_blank"><i class="icon-instagram-filled font-28px"></i></a>
+                <div class="col-6 col-lg-4 text-center align-self-center">
+                    <i class="icon-facebook font-28px"></i>
+                    <i class="icon-twitter font-28px"></i>
+                    <i class="icon-linkedin-squared font-28px"></i>
                 </div>
 
                 <div class="col-12 my-3 linea-hor">
@@ -131,9 +127,9 @@
                             AFILÍATE
                         </div>
                         <div class="col-12">
-                            <a href="preregistro.html" class="btn-lineal btn-yellow font-12px py-1 px-2">
+                            <button class="btn-lineal btn-yellow font-12px py-1 px-2" type="submit">
                                 QUIERO SER TÉCNICO
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -151,7 +147,7 @@
                 <div class="col-12 col-lg-4 text-center order-lg-1 text-lg-left">
                     <div class="row">
                         <div class="col-12">
-                            <a class="navbar-brand" href="#"><img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"></a>
+                            <a class="navbar-brand" href="#"><img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" ></a>
                         </div>
                         <div class="col-12 font-lightgray font-w-100">
                             © 2018 AYUDATEC. Todos los derechos reservados.
@@ -173,27 +169,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-
-
-<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCrBbuj6yLwG_t_gyfhi1bi9ZjRuLnbSDA",
-    authDomain: "ayudatec-3e0ee.firebaseapp.com",
-    databaseURL: "https://ayudatec-3e0ee.firebaseio.com",
-    projectId: "ayudatec-3e0ee",
-    storageBucket: "ayudatec-3e0ee.appspot.com",
-    messagingSenderId: "5686820743"
-  };
-  firebase.initializeApp(config);
-  
-</script>
-    
-    
-    <script src="assets/js/app.js"></script>
-
 </body>
 
 </html>

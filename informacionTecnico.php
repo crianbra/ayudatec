@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -27,14 +30,14 @@
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html"> <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"> </a>
+                <a class="navbar-brand" href="index.php"> <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu_principal" aria-controls="menu_principal" aria-expanded="false" aria-label="Toggle navigation"> <i class="icon-list-nested font-white"></i> </button>
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
-                        <li class="nav-item active"><a class="nav-link" href="conocenos.html">CONÓCENOS </a></li>
-                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.html">TÉCNICOS </a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a> </li>
+                        <li class="nav-item active"><a class="nav-link" href="conocenos.php">CONÓCENOS </a></li>
+                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.php">TÉCNICOS </a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a> </li>
                     </ul>
                     <form class="form-inline mt-4 my-lg-0">
                     <a href="registro.html" id="loginbtn" style.display="block" class="btn my-2 my-sm-0 btn-lineal">
@@ -53,8 +56,8 @@
                           
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupUser">
-                            <a class="dropdown-item" href="perfil.html">Perfil</a>
-                            <a class="dropdown-item" id="logout" href="index.html">Cerrar Sesión</a>
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" id="logout" href="index.php">Cerrar Sesión</a>
                         </div>
                     </div>
                     </form>
@@ -76,7 +79,7 @@
                                     
                                     <div id="tcnIniciar" class="pt-3" style="display: block">
                                         Debes iniciar sesión para poder contactar al técnico<br>
-                                        <a href="registro.html" id="iniciaSesion" class="btn my-2 my-sm-0 btn-primary">
+                                        <a href="registro.php" id="iniciaSesion" class="btn my-2 my-sm-0 btn-primary">
                                             Inicio sesión o Registro 
                                         <i class="icon-right-small"></i>
                                         </a>
@@ -186,9 +189,9 @@
             <div class="row">
                 <div class="col-6 col-lg-8 text-lg-center align-self-center">
                     <div class="row">
-                        <div class="col-12 col-lg  mb-3 mb-lg-0"> <a class="font-white" href="conocenos.html">¿Quiénes somos?</a> </div>
-                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="faq.html">Preguntas frecuentes</a> </div>
-                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="politicas.html">Términos y Condiciones</a> </div>
+                        <div class="col-12 col-lg  mb-3 mb-lg-0"> <a class="font-white" href="conocenos.php">¿Quiénes somos?</a> </div>
+                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="faq.php">Preguntas frecuentes</a> </div>
+                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="politicas.php">Términos y Condiciones</a> </div>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4 text-center align-self-center"> <i class="icon-facebook font-28px"></i> <i class="icon-twitter font-28px"></i> <i class="icon-linkedin-squared font-28px"></i> </div>

@@ -3,7 +3,7 @@
 <!--logo start-->
 <div class="brand">
 
-    <a href="citas.php" class="logo">
+    <a href="../admin/admin.php" class="logo">
         <img src="../../assets/images/logo_ayudatec_bn.png" alt="Ayudatec">
     </a>
     <div class="sidebar-toggle-box">
@@ -23,13 +23,23 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="../../assets/images/avatar1_small.jpg">
-                <span class="username">John Doe</span>
+                <?php
+                    include_once("usuarios/usuarioCollector.php");
+                    $UsuarioCollectorObj = new UsuarioCollector();
+                    $usuarios = $UsuarioCollectorObj->showUsuarios();
+                    foreach ($usuarios as $c){
+                                ?>
+                <span class="username"><?=$c->getNombreusuario();?></span>
                 <b class="caret"></b>
             </a>
+            
+            <?php
+                                    }
+                                ?>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-male"></i>Perfil</a></li>
                 <li><a href="#"><i class="fa fa-lock"></i> Seguridad</a></li>
-                <li><a href="login.html"><i class="fa fa-key"></i> Cerrar sesión</a></li>
+                <li><a href="../logout.php"><i class="fa fa-key"></i> Cerrar sesión</a></li>
             </ul>
         </li>
         <!-- user login dropdown end -->

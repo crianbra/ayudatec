@@ -4,8 +4,6 @@
 
 <?php
 
-    
-
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
@@ -248,3 +246,5 @@
 
 </body>
 </html>
+
+
