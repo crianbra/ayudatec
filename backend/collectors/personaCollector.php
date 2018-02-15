@@ -27,17 +27,17 @@ class PersonaCollector extends Collector
 
 
 function updatePersona($id, $nombre, $apellido, $cedula, $email, $telefono, $ciudad, $zona, $sexo){
-	$insertrow = self::$db->updateRow("UPDATE public.persona SET nombre= ? , apellido= ? , cedula= ? , email= ? , telefono= ? , ciudad= ? , zona= ? , sexo= ? WHERE idpersona= ?", array("{$nombre}","{$apellido}","{$cedula}","{$email}","{$telefono}","{$ciudad}","{$zona}","{$sexo}",$id));
+	return $insertrow = self::$db->updateRow("UPDATE public.persona SET nombre= ? , apellido= ? , cedula= ? , email= ? , telefono= ? , ciudad= ? , zona= ? , sexo= ? WHERE idpersona= ?", array("{$nombre}","{$apellido}","{$cedula}","{$email}","{$telefono}","{$ciudad}","{$zona}","{$sexo}",$id));
 
 }
 
 function deletePersona($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.persona WHERE idpersona= ?", array("{$id}"));
+	return $deleterow = self::$db->deleteRow("DELETE FROM public.persona WHERE idpersona= ?", array("{$id}"));
 
 }
 
 function createPersona($nombre, $apellido, $cedula, $email, $telefono, $ciudad, $zona, $sexo){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.persona (nombre, apellido, cedula, email, telefono, ciudad, zona, sexo) VALUES (?,?,?,?,?,?,?,?)", array ("{$nombre}","{$apellido}","{$cedula}","{$email}","{$telefono}","{$ciudad}","{$zona}","{$sexo}"));
+	return $insertarrow = self::$db->insertRow("INSERT INTO public.persona (nombre, apellido, cedula, email, telefono, ciudad, zona, sexo) VALUES (?,?,?,?,?,?,?,?)", array ("{$nombre}","{$apellido}","{$cedula}","{$email}","{$telefono}","{$ciudad}","{$zona}","{$sexo}"));
 
 }
 

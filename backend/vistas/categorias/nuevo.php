@@ -11,7 +11,7 @@
         
         
         include_once("../../collectors/categoriaCollector.php");
-        $categoriaCollectorObj = new categoriaCollector();
+        $categoriaCollectorObj = new CategoriaCollector();
         $categoria = $categoriaCollectorObj->createCategoria($_POST['descripcion']);
         /* echo "Resultado: <br>";
         var_dump($citas); */
@@ -117,7 +117,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a ingresar otro profesional</a>
+                            <a href="index.php">Volver a ingresar nueva categoria</a>
                         </div>
                         <?php
                     }

@@ -25,8 +25,8 @@
                 $msg = "El usuario fue modificada con éxito";
                 $guardado = true;
             } else {
-                $msg = "El usuario fue modificada con éxito";
-                $guardado = true;
+                $msg = "Error";
+                
             }
         }
 

@@ -67,7 +67,7 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-
+                                    <th>IDProfesion</th>
                                     <th>Nombre</th>
                                     <th>Categoria</th>
                                     
@@ -83,13 +83,13 @@
                                     foreach ($profesiones as $c){
                                 ?>
                                     <tr class="b-filas">
-                                       
+                                        <td><?=$c->getIdprofesion();?></td>
                                         <td><?=$c->getUsuarioid()-> getNombreusuario();?></td>
                                         <td><?=$c->getCategoriaid()-> getDescripcion();?></td>
                                         
                                         <td class="b-acciones">
-                                            <a title="Editar" href="editar.php?id=<?=$c->getIdProfesion();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdProfesion();?>"><i class="fa fa-trash-o"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIdprofesion();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdprofesion();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php

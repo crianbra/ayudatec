@@ -12,11 +12,11 @@ class Profesion
        $this->categoriaid = $categoriaid;
      }
     
-     function setIdProfesion($idprofesion){
+     function setIdprofesion($idprofesion){
        $this->idprofesion = $idprofesion;
      } 
-     function getIdProfesion(){
-       return $this->$idprofesion;
+     function getIdprofesion(){
+       return $this->idprofesion;
      } 
      function setUsuarioid($usuarioid){
        $this->usuarioid = $usuarioid;
@@ -24,7 +24,6 @@ class Profesion
      function getUsuarioid(){
        return $this->usuarioid;
      }
-    
     function setCategoriaid($categoriaid){
        $this->categoriaid = $categoriaid;
      } 

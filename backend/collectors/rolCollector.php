@@ -27,17 +27,17 @@ class RolCollector extends Collector
 
 
 function updateRol($id,$descripcion){
-	$insertrow = self::$db->updateRow("UPDATE public.rol SET descripcion= ? WHERE idrol= ?", array("{$descripcion}", $id));
+	return $insertrow = self::$db->updateRow("UPDATE public.rol SET descripcion= ? WHERE idrol= ?", array("{$descripcion}", $id));
 
 }
 
 function deleteRol($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.rol WHERE idrol= ?", array("{$id}"));
+	return $deleterow = self::$db->deleteRow("DELETE FROM public.rol WHERE idrol= ?", array("{$id}"));
 
 }
 
 function createRol($descripcion){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.rol (descripcion) VALUES (?)", array ("{$descripcion}"));
+	return $insertarrow = self::$db->insertRow("INSERT INTO public.rol (descripcion) VALUES (?)", array ("{$descripcion}"));
 
 }
 

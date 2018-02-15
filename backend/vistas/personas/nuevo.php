@@ -24,8 +24,7 @@
             $msg = "La persona fue guardada con éxito";
             $guardado = true;
         } else {
-            $msg = "La persona fue guardada con éxito";
-            $guardado = true;
+            $msg = "Error:".$resp;
         }
 
     } else {

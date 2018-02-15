@@ -29,8 +29,7 @@
                 $msg = "La persona fue modificada con éxito";
                 $guardado = true;
             } else {
-                $msg = "La persona fue modificada con éxito";
-                $guardado = true;
+                $msg = "Error:".$resp;
             }
         }
 

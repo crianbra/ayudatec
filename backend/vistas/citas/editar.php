@@ -147,7 +147,7 @@
                                         <label for="categoria" class="control-label col-lg-3">Categoría</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="categoria" name="categoria">
-                                                    <option value="" hidden>Seleccione la profesión que busca</option>
+                                                    <option value="" hidden>Seleccione la categoria que busca</option>
                                                     <?php
                                                         include_once("../../collectors/categoriaCollector.php");
                                                         $categoriaCollectorObj = new CategoriaCollector();

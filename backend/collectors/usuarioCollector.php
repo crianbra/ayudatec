@@ -61,17 +61,17 @@ function showCategoriaUsuarios($id) {
 
 
 function updateUsuario($id, $nombreusuario, $contrasenia, $personaid, $rolid){
-	$insertrow = self::$db->updateRow("UPDATE public.usuario SET nombreusuario= ? , contrasenia= ? , personaid= ? , rolid= ? WHERE idusuario= ?", array("{$nombreusuario}","{$contrasenia}","{$personaid}","{$rolid}",$id));
+	return $insertrow = self::$db->updateRow("UPDATE public.usuario SET nombreusuario= ? , contrasenia= ? , personaid= ? , rolid= ? WHERE idusuario= ?", array("{$nombreusuario}","{$contrasenia}","{$personaid}","{$rolid}",$id));
 
 }
 
 function deleteUsuario($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.usuario WHERE idusuario= ?", array("{$id}"));
+	return $deleterow = self::$db->deleteRow("DELETE FROM public.usuario WHERE idusuario= ?", array("{$id}"));
 
 }
 
 function createUsuario($nombreusuario, $contrasenia, $personaid, $rolid){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.usuario (nombreusuario,contrasenia,personaid,rolid) VALUES (?,?,?,?)", array ("{$nombreusuario}","{$contrasenia}","{$personaid}","{$rolid}"));
+	return $insertarrow = self::$db->insertRow("INSERT INTO public.usuario (nombreusuario,contrasenia,personaid,rolid) VALUES (?,?,?,?)", array ("{$nombreusuario}","{$contrasenia}","{$personaid}","{$rolid}"));
 
 }
 

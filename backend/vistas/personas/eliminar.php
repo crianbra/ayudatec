@@ -16,8 +16,7 @@
                 $msg = "La persona fue eliminada con éxito";
                 $guardado = true;
             } else {
-                $msg = "La persona fue eliminada con éxito";
-                $guardado = true;
+                $msg = "Error:".$resp;
             }
         } else {
             $PersonaCollectorObj = new PersonaCollector();
