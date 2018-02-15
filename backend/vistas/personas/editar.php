@@ -4,7 +4,7 @@
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
-        session_start();
+        
         include_once("../../collectors/personaCollector.php");
         $PersonaCollectorObj = new PersonaCollector();
         $persona = $PersonaCollectorObj->showPersona($_GET['id']);
