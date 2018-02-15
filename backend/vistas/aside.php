@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li>
-                <a href="../profesionales/index.php">
+                <a href="../profesiones/index.php">
                     <i class="fa fa-gavel"></i>
                     <span>Técnicos</span>
                 </a>
@@ -49,6 +49,12 @@
                 <a href="../calificaciones/index.php">
                     <i class="fa fa-star-o"></i>
                     <span>Calificaciones </span>
+                </a>
+            </li>
+            <li>
+                <a href="../desempenio/index.php">
+                    <i class="fa fa-signal"></i>
+                    <span>Escalas desempeño </span>
                 </a>
             </li>
             <li class=" ">

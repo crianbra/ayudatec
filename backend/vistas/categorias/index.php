@@ -86,7 +86,7 @@
                                         <td><?=$c->getIdcategoria();?></td>
                                         <td><?=$c->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a title="Editar" href="edit.php?id=<?=$c->getIdcategoria();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIdcategoria();?>"><i class="fa fa-edit"></i></a>
                                             <a title="Eliminar" class="delete" href=""><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>

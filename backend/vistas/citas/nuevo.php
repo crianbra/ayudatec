@@ -6,7 +6,7 @@
 
     if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
 ?>
-        <label for="stecnico" class="control-label col-lg-3">Técnico</label>
+        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
             <div class="col-lg-6">
                 <select class="form-control" id="tecnico" name="tecnico">
                     <option value="" hidden>Seleccione el técnico</option>
