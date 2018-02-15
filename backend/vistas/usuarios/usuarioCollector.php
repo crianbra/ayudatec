@@ -41,6 +41,7 @@ class UsuarioCollector extends collector
     return $ObjUsuario;
 
 }
+    
 
 function showCategoriaUsuarios($id) {
   $rows = self::$db->getRows(

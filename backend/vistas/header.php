@@ -23,9 +23,19 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="../../assets/images/avatar1_small.jpg">
-                <span class="username">John Doe</span>
+                <?php
+                    include_once("usuarios/usuarioCollector.php");
+                    $UsuarioCollectorObj = new UsuarioCollector();
+                    $usuarios = $UsuarioCollectorObj->showUsuarios();
+                    foreach ($usuarios as $c){
+                                ?>
+                <span class="username"><?=$c->getNombreusuario();?></span>
                 <b class="caret"></b>
             </a>
+            
+            <?php
+                                    }
+                                ?>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-male"></i>Perfil</a></li>
                 <li><a href="#"><i class="fa fa-lock"></i> Seguridad</a></li>
