@@ -19,7 +19,7 @@
             $msg = "El rol fue guardado con éxito";
             $guardado = true;
         } else {
-            $msg = "Error:".$resp;
+            $msg = "Error:".$rol;
         }
 
     } else {
