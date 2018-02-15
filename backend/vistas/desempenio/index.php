@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Estado de citas</title>
+    <title>Parámetros de desempeño</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
