@@ -1,5 +1,7 @@
 <?php
   session_start();
+require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/collectors/rolCollector.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/models/rol.php';
 
 ?>
 <!doctype html>
