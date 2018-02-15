@@ -13,21 +13,17 @@ class DetcalificacionCollector extends Collector
       INNER JOIN calificacion
       ON (detalle_calificacion.calificacionid = calificacion.idcalificacion  )
       INNER JOIN usuario
-      ON (detalle_calificacion.clienteid = usuario.idusuario)"
+      ON (detalle_calificacion.clienteid = idusuario)"
     );
     
     $arrayDetcalificacion = array();        
     foreach ($rows as $c){
 
-      $calificacionObj = new Calificacion($c{'idcalificacion'},$c{'promedio'},$c{'tecnicoid'},)
-      // $clienteObj = new Usuario($c{'clienteid'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
+      $calificacionObj = new Calificacion($c{'idcalificacion'},$c{'promedio'},$c{'tecnicoid'});
+      $clienteObj = new Usuario($c{'clienteid'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
 
 
-      cliente = self::$db->getRows("SELECT * FROM usuario where idusuario= ? ", array("{$c{'clienteid'}}"));
-      $clienteObj = new Usuario($cliente[0]{'idusuario'}, $cliente[0]{'nombreusuario'}, $cliente[0]{'contrasenia'}, $cliente[0]{'personaid'}, $cliente[0]{'rolid'});
-
-      
-      $aux = new Detcalificacion($c{'iddetallecalificacion'},$c{'fecha'},$c{'valoracion'},$c{'comentario'},$calificacionObj,$clienteObj);
+      $aux = new Detallelificacion($c{'iddetallecalificacion'},$c{'fecha'},$c{'valoracion'},$c{'comentario'},$calificacionObj,$clienteObj);
       array_push($arrayDetcalificacion, $aux);
 
     }
