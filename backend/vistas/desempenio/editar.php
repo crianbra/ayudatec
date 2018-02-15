@@ -6,29 +6,31 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
-        //session_start();
-        
-        
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-        } else {
-<<<<<<< HEAD
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-=======
-            $msg = "error";
-            
->>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
+    if (isset($_GET['id']) && $_GET['id'] ==! "") {
+
+        include_once("../../collectors/estadocitaCollector.php");
+        $EstadoCitaCollectorObj = new EstadoCitaCollector();
+        $estadocita = $EstadoCitaCollectorObj->showEstadoCita($_GET['id']);
+
+        if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "")
+        {
+            $estado = 0;
+            if (isset($_POST['activo'])) {
+                $estado = 1;
+            }
+            $EstadoCitaCollectorObj = new EstadoCitaCollector();
+            $resp = $EstadoCitaCollectorObj->updateEstadoCita($_GET['id'], $_POST['descripcion'], $estado);
+
+            if ($resp == true) {
+                $msg = "El estado de cita fue modificada con éxito";
+                $guardado = true;
+            } else {
+                $msg = "Error:".$resp;
+            }
         }
 
     } else {
+        $msg = "No ha llegado ningún ID del estado de cita";
         $guardado = false;
     }
     /* session_start();
@@ -44,7 +46,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nuevo profesional</title>
+    <title>Editar Parámetros de desempeño</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -75,8 +77,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesionales</a></li>
-                        <li class="active">Nuevo profesional</li>
+                        <li><a href="index.php">Estado de Citas</a></li>
+                        <li class="active">Editar estado de cita</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -84,7 +86,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO PROFESIONAL</strong> </h4>
+                    <h4> <strong>EDITAR ESTADO DE CITA</strong> </h4>
 
                     </header>
 
@@ -99,46 +101,19 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
-                                   <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuarioid">
-                                                    <option value="" hidden>Seleccione el usuario que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
-                                   
+                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid" required>
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$estadocita->getDescripcion();?>" type="text" placeholder="Ejemplo: Cancelada"/>
                                         </div>
                                     </div>
-                                   
+                                    <div class="form-group ">
+                                        <label for="fecha" class="control-label col-lg-3">Estado</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="activo" name="activo" type="checkbox" <?=($estadocita->getEstado()== 1) ? "checked":"";?> value="true"/>
+                                        </div>
+                                    </div>
                                     
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
@@ -159,7 +134,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a profesion</a>
+                            <a href="index.php">Volver a listar los estados de cita</a>
                         </div>
                         <?php
                     }
@@ -205,32 +180,9 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-    /* $('#categoria').val(); */
-    $('#categoria').on('change', function() {
-        /* alert( this.value ); */
-        var id_categoria = this.value;
-        $.ajax({
-            url: 'nuevo.php',
-            type: 'POST',
-            dataType : 'text',
-            data : 'idcategoria='+id_categoria,
-            success: function(result) {
-                $("#select_tecnico").html(result);
-            },
-            error : function(xhr, status) {
-                alert('Disculpe, existió un problema');
-            }
-        });
 
-    })
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
+
+
 </script>
 
 </body>

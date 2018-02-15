@@ -6,26 +6,32 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
-        //session_start();
-        
-        
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
+    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
+        session_start();
+        include_once("../../collectors/usuarioCollector.php");
+        $usuarioCollectorObj = new UsuarioCollector();
+        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+        /* var_dump($_SESSION["user"]->getIdusuario());
+        exit(); */
+
+        /* echo "descripcion". $_POST['descripcion'];
+        exit(); */
+
+        $estado = 0;
+        if (isset($_POST['activo'])) {
+            $estado = 1;
+        }
+
+        include_once("../../collectors/estadocitaCollector.php");
+        $EstadoCitaCollectorObj = new EstadoCitaCollector();
+        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $estado);
         /* echo "Resultado: <br>";
         var_dump($citas); */
-        if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
+        if ($estadocita == true) {
+            $msg = "El estado de cita fue guardado con éxito";
             $guardado = true;
         } else {
-<<<<<<< HEAD
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-=======
-            $msg = "error";
-            
->>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
+            $msg = "Error:".$estadocita;
         }
 
     } else {
@@ -44,7 +50,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nuevo profesional</title>
+    <title>Nuevo parámetro de desempeño</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -64,10 +70,10 @@
 <section id="container" >
 <!--header end-->
 <!--header start-->
-<?include_once("../header.php");?>
+<?=include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?include_once("../aside.php");?>
+<?=include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">
@@ -75,16 +81,16 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesionales</a></li>
-                        <li class="active">Nuevo profesional</li>
+                        <li><a href="index.php">Estado de citas</a></li>
+                        <li class="active">Nuevo estado de cita</li>
                     </ul>
-                    <!--breadcrumbs end -->
+        <!--breadcrumbs end -->
 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO PROFESIONAL</strong> </h4>
+                    <h4> <strong>NUEVO ESTADO DE CITA</strong> </h4>
 
                     </header>
 
@@ -99,47 +105,19 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
-                                   <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuarioid">
-                                                    <option value="" hidden>Seleccione el usuario que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
-                                   
+                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid" required>
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Ejemplo: Anulada"/>
                                         </div>
                                     </div>
-                                   
-                                    
+                                    <div class="form-group ">
+                                        <label for="activo" class="control-label col-lg-3 col-sm-3">Activo</label>
+                                        <div class="col-lg-6 col-sm-9">
+                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked="true" value="true"/>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -159,7 +137,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a profesion</a>
+                            <a href="index.php">Volver a buscar técnicos</a>
                         </div>
                         <?php
                     }
@@ -205,24 +183,6 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-    /* $('#categoria').val(); */
-    $('#categoria').on('change', function() {
-        /* alert( this.value ); */
-        var id_categoria = this.value;
-        $.ajax({
-            url: 'nuevo.php',
-            type: 'POST',
-            dataType : 'text',
-            data : 'idcategoria='+id_categoria,
-            success: function(result) {
-                $("#select_tecnico").html(result);
-            },
-            error : function(xhr, status) {
-                alert('Disculpe, existió un problema');
-            }
-        });
-
-    })
 //    
 //     $(document).ready(function() {
 //    $('#editable-sample').DataTable( {

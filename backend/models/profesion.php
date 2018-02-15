@@ -15,7 +15,11 @@ class Profesion
      function setIdprofesion($idprofesion){
        $this->idprofesion = $idprofesion;
      } 
+<<<<<<< HEAD
      function getIdprofesion(){
+=======
+     function getIdProfesion(){
+>>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
        return $this->idprofesion;
      } 
      function setUsuarioid($usuarioid){
