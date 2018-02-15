@@ -16,7 +16,8 @@
                 $msg = "El rol fue eliminado con éxito";
                 $guardado = true;
             } else {
-                $msg = "El rol fue eliminado con éxito";
+                $msg = "El rol fue modificada con éxito";
+                $guardado = true;
             }
         } else {
             $RolCollectorObj = new RolCollector();

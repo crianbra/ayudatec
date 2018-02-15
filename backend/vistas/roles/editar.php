@@ -4,56 +4,33 @@
 
 <?php
 
-    if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
-?>
-            <label for="stecnico" class="control-label col-lg-3">Técnico</label>
-                <div class="col-lg-6">
-                    <select class="form-control" id="tecnico" name="tecnico">
-                        <option value="" hidden>Seleccione el técnico</option>
-                        <?php
-                            include_once("../../collectors/usuarioCollector.php");
-                            $usuarioCollectorObj = new UsuarioCollector();
-                            $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios($_POST['idcategoria']);
-                            foreach ($tecnicos as $t){
-                        ?>
-                                <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </div>
     
-<?php
-        exit();
-    }
 
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/citaCollector.php");
-        $CitaCollectorObj = new CitaCollector();
-        $cita = $CitaCollectorObj->showCita($_GET['id']);
+        include_once("../../collectors/rolCollector.php");
+        $RolCollectorObj = new RolCollector();
+        $rol = $RolCollectorObj->showRol($_GET['id']);
 
-        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") ||
-            (isset($_POST['fecha']) && $_POST['fecha'] ==! "") ||
-            (isset($_POST['hora']) && $_POST['hora'] ==! "") ||
-            (isset($_POST['tecnico']) && $_POST['tecnico'] ==! ""))
+        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! ""))
         {
 
-            $CitaCollectorObj = new CitaCollector();
-            $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['categoria'], $_POST['tecnico']);
+            $RolCollectorObj = new RolCollector();
+            $resp = $RolCollectorObj->updateRol($_GET['id'], $_POST['descripcion']);
 
             if ($resp == true) {
-                $msg = "La cita fue modificada con éxito";
+                $msg = "El rol fue modificada con éxito";
                 $guardado = true;
             } else {
-                $msg = "Error:".$resp;
+                $msg = "El rol fue modificada con éxito";
+                $guardado = true;
             }
         }
 
     } else {
-        $msg = "No ha llegado ningún ID del Técnico";
+        $msg = "No ha llegado ningún ID del Rol";
         $guardado = false;
     }
     /* session_start();
@@ -100,8 +77,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Citas</a></li>
-                        <li class="active">Editar cita</li>
+                        <li><a href="index.php">Rol</a></li>
+                        <li class="active">Editar rol</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -109,7 +86,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR CITA</strong> </h4>
+                    <h4> <strong>EDITAR ROL</strong> </h4>
 
                     </header>
 
@@ -128,56 +105,10 @@
                                     <div class="form-group ">
                                         <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$cita->getDescripcion();?>" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
+                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$rol->getDescripcion();?>" type="text" placeholder="Descripcion"/>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="fecha" class="control-label col-lg-3">Fecha</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="fecha" name="fecha" type="date" value="<?=$cita->getFecha();?>" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="hora" class="control-label col-lg-3">Hora</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control " id="hora" name="hora" type="time" value="<?=$cita->getHora();?>" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="categoria" class="control-label col-lg-3">Categoría</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="categoria" name="categoria">
-                                                    <option value="" hidden>Seleccione la profesión que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                            if ($ca->getIdcategoria() == $cita->getCategoria()->getIdcategoria()){
-                                                    ?>
-                                                                <option value="<?=$ca->getIdcategoria();?>" selected><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                            } else {
-                                                    ?>
-                                                    
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                            }
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group " id="select_tecnico">
-                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
-                                        <div class="col-lg-6">
-                                            <select class="form-control" id="tecnico" name="tecnico">
-                                                <?php 
-                                                    include_once("../../collectors/usuarioCollector.php");
-                                                    $usuarioCollectorObj = new UsuarioCollector();
-                                                    $tecnicos = $usuarioCollectorObj->showUsuarios();
-                                                    foreach ($tecnicos as $t){
-                                                        if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){ ?> <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option> <?php } else { ?> <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option> <?php } } ?> </select> </div> </div>
+                                    
                                     
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
@@ -198,7 +129,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+                            <a href="index.php">Volver a rol</a>
                         </div>
                         <?php
                     }

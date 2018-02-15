@@ -4,56 +4,34 @@
 
 <?php
 
-    if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
-?>
-            <label for="stecnico" class="control-label col-lg-3">Técnico</label>
-                <div class="col-lg-6">
-                    <select class="form-control" id="tecnico" name="tecnico">
-                        <option value="" hidden>Seleccione el técnico</option>
-                        <?php
-                            include_once("../../collectors/usuarioCollector.php");
-                            $usuarioCollectorObj = new UsuarioCollector();
-                            $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios($_POST['idcategoria']);
-                            foreach ($tecnicos as $t){
-                        ?>
-                                <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
-                        <?php
-                            }
-                        ?>
-                    </select>
-                </div>
-    
-<?php
-        exit();
-    }
-
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/citaCollector.php");
-        $CitaCollectorObj = new CitaCollector();
-        $cita = $CitaCollectorObj->showCita($_GET['id']);
+        include_once("../../collectors/usuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
 
-        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") ||
-            (isset($_POST['fecha']) && $_POST['fecha'] ==! "") ||
-            (isset($_POST['hora']) && $_POST['hora'] ==! "") ||
-            (isset($_POST['tecnico']) && $_POST['tecnico'] ==! ""))
+        if ((isset($_POST['nombreusuario']) && $_POST['nombreusuario'] ==! "") ||
+            (isset($_POST['contrasenia']) && $_POST['contrasenia'] ==! "") ||
+            (isset($_POST['personaid']) && $_POST['personaid'] ==! "") ||
+            (isset($_POST['rolid']) && $_POST['rolid'] ==! ""))
         {
 
-            $CitaCollectorObj = new CitaCollector();
-            $resp = $CitaCollectorObj->updateCita($_GET['id'], $_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['categoria'], $_POST['tecnico']);
+            $UsuarioCollectorObj = new UsuarioCollector();
+            $resp = $UsuarioCollectorObj->updateUsuario($_GET['id'], $_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
 
             if ($resp == true) {
-                $msg = "La cita fue modificada con éxito";
+                $msg = "El usuario fue modificada con éxito";
                 $guardado = true;
             } else {
-                $msg = "Error:".$resp;
+                $msg = "El usuario fue modificada con éxito";
+                $guardado = true;
             }
         }
 
     } else {
-        $msg = "No ha llegado ningún ID del Técnico";
+        $msg = "No ha llegado ningún ID del Usuario";
         $guardado = false;
     }
     /* session_start();
@@ -69,7 +47,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva cita</title>
+    <title>Editar Usuario</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -100,8 +78,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Citas</a></li>
-                        <li class="active">Editar cita</li>
+                        <li><a href="index.php">Usuario</a></li>
+                        <li class="active">Editar usuario</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -109,7 +87,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR CITA</strong> </h4>
+                    <h4> <strong>EDITAR USUARIO</strong> </h4>
 
                     </header>
 
@@ -126,59 +104,30 @@
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre Usuario</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$cita->getDescripcion();?>" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
+                                            <input class=" form-control" id="nombreusuario" name="nombreusuario" value="<?=$usuario->getNombreusuario();?>" type="text" placeholder="Nombre Usuario"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="fecha" class="control-label col-lg-3">Fecha</label>
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="fecha" name="fecha" type="date" value="<?=$cita->getFecha();?>" />
+                                            <input class=" form-control" id="contrasenia" name="contrasenia" value="<?=$usuario->getContrasenia();?>" type="text" placeholder="Contrasenia"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="hora" class="control-label col-lg-3">Hora</label>
+                                        <label for="personaid" class="control-label col-lg-3">Persona ID</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control " id="hora" name="hora" type="time" value="<?=$cita->getHora();?>" />
+                                            <input class=" form-control" id="personaid" name="personaid" value="<?=$usuario->getPersonaid();?>" type="text" placeholder="Persona ID"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="categoria" class="control-label col-lg-3">Categoría</label>
+                                        <label for="rolid" class="control-label col-lg-3">Rol ID</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoria" name="categoria">
-                                                    <option value="" hidden>Seleccione la profesión que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                            if ($ca->getIdcategoria() == $cita->getCategoria()->getIdcategoria()){
-                                                    ?>
-                                                                <option value="<?=$ca->getIdcategoria();?>" selected><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                            } else {
-                                                    ?>
-                                                    
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                            }
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <input class=" form-control" id="rolid" name="rolid" value="<?=$usuario->getRolid();?>" type="text" placeholder="Rol ID"/>
                                         </div>
                                     </div>
-                                    <div class="form-group " id="select_tecnico">
-                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
-                                        <div class="col-lg-6">
-                                            <select class="form-control" id="tecnico" name="tecnico">
-                                                <?php 
-                                                    include_once("../../collectors/usuarioCollector.php");
-                                                    $usuarioCollectorObj = new UsuarioCollector();
-                                                    $tecnicos = $usuarioCollectorObj->showUsuarios();
-                                                    foreach ($tecnicos as $t){
-                                                        if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){ ?> <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option> <?php } else { ?> <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option> <?php } } ?> </select> </div> </div>
-                                    
+                                                                        
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>

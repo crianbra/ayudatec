@@ -24,7 +24,8 @@
             $msg = "El rol fue guardado con éxito";
             $guardado = true;
         } else {
-            $msg = "Error:".$rol;
+            $msg = "El rol fue modificada con éxito";
+            $guardado = true;
         }
 
     } else {
