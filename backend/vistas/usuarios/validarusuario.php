@@ -5,6 +5,7 @@ include_once("../../models/usuario.php");
 
 session_start();
 
+
 //$_SESSION['MiSession']= $_POST['nombreusuario'];
 
 $nombreusuario = $_POST['nombreusuario'];
@@ -27,19 +28,23 @@ $UsuarioCollectorObj = new UsuarioCollector();
         foreach($UsuarioCollectorObj->showUsuarios() as $c){
             
             if($c->getNombreusuario()==$nombreusuario && $c->getContrasenia()==$contrasenia){
+                
                
                 $_SESSION['user']= $nombreusuario;
                 $_SESSION['rol']= $c->getRolid();
-                 
                 
-                if($c->getRolid() == 1){
+                //echo $c->getRolid()->getIdrol(); 
+                //exit();
+                if($c->getRolid()->getIdrol() == 1){
                     //echo "session creada exitosamente";
                     //echo "<a href='admin.php'> Administracion</a>";
+                    //exit();
                     echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../admin/admin.php'>";
+                    
 
                 }
-                if($c->getRolid() == 2){
-                    echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../registro.html'>";
+                if($c->getRolid()->getIdrol() == 2){
+                    echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../registro.php'>";
 
                 }
             }
