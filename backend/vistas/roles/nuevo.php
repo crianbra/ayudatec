@@ -10,6 +10,7 @@
         include_once("../../collectors/rolCollector.php");
         $RolCollectorObj = new RolCollector();
         $rol = $RolCollectorObj->createRol($_POST['descripcion']);
+        echo "El rol fue guardado con éxito";
         /* echo "Resultado: <br>";
         var_dump($citas); */
         if ($rol == true) {
@@ -176,15 +177,7 @@
                                             <input class="form-control" id="descripcion" name="descripcion" type="text" placeholder="Descripcion"/>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    <!-- 
-                                    <div class="form-group ">
-                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
-                                        <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
-                                        </div>
-                                    </div> -->
+                                   
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
