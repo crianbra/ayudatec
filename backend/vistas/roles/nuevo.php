@@ -13,6 +13,7 @@
         /* echo "Resultado: <br>";
         var_dump($citas); */
         if ($rol == true) {
+            echo "El rol fue guardado con éxito";
             $msg = "El rol fue guardado con éxito";
             $guardado = true;
         } else {
