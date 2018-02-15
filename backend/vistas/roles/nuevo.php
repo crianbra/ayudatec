@@ -1,21 +1,12 @@
  <?include_once("../constantes.php");?>
 <?php
-    //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-
+    
+    session_start();
     $guardado = false;
     $msg = "";
     if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
-        /*include_once("../../collectors/usuarioCollector.php");
-        $usuarioCollectorObj = new UsuarioCollector();
-        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
-         var_dump($_SESSION["user"]->getIdusuario());
-        exit(); */
-
-        /* echo "descripcion". $_POST['descripcion'];
-        exit(); */
-
+        
+        
         include_once("../../collectors/rolCollector.php");
         $RolCollectorObj = new RolCollector();
         $rol = $RolCollectorObj->createRol($_POST['descripcion']);
