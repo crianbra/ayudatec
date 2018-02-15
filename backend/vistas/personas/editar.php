@@ -1,10 +1,13 @@
+<!--constantes start-->
+<?include_once("../constantes.php");?>
+<!--constantes end-->
+
 <?php
 
-    include_once("../constantes.php");
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
-        
+
         include_once("../../collectors/personaCollector.php");
         $PersonaCollectorObj = new PersonaCollector();
         $persona = $PersonaCollectorObj->showPersona($_GET['id']);
