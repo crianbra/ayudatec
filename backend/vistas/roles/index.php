@@ -98,8 +98,8 @@ session_start();
                                         <td><?=$c->getIdrol();?></td>
                                         <td><?=$c->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
-                                            <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
+                                            <a title="delete" href="eliminar.php?id=<?=$c->getIdrol();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php

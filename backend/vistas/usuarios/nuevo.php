@@ -4,7 +4,7 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
+    if (isset($_POST['nombreusuario']) && $_POST['nombreusuario'] ==! "") {
         session_start();
         /*include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
@@ -15,7 +15,7 @@
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
-        include_once("../../collectors/UsuarioCollector.php");
+        include_once("../../collectors/usuarioCollector.php");
         $UsuarioCollectorObj = new UsuarioCollector();
         $usuario = $UsuarioCollectorObj->createUsuario($_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
         /* echo "Resultado: <br>";
