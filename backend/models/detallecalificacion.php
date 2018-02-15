@@ -48,11 +48,11 @@ class Detallecalificacion
      function getCalificacionid(){
        return $this->calificacionid;
      }
-    function setUsuarioid($usuarioid){
-       $this->usuarioid = $usuarioid;
+    function setClienteid($clienteid){
+       $this->clienteid = $clienteid;
      } 
-     function getUsuarioid(){
-       return $this->usuarioid;
+     function getClienteid(){
+       return $this->clienteid;
      }
 }
     
