@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li class=" ">
-                <a href="../detalle_calificaciones/index.php">
+                <a href="../detCalificaciones/index.php">
                     <i class="fa fa-comments-o"></i>
                     <span>Detalle de calificaciones</span>
                 </a>

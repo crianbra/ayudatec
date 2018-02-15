@@ -39,17 +39,17 @@ class CalificacionCollector extends Collector
 
 
 function updateCalificacion($id,$rating){
-	$insertrow = self::$db->updateRow("UPDATE public.calificacion SET rating= ? WHERE idcalificacion= ?", array("{$rating}", $id));
+	return $insertrow = self::$db->updateRow("UPDATE public.calificacion SET rating= ? WHERE idcalificacion= ?", array("{$rating}", $id));
 
 }
 
 function deleteCalificacion($id){
-	$deleterow = self::$db->deleteRow("DELETE FROM public.calificacion WHERE idcalificacion= ?", array("{$id}"));
+	return $deleterow = self::$db->deleteRow("DELETE FROM public.calificacion WHERE idcalificacion= ?", array("{$id}"));
 
 }
 
 function createCalificacion($rating){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.calificacion (rating) VALUES (?)", array ("{$rating}"));
+	return $insertarrow = self::$db->insertRow("INSERT INTO public.calificacion (rating) VALUES (?)", array ("{$rating}"));
 
 }
 
