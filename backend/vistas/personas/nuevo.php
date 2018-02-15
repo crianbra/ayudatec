@@ -1,12 +1,12 @@
- <?include_once("../constantes.php");?>
-<?php
+ <?php
     //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
+    include_once("../constantes.php");
 
     $guardado = false;
     $msg = "";
     if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
-        
+        session_start();
         /*include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
         $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
@@ -31,8 +31,8 @@
     } else {
         $guardado = false;
     }
-    /* session_start();
-    $_SESSION["exito"] = "true"; */
+     session_start();
+    //$_SESSION["exito"] = "true";
 ?>
 
 <!DOCTYPE html>
