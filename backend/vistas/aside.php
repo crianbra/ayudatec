@@ -51,6 +51,12 @@
                     <span>Calificaciones </span>
                 </a>
             </li>
+            <li>
+                <a href="../desempenio/index.php">
+                    <i class="fa fa-signal"></i>
+                    <span>Escalas desempeño </span>
+                </a>
+            </li>
             <li class=" ">
                 <a href="../detalle_calificaciones/index.php">
                     <i class="fa fa-comments-o"></i>

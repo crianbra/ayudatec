@@ -53,7 +53,7 @@ function showCategoriaUsuarios($id) {
   $arrayUsuario = array();        
   foreach ($rows as $c){
 
-    $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'});
+    $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'},$c{'contrasenia'},$c{'personaid'},$c{'rolid'});
     array_push($arrayUsuario, $aux);
   }
   return $arrayUsuario;        
