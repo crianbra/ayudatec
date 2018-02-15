@@ -4,38 +4,33 @@
 
 <?php
 
+    
+
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/personaCollector.php");
-        $PersonaCollectorObj = new PersonaCollector();
-        $persona = $PersonaCollectorObj->showPersona($_GET['id']);
+        include_once("../../collectors/rolCollector.php");
+        $RolCollectorObj = new RolCollector();
+        $rol = $RolCollectorObj->showRol($_GET['id']);
 
-        if ((isset($_POST['nombre']) && $_POST['nombre'] ==! "") ||
-            (isset($_POST['apellido']) && $_POST['apellido'] ==! "") ||
-            (isset($_POST['cedula']) && $_POST['cedula'] ==! "") ||
-            (isset($_POST['email']) && $_POST['email'] ==! "") ||
-            (isset($_POST['telefono']) && $_POST['telefono'] ==! "") ||
-            (isset($_POST['ciudad']) && $_POST['ciudad'] ==! "") ||
-            (isset($_POST['zona']) && $_POST['zona'] ==! "") ||
-            (isset($_POST['sexo']) && $_POST['sexo'] ==! ""))
+        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! ""))
         {
 
-            $PersonaCollectorObj = new PersonaCollector();
-            $resp = $PersonaCollectorObj->updatePersona($_GET['id'], $_POST['nombre'], $_POST['apellido'], $_POST['cedula'], $_POST['email'], $_POST['telefono'], $_POST['ciudad'], $_POST['zona'], $_POST['sexo']);
+            $RolCollectorObj = new RolCollector();
+            $resp = $RolCollectorObj->updateRol($_GET['id'], $_POST['descripcion']);
 
             if ($resp == true) {
-                $msg = "La persona fue modificada con éxito";
+                $msg = "El rol fue modificada con éxito";
                 $guardado = true;
             } else {
-                $msg = "La persona fue modificada con éxito";
+                $msg = "El rol fue modificada con éxito";
                 $guardado = true;
             }
         }
 
     } else {
-        $msg = "No ha llegado ningún ID de la Persona";
+        $msg = "No ha llegado ningún ID del Rol";
         $guardado = false;
     }
     /* session_start();
@@ -51,7 +46,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Editar persona</title>
+    <title>Nueva cita</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -82,8 +77,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Persona</a></li>
-                        <li class="active">Editar persona</li>
+                        <li><a href="index.php">Rol</a></li>
+                        <li class="active">Editar rol</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -91,7 +86,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR PERSONA</strong> </h4>
+                    <h4> <strong>EDITAR ROL</strong> </h4>
 
                     </header>
 
@@ -108,53 +103,12 @@
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="nombre" class="control-label col-lg-3">Nombre</label>
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="nombre" name="nombre" value="<?=$persona->getNombre();?>" type="text" placeholder="Nombre"/>
+                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$rol->getDescripcion();?>" type="text" placeholder="Descripcion"/>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="apellido" class="control-label col-lg-3">Apellido</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="apeliido" name="apellido" value="<?=$persona->getApellido();?>" type="text" placeholder="Apellido"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="cedula" class="control-label col-lg-3">Cedula</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="cedula" name="cedula" value="<?=$persona->getCedula();?>" type="text" placeholder="Cedula"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-3">Email</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="email" name="email" value="<?=$persona->getEmail();?>" type="text" placeholder="Email"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="telefono" class="control-label col-lg-3">Telefono</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="telefono" name="telefono" value="<?=$persona->getTelefono();?>" type="text" placeholder="Telefono"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="ciudad" class="control-label col-lg-3">Ciudad</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="ciudad" name="ciudad" value="<?=$persona->getCiudad();?>" type="text" placeholder="Ciudad"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="zona" class="control-label col-lg-3">Zona</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="zona" name="zona" value="<?=$persona->getZona();?>" type="text" placeholder="Zona"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="sexo" class="control-label col-lg-3">Sexo</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="sexo" name="sexo" value="<?=$persona->getSexo();?>" type="text" placeholder="Sexo"/>
-                                        </div>
-                                    </div>
+                                    
                                     
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
@@ -175,7 +129,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a personas</a>
+                            <a href="index.php">Volver a rol</a>
                         </div>
                         <?php
                     }

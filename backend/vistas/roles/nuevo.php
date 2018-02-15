@@ -15,7 +15,7 @@
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
-        include_once("../../collectors/RolCollector.php");
+        include_once("../../collectors/rolCollector.php");
         $RolCollectorObj = new RolCollector();
         $rol = $RolCollectorObj->createRol($_POST['descripcion']);
         /* echo "Resultado: <br>";
@@ -24,7 +24,8 @@
             $msg = "El rol fue guardado con éxito";
             $guardado = true;
         } else {
-            $msg = "Error:".$rol;
+            $msg = "El rol fue modificada con éxito";
+            $guardado = true;
         }
 
     } else {

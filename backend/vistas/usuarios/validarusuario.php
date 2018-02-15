@@ -1,7 +1,7 @@
 <?php
 
 include_once("usuarioCollector.php");
-include_once("../models/usuario.php");
+include_once("../../models/usuario.php");
 
 session_start();
 
@@ -29,17 +29,17 @@ $UsuarioCollectorObj = new UsuarioCollector();
             if($c->getNombreusuario()==$nombreusuario && $c->getContrasenia()==$contrasenia){
                
                 $_SESSION['MiSession']= $nombreusuario;
-                $_SESSION['rol']= $c->getRolid();
+                $_SESSION['rolid']= $c->getRolid();
                  
                 
                 if($c->getRolid() == 1){
                     //echo "session creada exitosamente";
                     //echo "<a href='admin.php'> Administracion</a>";
-                    echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../vistas/roles/index.php'>";
+                    echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../roles/index.php'>";
 
                 }
                 if($c->getRolid() == 2){
-                    echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../registro.php'>";
+                    echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.html'>";
 
                 }
             }
@@ -49,7 +49,7 @@ $UsuarioCollectorObj = new UsuarioCollector();
         ?>
             
             <h4>Usuario o contraseña incorrecta</h4>
-            <a href="../../registro.php"><button class="boton">Regresar</button></a>
+            <a href="../../../registro.php"><button class="boton">Regresar</button></a>
 
 
 

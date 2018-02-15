@@ -3,29 +3,28 @@
 <!--constantes end-->
 
 <?php
-    include_once("../../collectors/personaCollector.php");
+    include_once("../../collectors/estadocitaCollector.php");
 
     $guardado = false;
     $msg = "";
     if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
         if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $PersonaCollectorObj = new PersonaCollector();
-            $resp = $PersonaCollectorObj->deletePersona($_POST['id']);
+            $EstadoCitaCollectorObj = new EstadoCitaCollector();
+            $resp = $EstadoCitaCollectorObj->deleteEstadocita($_POST['id']);
             if ($resp == true) {
-                $msg = "La persona fue eliminada con éxito";
+                $msg = "El estado de cita fue eliminado con éxito";
                 $guardado = true;
             } else {
-                $msg = "La persona fue eliminada con éxito";
-                $guardado = true;
+                $msg = "Error:".$resp;
             }
         } else {
-            $PersonaCollectorObj = new PersonaCollector();
-            $persona = $PersonaCollectorObj->showPersona($_GET['id']);
+            $EstadoCitaCollectorObj = new EstadoCitaCollector();
+            $estadocita = $EstadoCitaCollectorObj->showEstadocita($_GET['id']);
         }
 
     } else {
-            $msg = "No ha llegado ningún ID del Técnico";
+            $msg = "No ha llegado ningún ID del Estado de cita";
             $guardado = false;
     }
     /* session_start();
@@ -41,7 +40,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva Persona</title>
+    <title>Eliminar estado de cita</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -72,8 +71,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Persona</a></li>
-                        <li class="active">Eliminar Persona</li>
+                        <li><a href="index.php">Estado de Citas</a></li>
+                        <li class="active">Eliminar Estado de cita</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -81,7 +80,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR PERSONA</strong> </h4>
+                    <h4> <strong>ELIMINAR ESTADO DE CITA</strong> </h4>
 
                     </header>
 
@@ -97,32 +96,20 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$persona->getIdpersona();?>">
+                                    <input type="text" name="id" hidden value="<?=$estadocita->getIdestadocita();?>">
                                     <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar esta persona?</h3>
+                                        <h3 class="text-center">¿Seguro que desea eliminar este Estado de cita?</h3>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="nombre" class="control-label col-lg-3">Nombre</label>
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción:</label>
                                         <div class="col-lg-6">
-                                            <h5 id="nombre"><?=$persona->getNombre();?></h5>
+                                            <h5 id="descripcion"><?=$estadocita->getDescripcion();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="apellido" class="control-label col-lg-3">Apellido</label>
+                                        <label for="estado" class="control-label col-lg-3">Estado</label>
                                         <div class="col-lg-6">
-                                            <h5 id="apellido"><?=$persona->getApellido();?></h5>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="cedula" class="control-label col-lg-3">Cedula</label>
-                                        <div class="col-lg-6">
-                                            <h5 id="cedula"><?=$persona->getCedula();?></h5>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="telefono" class="control-label col-lg-3">Telefono</label>
-                                        <div class="col-lg-6">
-                                            <h5 id="telefono"><?=$persona->getTelefono();?></h5>
+                                            <input class=" form-control" id="activo" name="activo" type="checkbox" <?=($estadocita->getEstado()== 1) ? "checked":"";?> value="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -145,7 +132,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a personas</a>
+                            <a href="index.php">Volver a listar los Estados de cita</a>
                         </div>
                         <?php
                     }

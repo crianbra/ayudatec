@@ -5,12 +5,13 @@ session_start();
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 
 
-    if (!isset($_SESSION['MiSession'])){
+    /*if (!isset($_SESSION['MiSession'])){
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
         }else{
             if(!$_SESSION['rol']==1){
                 echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
             }else{
+            */
 
 ?>
 
@@ -98,8 +99,8 @@ session_start();
                                         <td><?=$c->getIdrol();?></td>
                                         <td><?=$c->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a class="edit" href="nuevo.php"><i class="fa fa-edit"></i></a>
-                                            <a class="delete" href=""><i class="fa fa-trash-o"></i></a>
+                                            <a title="edit" href="editar.php?id=<?=$c->getIdrol();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="delete" href="eliminar.php?id=<?=$c->getIdrol();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -169,9 +170,3 @@ session_start();
 </body>
 </html>
 
-  <?php
-
-}
-
-    }
-?>

@@ -105,7 +105,7 @@
                                         <td><?=$c->getZona();?></td>
                                         <td><?=$c->getSexo();?></td>
                                         <td class="b-acciones">
-                                            <a title="Editar" class="edit" href="editar.php"><i class="fa fa-edit"></i></a>
+                                            <a title="Editar" href="editar.php?id=<?=$c->getIdpersona();?>"><i class="fa fa-edit"></i></a>
                                             <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdpersona();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr> 

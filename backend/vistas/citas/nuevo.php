@@ -6,7 +6,7 @@
 
     if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
 ?>
-        <label for="stecnico" class="control-label col-lg-3">Técnico</label>
+        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
             <div class="col-lg-6">
                 <select class="form-control" id="tecnico" name="tecnico">
                     <option value="" hidden>Seleccione el técnico</option>
@@ -136,25 +136,25 @@
                                     <div class="form-group ">
                                         <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
+                                            <input required class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="fecha" class="control-label col-lg-3">Fecha</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="fecha" name="fecha" type="date" />
+                                            <input class=" form-control" id="fecha" name="fecha" type="date" required/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="hora" class="control-label col-lg-3">Hora</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control " id="hora" name="hora" type="time" />
+                                            <input class="form-control " id="hora" name="hora" type="time" required/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="categoria" class="control-label col-lg-3">Categoría</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoria" name="categoria">
+                                                <select class="form-control" id="categoria" name="categoria" required>
                                                     <option value="" hidden>Seleccione la profesión que busca</option>
                                                     <?php
                                                         include_once("../../collectors/categoriaCollector.php");

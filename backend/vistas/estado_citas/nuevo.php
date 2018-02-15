@@ -17,13 +17,18 @@
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
+        $estado = 0;
+        if (isset($_POST['activo'])) {
+            $estado = 1;
+        }
+
         include_once("../../collectors/estadocitaCollector.php");
         $EstadoCitaCollectorObj = new EstadoCitaCollector();
-        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $_POST['activo']);
+        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $estado);
         /* echo "Resultado: <br>";
         var_dump($citas); */
         if ($estadocita == true) {
-            $msg = "El estado de cita fue guardada con éxito";
+            $msg = "El estado de cita fue guardado con éxito";
             $guardado = true;
         } else {
             $msg = "Error:".$estadocita;
@@ -108,9 +113,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
+                                        <label for="activo" class="control-label col-lg-3 col-sm-3">Activo</label>
                                         <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
+                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked="true" value="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
