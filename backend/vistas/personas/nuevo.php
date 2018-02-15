@@ -5,7 +5,7 @@
 
     $guardado = false;
     $msg = "";
-   // if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
+    if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
         
         /*include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
@@ -28,9 +28,9 @@
             $msg = "Error:".$resp;
         }
 
-    //} else {
-        //$guardado = false;
-    //}
+    } else {
+        $guardado = false;
+    }
     /* session_start();
     $_SESSION["exito"] = "true"; */
 ?>
