@@ -7,10 +7,10 @@ class DataBase
   public $isConnected;
   protected $datab;
 
-  private $host      = "localhost";
-  private $username  = "postgres";
-  private $password  = "postgres";
-  private $dbname    = "ayudatec";
+  private $host      = DB_HOST;
+  private $username  = DB_USER;
+  private $password  = DB_PASS;
+  private $dbname    = DB_NAME;
 
   public function __construct($username, $password, $host, $dbname, $options=array()){
     $this->isConnected = true;
