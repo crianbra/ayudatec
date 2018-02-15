@@ -38,7 +38,7 @@ session_start();
 
 </head>
 
-<body>
+<body class="body-500">
     
 <section id="container" >
 <!--header start-->
@@ -48,27 +48,26 @@ session_start();
 <?=include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper">
-        <!-- page start-->
 
-        <div class="row">
-            <div class="col-sm-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                    <h4> <strong>Administrador</strong> </h4>
+<div class="error-head"> </div>
 
-                    </header>
-                    
-                </section>
-            </div>
-        </div>
-        <!-- page end-->
-        </section>
-    </section>
+<div class="container ">
+
+  <section class="error-wrapper text-center">
+      <h1><img src="../../assets/images/mascota.svg" alt=""></h1>
+      <div class="error-desk">
+          <h2>Bienvenidos</h2>
+          <p class="nrml-txt-alt">A la primera comunidad de técnicos</p>
+          <p>en el Ecuador, <a href="../../../contactenos.php" target="_blank" class="sp-link">contáctenos</a> si tiene alguna duda del sistema.</p>
+      
+          <a href="../citas/index.php" class="back-btn"><i class="fa fa-calendar-o"></i> Ir a citas agendadas</a>
+      </div>
+      
+  </section>
+
+</div>
+
     <!--main content end-->
-
-</section>
     
    
 
@@ -99,20 +98,6 @@ session_start();
 <script src="../../assets/js/table-editable.js"></script>
 
 <!-- END JAVASCRIPTS -->
-<script>
-    jQuery(document).ready(function() {
-        EditableTable.init();
-    });
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
-</script>
-    
      
 
 </body>
