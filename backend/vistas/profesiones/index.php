@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Profesiones</title>
+    <title>Profesionales</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva profesión <i class="fa fa-plus"></i>
+                                        Nuevo profesional <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -67,7 +67,7 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>IDProfesion</th>
+                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Categoria</th>
                                     

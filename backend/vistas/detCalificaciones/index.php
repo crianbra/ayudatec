@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Profesiones</title>
+    <title>Detalle Calificaciones</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>PROFESIONALES</strong> </h4>
+                    <h4> <strong>DETALLE CALIFICACIONES</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -50,7 +50,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva profesión <i class="fa fa-plus"></i>
+                                        Nuevo detalle calificación <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -67,25 +67,30 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>IDProfesion</th>
-                                    <th>Nombre</th>
-                                    <th>Categoria</th>
-                                    
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Valoracion</th>
+                                    <th>Comentario</th>
+                                    <th>Calificación</th>
+                                    <th>Nombre de usuario</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/profesionCollector.php");
+                                    include_once("../../collectors/detcalificacionCollector.php");
                                     
-                                    $ProfesionCollectorObj = new ProfesionCollector();
-                                    $profesiones = $ProfesionCollectorObj->showProfesiones();
-                                    foreach ($profesiones as $c){
+                                    $DetcalificacionCollectorObj = new DetcalificacionCollector();
+                                    $detcalificacion = $DetcalificacionCollectorObj->showDetcalificaciones();
+                                    foreach ($detcalificacion as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdprofesion();?></td>
+                                        <td><?=$c->getIddetallecalificacion();?></td>
+                                        <td><?=$c->getFecha();?></td>
+                                        <td><?=$c->getValoracion();?></td>
+                                        <td><?=$c->getComentario();?></td>
+                                        <td><?=$c->getCalificacionid()-> getPromedio();?></td>
                                         <td><?=$c->getUsuarioid()-> getNombreusuario();?></td>
-                                        <td><?=$c->getCategoriaid()-> getDescripcion();?></td>
                                         
                                         <td class="b-acciones">
                                             <a title="Editar" href="editar.php?id=<?=$c->getIdprofesion();?>"><i class="fa fa-edit"></i></a>

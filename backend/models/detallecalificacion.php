@@ -1,6 +1,6 @@
 <?php
 
-class Detalle_Calificacion
+class Detallecalificacion
 {
     private $iddetallecalificacion;
     private $fecha;
