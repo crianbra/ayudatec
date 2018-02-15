@@ -117,7 +117,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a ingresar otra categoria</a>
+                            <a href="index.php">Volver a ingresar otro profesional</a>
                         </div>
                         <?php
                     }

@@ -67,12 +67,10 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-<!--                                <th>Profesión</th>-->
+
                                     <th>Nombre</th>
                                     <th>Categoria</th>
-                                    <!--<th>Técnico</th>
-                                    <th>Cliente</th>
-                                    <th>Estado</th>-->
+                                    
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -97,8 +95,7 @@
                                 <?php
                                     }
                                 ?>
-                               
-                               
+                                
                                 </tbody>
                             </table>
                         </div>

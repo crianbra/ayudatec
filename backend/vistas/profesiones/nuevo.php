@@ -4,64 +4,25 @@
 
 <?php
 
-    if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
-?>
-        <label for="stecnico" class="control-label col-lg-3">Técnico</label>
-            <div class="col-lg-6">
-                <select class="form-control" id="tecnico" name="tecnico">
-                    <option value="" hidden>Seleccione el técnico</option>
-                    <?php
-                        include_once("../../collectors/usuarioCollector.php");
-                        $usuarioCollectorObj = new UsuarioCollector();
-                        $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios($_POST['idcategoria']);
-                        foreach ($tecnicos as $t){
-                    ?>
-                            <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option>
-                    <?php
-                        }
-                    ?>
-                </select>
-            </div>
-
-<?php
-        exit();
-    }
-
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && isset($_POST['fecha']) && isset($_POST['hora']) && isset($_POST['categoria']))
-    {
-        if ($_POST['descripcion'] == "" || $_POST['fecha'] == "" || $_POST['hora'] == "" || (!isset($_POST['tecnico']) || $_POST['tecnico'] == "") || $_POST['categoria'] == "")
-        {
-            /* echo $_POST['tecnico'] == "";
-            exit(); */
-            $msg = "Por favor completar todo los datos";
+    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
+        //session_start();
+        
+        
+        include_once("../../collectors/profesionCollector.php");
+        $profesionCollectorObj = new profesionCollectorObj();
+        $profesion = $profesionCollectorObj->createProfesion($_POST['usuarioid']);
+        /* echo "Resultado: <br>";
+        var_dump($citas); */
+        if ($profesion == true) {
+            $msg = "La profesion fue guardada con éxito";
+            $guardado = true;
         } else {
-            session_start();
-            include_once("../../collectors/usuarioCollector.php");
-            $usuarioCollectorObj = new UsuarioCollector();
-            $_SESSION["user"] = $usuarioCollectorObj->showUsuario(1);
-            /* var_dump($_SESSION["user"]->getIdusuario());
-            exit(); */
-
-            /* echo "descripcion". $_POST['descripcion'];
-            exit(); */
-
-            include_once("../../collectors/citaCollector.php");
-            $CitaCollectorObj = new CitaCollector();
-            $cita = $CitaCollectorObj->createCita($_POST['descripcion'], $_POST['fecha'], $_POST['hora'], $_POST['tecnico'], $_SESSION['user']->getIdusuario(), $_POST['categoria']);
-            /* echo "Resultado: <br>";
-            var_dump($citas); */
-            if ($cita == true) {
-                $msg = "La cita fue guardada con éxito";
-                $guardado = true;
-            } else {
-                $msg = "Error:".$cita;
-            }
+            $msg = "Error:".$profesion;
         }
 
     } else {
-        
         $guardado = false;
     }
     /* session_start();
@@ -77,7 +38,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva cita</title>
+    <title>Nuevo profesional</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -108,8 +69,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Citas</a></li>
-                        <li class="active">Nueva cita</li>
+                        <li><a href="index.php">Profesionales</a></li>
+                        <li class="active">Nuevo profesional</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -117,7 +78,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVA CITA</strong> </h4>
+                    <h4> <strong>NUEVO PROFESIONAL</strong> </h4>
 
                     </header>
 
@@ -133,42 +94,33 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                    <!--<div class="form-group ">
+                                        <label for="descripcion" class="control-label col-lg-3">Nombre</label>
                                         <div class="col-lg-6">
                                             <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
                                         </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="fecha" class="control-label col-lg-3">Fecha</label>
+                                    </div>-->
+                                   <div class="form-group ">
+                                        <label for="nombre" class="control-label col-lg-3">Nombre</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="fecha" name="fecha" type="date" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="hora" class="control-label col-lg-3">Hora</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control " id="hora" name="hora" type="time" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="categoria" class="control-label col-lg-3">Categoría</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="categoria" name="categoria">
+                                                <select class="form-control" id="nombre" name="nombre">
                                                     <option value="" hidden>Seleccione la profesión que busca</option>
                                                     <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
+                                                        include_once("../../collectors/profesionesCollector.php");
+                                                        $usuarioCollectorObj = new UsuarioCollector();
+                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
+                                                        foreach ($usuarios as $ca){
                                                     ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
+                                                    <option value="<?=$ca->getUsuarioid();?>"><?=$ca->getNombreusuario();?></option>
                                                     <?php
                                                         }
                                                     ?>
                                                 </select>
                                         </div>
                                     </div>
+                                   
+                                   
+                                    
                                     <div class="form-group " id="select_tecnico">
                                         
                                     </div>

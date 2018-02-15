@@ -24,7 +24,7 @@
         }
 
     } else {
-            $msg = "No ha llegado ningún ID del Técnico";
+            $msg = "No ha llegado ningún ID de categoria";
             $guardado = false;
     }
     /* session_start();
@@ -40,7 +40,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva cita</title>
+    <title>Eliminar categoria</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -71,8 +71,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Citas</a></li>
-                        <li class="active">Eliminar cita</li>
+                        <li><a href="index.php">Categoria</a></li>
+                        <li class="active">Eliminar categoria</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -80,7 +80,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR CITA</strong> </h4>
+                    <h4> <strong>ELIMINAR CATEGORIA</strong> </h4>
 
                     </header>
 
@@ -96,34 +96,17 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$cita->getIdcita();?>">
+                                    <input type="text" name="id" hidden value="<?=$categoria->getidCategoria();?>">
                                     <div class="form-group ">
                                         <h3 class="text-center">¿Seguro que desea eliminar esta cita?</h3>
                                     </div>
                                     <div class="form-group ">
                                         <label for="descripcion" class="control-label col-lg-3">Descripción:</label>
                                         <div class="col-lg-6">
-                                            <h5 id="descripcion"><?=$cita->getDescripcion();?></h5>
+                                            <h5 id="descripcion"><?=$categoria->getDescripcion();?></h5>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="fecha" class="control-label col-lg-3">Fecha</label>
-                                        <div class="col-lg-6">
-                                            <h5 id="fecha"><?=$cita->getFecha();?></h5>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="hora" class="control-label col-lg-3">Hora</label>
-                                        <div class="col-lg-6">
-                                            <h5 id="hora"><?=$cita->getHora();?></h5>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="tecnico" class="control-label col-lg-3">Técnico</label>
-                                        <div class="col-lg-6">
-                                            <h5 id="tecnico"><?=$cita->getTecnico()->getNombreusuario();?></h5>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->

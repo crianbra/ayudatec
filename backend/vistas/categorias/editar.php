@@ -107,7 +107,7 @@
                                     <div class="form-group ">
                                         <label for="descripcion" class="control-label col-lg-3">Descripción</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$categoria->getDescripcion();?>" type="text" placeholder="OOOCuéntenos el problema que quiere resolver"/>
+                                            <input class=" form-control" id="descripcion" name="descripcion" value="<?=$categoria->getDescripcion();?>" type="text" placeholder="Cuéntenos el problema que quiere resolver"/>
                                         </div>
                                     </div>
                                     <!---->
@@ -191,8 +191,6 @@
         });
 
     })
-
-
 </script>
 
 </body>
