@@ -1,12 +1,11 @@
+ <?include_once("../constantes.php");?>
 <?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-
     
+    session_start();
     $guardado = false;
     $msg = "";
     if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
+        
         
         include_once("../../collectors/rolCollector.php");
         $RolCollectorObj = new RolCollector();
