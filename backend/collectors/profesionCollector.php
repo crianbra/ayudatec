@@ -39,11 +39,11 @@ class ProfesionCollector extends Collector
 
 
 function updateProfesion($id,$usuarioid,$categoriaid){
-<<<<<<< HEAD
+
 	$insertrow = self::$db->updateRow("UPDATE public.profesion SET usuarioid= ? , categoriaid= ? WHERE idprofesion= ?", array("{$usuarioid}","{$categoriaid}", $id));
-=======
+
 	return $insertrow = self::$db->updateRow("UPDATE public.profesion SET usuarioid= ?, categoriaid= ? WHERE idprofesion= ?", array("{$usuarioid}","{$categoriaid}", $id));
->>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
+
 
 }
 

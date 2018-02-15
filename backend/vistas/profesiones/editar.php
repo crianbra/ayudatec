@@ -24,12 +24,8 @@
                 $msg = "La profesion fue modificada con éxito";
                 $guardado = true;
             } else {
-<<<<<<< HEAD
-                $msg = "La profesion fue modificada con éxito";
-                $guardado = true;
-=======
                 $msg = "error";
->>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
+
                 
             }
         }
@@ -181,11 +177,9 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-<<<<<<< HEAD
-                            <a href="index.php">Volver a rol</a>
-=======
+
                             <a href="index.php">Volver a profesion</a>
->>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
+
                         </div>
                         <?php
                     }

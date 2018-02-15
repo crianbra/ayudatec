@@ -19,13 +19,9 @@
             $msg = "La profesion fue guardada con éxito";
             $guardado = true;
         } else {
-<<<<<<< HEAD
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-=======
             $msg = "error";
             
->>>>>>> e65836d42e996dc46854eb2bf4b61248dcc3e4c9
+
         }
 
     } else {
