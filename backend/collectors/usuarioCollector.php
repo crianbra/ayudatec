@@ -9,7 +9,7 @@ include_once(RUTA_BACKEND.'models/usuario.php');
 include_once(RUTA_BACKEND.'models/persona.php');
 include_once(RUTA_BACKEND.'models/rol.php');
 
-class UsuarioCollector extends collector
+class UsuarioCollector extends Collector
 {
   
   function showUsuarios() {
@@ -49,6 +49,10 @@ function showCategoriaUsuarios($id) {
     INNER JOIN usuario
     ON (profesion.usuarioid = usuario.idusuario)
     WHERE categoriaid= ? ", array("{$id}"));
+
+echo "Holaa";
+    var_dump($rows);
+    exit();
     
   $arrayUsuario = array();        
   foreach ($rows as $c){
