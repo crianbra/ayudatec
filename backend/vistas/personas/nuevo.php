@@ -1,7 +1,7 @@
- <?php
+<?include_once("../constantes.php");?>
+<?php
     //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-    include_once("../constantes.php");
 
     $guardado = false;
     $msg = "";
@@ -31,8 +31,8 @@
     } else {
         $guardado = false;
     }
-     session_start();
-    //$_SESSION["exito"] = "true";
+    /* session_start();
+    $_SESSION["exito"] = "true"; */
 ?>
 
 <!DOCTYPE html>
