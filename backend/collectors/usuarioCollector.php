@@ -49,10 +49,6 @@ function showCategoriaUsuarios($id) {
     INNER JOIN usuario
     ON (profesion.usuarioid = usuario.idusuario)
     WHERE categoriaid= ? ", array("{$id}"));
-
-echo "Holaa";
-    var_dump($rows);
-    exit();
     
   $arrayUsuario = array();        
   foreach ($rows as $c){

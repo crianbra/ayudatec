@@ -3,39 +3,29 @@
 <!--constantes end-->
 
 <?php
+    include_once("../../collectors/estadocitaCollector.php");
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
-        include_once("../../collectors/usuarioCollector.php");
-        $usuarioCollectorObj = new UsuarioCollector();
-        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
-        /* var_dump($_SESSION["user"]->getIdusuario());
-        exit(); */
+    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
-        /* echo "descripcion". $_POST['descripcion'];
-        exit(); */
-
-        $estado = 0;
-        if (isset($_POST['activo'])) {
-            $estado = 1;
-        }
-
-        include_once("../../collectors/estadocitaCollector.php");
-        $EstadoCitaCollectorObj = new EstadoCitaCollector();
-        $estadocita = $EstadoCitaCollectorObj->createEstadoCita($_POST['descripcion'], $estado);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($estadocita == true) {
-            $msg = "El estado de cita fue guardado con éxito";
-            $guardado = true;
+        if (isset($_POST['id']) && $_POST['id'] ==! "") {
+            $EstadoCitaCollectorObj = new EstadoCitaCollector();
+            $resp = $EstadoCitaCollectorObj->deleteEstadocita($_POST['id']);
+            if ($resp == true) {
+                $msg = "El estado de cita fue eliminado con éxito";
+                $guardado = true;
+            } else {
+                $msg = "Error:".$resp;
+            }
         } else {
-            $msg = "Error:".$estadocita;
+            $EstadoCitaCollectorObj = new EstadoCitaCollector();
+            $estadocita = $EstadoCitaCollectorObj->showEstadocita($_GET['id']);
         }
 
     } else {
-        $guardado = false;
+            $msg = "No ha llegado ningún ID del Estado de cita";
+            $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -50,7 +40,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva cita</title>
+    <title>Eliminar estado de cita</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -70,10 +60,10 @@
 <section id="container" >
 <!--header end-->
 <!--header start-->
-<?=include_once("../header.php");?>
+<?include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?=include_once("../aside.php");?>
+<?include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">
@@ -81,16 +71,16 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Estado de citas</a></li>
-                        <li class="active">Nuevo estado de cita</li>
+                        <li><a href="index.php">Estado de Citas</a></li>
+                        <li class="active">Eliminar Estado de cita</li>
                     </ul>
-        <!--breadcrumbs end -->
+                    <!--breadcrumbs end -->
 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO ESTADO DE CITA</strong> </h4>
+                    <h4> <strong>ELIMINAR ESTADO DE CITA</strong> </h4>
 
                     </header>
 
@@ -105,24 +95,29 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="estadocitaForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
+                                    <input type="text" name="id" hidden value="<?=$estadocita->getIdestadocita();?>">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripción</label>
+                                        <h3 class="text-center">¿Seguro que desea eliminar este Estado de cita?</h3>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="descripcion" class="control-label col-lg-3">Descripción:</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="descripcion" name="descripcion" type="text" placeholder="Ejemplo: Anulada"/>
+                                            <h5 id="descripcion"><?=$estadocita->getDescripcion();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="activo" class="control-label col-lg-3 col-sm-3">Activo</label>
-                                        <div class="col-lg-6 col-sm-9">
-                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked="true" value="true"/>
+                                        <label for="estado" class="control-label col-lg-3">Estado</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="activo" name="activo" type="checkbox" <?=($estadocita->getEstado()== 1) ? "checked":"";?> value="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
+                                            <button class="btn btn-primary" type="submit">Aceptar</button>
                                             <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
                                         </div>
                                     </div>
                                 </form>
@@ -137,7 +132,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+                            <a href="index.php">Volver a listar los Estados de cita</a>
                         </div>
                         <?php
                     }
@@ -183,14 +178,9 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
+
+
+
 </script>
 
 </body>

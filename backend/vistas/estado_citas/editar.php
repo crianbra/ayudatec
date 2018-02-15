@@ -12,11 +12,14 @@
         $EstadoCitaCollectorObj = new EstadoCitaCollector();
         $estadocita = $EstadoCitaCollectorObj->showEstadoCita($_GET['id']);
 
-        if ((isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") ||
-            (isset($_POST['activo']) && $_POST['activo'] ==! ""))
+        if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "")
         {
+            $estado = 0;
+            if (isset($_POST['activo'])) {
+                $estado = 1;
+            }
             $EstadoCitaCollectorObj = new EstadoCitaCollector();
-            $resp = $EstadoCitaCollectorObj->updateEstadoCita($_GET['id'], $_POST['descripcion'], $_POST['activo']);
+            $resp = $EstadoCitaCollectorObj->updateEstadoCita($_GET['id'], $_POST['descripcion'], $estado);
 
             if ($resp == true) {
                 $msg = "El estado de cita fue modificada con éxito";
@@ -43,7 +46,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nueva cita</title>
+    <title>Editar Estado de cita</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +111,7 @@
                                     <div class="form-group ">
                                         <label for="fecha" class="control-label col-lg-3">Estado</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="activo" name="activo" type="checkbox" value="<?=$estadocita->getEstado();?>" />
+                                            <input class=" form-control" id="activo" name="activo" type="checkbox" <?=($estadocita->getEstado()== 1) ? "checked":"";?> value="true"/>
                                         </div>
                                     </div>
                                     
