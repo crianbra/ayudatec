@@ -3,6 +3,7 @@
 <!--constantes end-->
 
 <?php
+
     include_once("../../collectors/categoriaCollector.php");
 
     $guardado = false;

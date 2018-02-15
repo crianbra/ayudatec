@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -18,7 +21,7 @@
         <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" >
                 </a>
 
@@ -29,21 +32,21 @@
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
 			<li class="nav-item active">
-                            <a class="nav-link" href="conocenos.html">CONÓCENOS </a>
+                            <a class="nav-link" href="conocenos.php">CONÓCENOS </a>
                         </li>                        
 			<li class="nav-item active">
-                            <a class="nav-link" href="tecnicos.html">TÉCNICOS </a>
+                            <a class="nav-link" href="tecnicos.php">TÉCNICOS </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a>
+                            <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a>
+                            <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a>
                         </li>
                     </ul>
                     
                     <form class="form-inline mt-4 my-lg-0">
-                    <a href="registro.html" id="loginbtn" class="btn my-2 my-sm-0 btn-lineal">
+                    <a href="registro.php" id="loginbtn" class="btn my-2 my-sm-0 btn-lineal">
                             Inicio sesión o Registro 
                             <i class="icon-right-small"></i>
                     </a>
@@ -59,8 +62,8 @@
                           
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupUser">
-                            <a class="dropdown-item" href="#">Perfil</a>
-                            <a class="dropdown-item" id="logout" href="index.html">Cerrar Sesión</a>
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" id="logout" href="index.php">Cerrar Sesión</a>
                         </div>
                     </div>
                     </form>
@@ -74,7 +77,7 @@
     <section id="tecnicos" class="mt-5 py-5">
         <div class="container">
             <div class="row">
-                <h3 class="col-12 font-24px"> Albañiles disponibles</h3>
+                <h3 class="col-12 font-24px"> Cerrajeros disponibles</h3>
                 <div class="col-12 col-lg">
                     <form class="input-group my-3">
                         <div class="input-group-prepend fondo-search"> <i class="icon-search"></i> </div>
@@ -100,7 +103,7 @@
                                             <i class="icon-star font-yellow"></i> 
                                         </div>
                                         <div class="col-12"> 
-                                            <a href="informacionTecnico.html" class="btn btn-lineal btn-blue">
+                                            <a href="informacionTecnico.php" class="btn btn-lineal btn-blue">
                                                 VER PERFIL
                                             </a> 
                                         </div>
@@ -137,7 +140,7 @@
                                             <i class="icon-star font-gray"></i> 
                                         </div>
                                         <div class="col-12"> 
-                                            <a href="informacionTecnico.html" class="btn btn-lineal btn-blue">
+                                            <a href="informacionTecnico.php" class="btn btn-lineal btn-blue">
                                                 VER PERFIL
                                             </a> 
                                         </div>
@@ -179,13 +182,13 @@
                 <div class="col-6 col-lg-8 text-lg-center align-self-center">
                     <div class="row">
                        <div class="col-12 col-lg  mb-3 mb-lg-0">
-                            <a class="font-white" href="conocenos.html">¿Quiénes somos?</a>
+                            <a class="font-white" href="conocenos.php">¿Quiénes somos?</a>
                         </div>
                         <div class="col-12 col-lg mb-3 mb-lg-0">
-                            <a class="font-white" href="faq.html">Preguntas frecuentes</a>
+                            <a class="font-white" href="faq.php">Preguntas frecuentes</a>
                         </div>
                         <div class="col-12 col-lg mb-3 mb-lg-0">
-                            <a class="font-white" href="politicas.html">Términos y Condiciones</a>
+                            <a class="font-white" href="politicas.php">Términos y Condiciones</a>
                         </div>
                     </div>
                 </div>

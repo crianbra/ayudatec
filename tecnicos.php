@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -18,16 +21,16 @@
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand ml-md-2" href="index.html"> <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"> </a>
+                <a class="navbar-brand ml-md-2" href="index.php"> <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu_principal" aria-controls="menu_principal" aria-expanded="false" aria-label="Toggle navigation"> <i class="icon-list-nested font-white"></i> </button>
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
-                        <li class="nav-item active"> <a class="nav-link" href="conocenos.html">CONÓCENOS </a> </li>
-                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.html">TÉCNICOS </a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a> </li>
+                        <li class="nav-item active"> <a class="nav-link" href="conocenos.php">CONÓCENOS </a> </li>
+                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.php">TÉCNICOS </a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a> </li>
                     </ul>
-                    <form class="form-inline mt-4 my-lg-0"> <a href="registro.html" id="loginbtn" style.display="block" class="btn my-2 my-sm-0 btn-lineal">
+                    <form class="form-inline mt-4 my-lg-0"> <a href="registro.php" id="loginbtn" style.display="block" class="btn my-2 my-sm-0 btn-lineal">
                             Inicio sesión o Registro 
                             <i class="icon-right-small"></i>
                     </a>
@@ -37,7 +40,7 @@
                         </span>
 --><span id="nombreusuario"> </span>
                             <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img style="width: 30px;" src="" alt="Ayudatec" id="fotousuario"> </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupUser"> <a class="dropdown-item" href="perfil.html">Perfil</a> <a class="dropdown-item" id="logout" href="index.html">Cerrar Sesión</a> </div>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupUser"> <a class="dropdown-item" href="perfil.php">Perfil</a> <a class="dropdown-item" id="logout" href="index.php">Cerrar Sesión</a> </div>
                         </div>
                     </form>
                 </div>
@@ -50,7 +53,7 @@
         <nav aria-label="">
             <div class="container">
                 <ol class="breadcrumb pl-0">
-                    <li class="breadcrumb-item"><a href="index.html" class="font-darkblue">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="index.php" class="font-darkblue">Inicio</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Técnicos disponibles</li>
                 </ol>
             </div>
@@ -67,14 +70,14 @@
                     <div class="input-group mb-3 ">
 
                         <select id="picksite" class="custom-select input-busqueda-tec pl-4 font-gray">
-                            <option selected value="notfound.html">¿Qué servicio buscas?</option>
-                            <option value="especialidades/jardineria.html">Jardinería</option>
-                            <option value="especialidades/zapateria.html">Zapatería</option>
-                            <option value="especialidades/cerrajeria.html">Cerrajería</option>
-                            <option value="notfound.html">Gasfitería</option>
-                            <option value="notfound.html">Electricidad</option>
-                            <option value="notfound.html">Pintura</option>
-                            <option value="especialidades/tapiceria.html">Tapiceria</option>
+                            <option selected value="notfound.php">¿Qué servicio buscas?</option>
+                            <option value="especialidades/jardineria.php">Jardinería</option>
+                            <option value="especialidades/zapateria.php">Zapatería</option>
+                            <option value="especialidades/cerrajeria.php">Cerrajería</option>
+                            <option value="notfound.php">Gasfitería</option>
+                            <option value="notfound.php">Electricidad</option>
+                            <option value="notfound.php">Pintura</option>
+                            <option value="especialidades/tapiceria.php">Tapiceria</option>
                         </select>
                         <div class="input-group-append">
                             <button class="btn btn-lineal-nor font-14px font-gray" onClick="loadPage()"><i class="icon-search"></i></button>
@@ -441,11 +444,11 @@
                     <div class="row justify-content-center justify-content-lg-end pt-2">
                         <div class="col-6 input-group pb-3 ">
                             <select id="cmbZona" class="custom-select input-zona font-white font-14px py-1">
-                                <option selected value="notfound.html">Cambiar zona</option>
-                                <option value="albanileria.html">Noroeste</option>
-                                <option value="notfound.html">Noreste</option>
-                                <option value="notfound.html">Suroeste</option>
-                                <option value="notfound.html">Sureste</option>
+                                <option selected value="notfound.php">Cambiar zona</option>
+                                <option value="albanileria.php">Noroeste</option>
+                                <option value="notfound.php">Noreste</option>
+                                <option value="notfound.php">Suroeste</option>
+                                <option value="notfound.php">Sureste</option>
                             </select>
                         </div>
                     </div>
@@ -462,9 +465,9 @@
             <div class="row">
                 <div class="col-6 col-lg-8 text-lg-center align-self-center">
                     <div class="row">
-                        <div class="col-12 col-lg  mb-3 mb-lg-0"> <a class="font-white" href="conocenos.html">¿Quiénes somos?</a> </div>
-                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="faq.html">Preguntas frecuentes</a> </div>
-                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="politicas.html">Términos y Condiciones</a> </div>
+                        <div class="col-12 col-lg  mb-3 mb-lg-0"> <a class="font-white" href="conocenos.php">¿Quiénes somos?</a> </div>
+                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="faq.php">Preguntas frecuentes</a> </div>
+                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="politicas.php">Términos y Condiciones</a> </div>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4 text-center align-self-center iconos-white-a "> <a href="https://www.facebook.com/AyudatecLatam/" target="_blank"><i class="icon-facebook font-28px"></i></a> <a href="https://twitter.com/miayudatec" target="_blank"><i class="icon-twitter font-28px"></i></a> <a href="https://www.instagram.com/miayudatec/"
@@ -489,7 +492,7 @@
                 <div class="col-12 col-lg-4 text-center mb-4 order-lg-3">
                     <div class="row">
                         <div class="col-12 mb-2"> AFILÍATE </div>
-                        <div class="col-12"> <a href="preregistro.html" class="btn-lineal btn-yellow font-12px py-1 px-2">
+                        <div class="col-12"> <a href="preregistro.php" class="btn-lineal btn-yellow font-12px py-1 px-2">
                                 QUIERO SER TÉCNICO
                             </a> </div>
                     </div>

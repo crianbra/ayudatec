@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -5,7 +8,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>AYUDATEC :: Pre-Registro</title>
+    <title>AYUDATEC :: Recomendación</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/vendors/fontello/css/instagram.css">
@@ -26,14 +29,14 @@
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html"> <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"> </a>
+                <a class="navbar-brand" href="index.php"> <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec"> </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu_principal" aria-controls="menu_principal" aria-expanded="false" aria-label="Toggle navigation"> <i class="icon-list-nested font-white"></i> </button>
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
-                        <li class="nav-item active"><a class="nav-link" href="conocenos.html">CONÓCENOS </a></li>
-                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.html">TÉCNICOS </a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a> </li>
-                        <li class="nav-item "> <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a> </li>
+                        <li class="nav-item active"><a class="nav-link" href="conocenos.php">CONÓCENOS </a></li>
+                        <li class="nav-item active"> <a class="nav-link" href="tecnicos.php">TÉCNICOS </a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a> </li>
+                        <li class="nav-item "> <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a> </li>
                     </ul>
                     <form class="form-inline mt-4 my-lg-0"> <a href="registro.html" id="loginbtn" class="btn my-2 my-sm-0 btn-lineal">
                             Inicio sesión o Registro 
@@ -45,7 +48,7 @@
                         </span>-->
                         <span id="nombreusuario"> </span>
                             <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img style="width: 30px;" src="" alt="Ayudatec" id="fotousuario"> </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupUser"> <a class="dropdown-item" href="#">Perfil</a> <a class="dropdown-item" id="logout" href="index.html">Cerrar Sesión</a> </div>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupUser"> <a class="dropdown-item" href="#">Perfil</a> <a class="dropdown-item" id="logout" href="index.php">Cerrar Sesión</a> </div>
                         </div>
                     </form>
                 </div>
@@ -56,30 +59,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="col-12 font-24px"> Pre-registro</h3>
+                    <h3 class="col-12 font-24px"> Recomendación</h3>
                     <div class="col-12 font-12px font-red py-2 ">
                             <strong>* CAMPOS OBLIGATORIOS</strong>
                             </div>
+                            
                     <div class="row justify-content-center">
                         <div class="col-8 font-14px">
+                         <div class="pb-3 font-20px font-darkblue">Datos del técnico a recomendar</div>
                           <form action="preregistro.php" method="post">
+                           
                             <div class="form-group row">
                                 <label for="txtNombre" class="col-sm-2 col-form-label">Nombre:*</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre"> </div>
                             </div>
                             <div class="form-group row">
-                                <label for="txtNombre" class="col-sm-2 col-form-label">Apellido:*</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido"> </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="txtCedula" class="col-sm-2 col-form-label">Cédula:*</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Cédula"> </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="txtCorreo" class="col-sm-2 col-form-label">Correo:*</label>
+                                <label for="txtCorreo" class="col-sm-2 col-form-label">Correo:</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo"> </div>
                             </div>
@@ -99,20 +95,9 @@
                                     </select>
                                 </div>
                             </div>
+                            
                             <div class="form-group row">
-                                <label for="txtZona" class="col-sm-2 col-form-label">Zona:*</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select my-1 mr-sm-2" id="zona" name="zona">
-                                        <option selected>Zona...</option>
-                                        <option value="1">Noroeste</option>
-                                        <option value="2">Noreste</option>
-                                        <option value="3">Suroeste</option>
-                                        <option value="4">Sureste</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="txtGenero" class="col-sm-2 col-form-label">Género:</label>
+                                <label for="txtGenero" class="col-sm-2 col-form-label">Género:*</label>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="genero" id="genero" value="option1">
                                     <label class="form-check-label" for="genero">Masculino</label>
@@ -122,43 +107,21 @@
                                     <label class="form-check-label" for="inlineRadio2">Femenino</label>
                                 </div>
                             </div>
-                            <div class="py-2 font-20px font-darkblue">Servicios que ofrece</div>
+                          <div class="py-2 font-20px font-darkblue">Servicios que ofrece</div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1"> Por ejemplo: Cerrajería, Tapicería, zapatería, etc.</label>
                                 <textarea class="form-control" id="especialidad" name="especialidad" rows="3"></textarea>
                             </div>
-                            <div class="pt-4 font-20px font-darkblue">Dentro del servicio que ofrece ¿Qué especialidades maneja?</div>
-                            <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Especialidades</label>
-                                <textarea class="form-control" id="especialidad" name="especialidad" rows="3"></textarea>
-                            </div>
-                              <div class="pt-4 font-20px font-darkblue">¿Ofrece garantía de sus servicios?</div>
                             
-                            <div class="form-check">
-                          <input class="form-check-input" type="radio" name="garantia" id="exampleRadios1" value="option1" checked>
-                          <label class="form-check-label" for="exampleRadios1">
-                            Sí
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="garantia" id="exampleRadios2" value="option2">
-                          <label class="form-check-label" for="exampleRadios2">
-                            No
-                          </label>
-                        </div>
-                                                    
-                            <div class="pt-4 font-20px font-darkblue">Háblenos más de usted y de su trabajo</div>
+                            <div class="pt-4 font-20px font-darkblue">Háblenos más del servicio que le brindó el técnico</div>
                             <div class="form-group font-14px">
-                                <label for="exampleFormControlTextarea1">Puede ser por ejemplo: Un saludo, años de experiencia, habilidades, estudios, promesa de calidad, etc.</label>
+                                <label for="exampleFormControlTextarea1">Puede ser por ejemplo: La calidad, puntualidad, profesionalismo, etc.</label>
                                 <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
-                            </div>
-                            <div class="font-12px font-gray">
-                               <em>Al dar click en "Enviar" estará de acuerdo con los <a class="font-darkblue" href="politicas.html">Términos y política de privacidad</a> de AYUDATEC.</em>
-                                
-                            </div>
+                            </div> 
                             
-                            <div class="col-12 mt-4 text-center" role="group">
-                                <input id="submit" type="submit" name="submit" value="Enviar" id="btnEnviar" class="tn btn-lineal btn-blue font-18px">
+                            
+                            <div class="col-12 mt-4 text-center mx-2" role="group">
+                                <input id="submit" type="submit" name="submit" value="Enviar" id="btnEnviar" class="tn px-2 py-1 mx-1 my-1 btn-lineal btn-blue font-18px">
                             </div>
                             </form>
                         </div>
@@ -172,9 +135,9 @@
             <div class="row">
                 <div class="col-6 col-lg-8 text-lg-center align-self-center">
                     <div class="row">
-                        <div class="col-12 col-lg  mb-3 mb-lg-0"> <a class="font-white" href="conocenos.html">¿Quiénes somos?</a> </div>
-                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="faq.html">Preguntas frecuentes</a> </div>
-                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="politicas.html">Términos y Condiciones</a> </div>
+                        <div class="col-12 col-lg  mb-3 mb-lg-0"> <a class="font-white" href="conocenos.php">¿Quiénes somos?</a> </div>
+                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="faq.php">Preguntas frecuentes</a> </div>
+                        <div class="col-12 col-lg mb-3 mb-lg-0"> <a class="font-white" href="politicas.php">Términos y Condiciones</a> </div>
                     </div>
                 </div>
                 <div class="col-6 col-lg-4 text-center align-self-center"> <i class="icon-facebook font-28px"></i> <i class="icon-twitter font-28px"></i> <i class="icon-linkedin-squared font-28px"></i> </div>

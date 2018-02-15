@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -14,7 +17,7 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>AYUDATEC :: Conócenos</title>
+    <title>AYUDATEC :: Contáctenos</title>
 </head>
 
 <body>
@@ -22,7 +25,7 @@
     <header>
         <nav id="menu-usuario" class="navbar fixed-top navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" >
                 </a>
 
@@ -33,16 +36,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="menu_principal">
                     <ul class="navbar-nav justify-content-around flex-1 bt-menu">
 			<li class="nav-item active">
-                            <a class="nav-link" href="conocenos.html">CONÓCENOS </a>
+                            <a class="nav-link" href="conocenos.php">CONÓCENOS </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="tecnicos.html">TÉCNICOS </a>
+                            <a class="nav-link" href="tecnicos.php">TÉCNICOS </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="comoFunciona.html">CÓMO FUNCIONA</a>
+                            <a class="nav-link disabled" href="comoFunciona.php">CÓMO FUNCIONA</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link disabled" href="contactenos.html">CONTÁCTENOS</a>
+                            <a class="nav-link disabled" href="contactenos.php">CONTÁCTENOS</a>
                         </li>
                     </ul>
                     <div class="btn-group font-white btnUsuario" role="group">
@@ -65,75 +68,46 @@
         </nav>
     </header>
 
-    <section id="home-work" class="py-5">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-12 pt-3 text-center titulo font-darkgray">
-                    Somos AYUDATEC
-                </div>
-                <div class="col-12 col-lg-8 pt-3 text-center font-black">
-                    <span>Trabajamos cada día para ser la empresa en la que todo el mundo piensa cuando necesita una reparación, mantenimiento o mejora en su hogar. </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-lg-4 text-center align-self-center pt-5 pt-lg-0">
-                    <img src="assets/images/foto.jpg" alt="Ayudatin">
-                </div>
-                <div class="col-12 col-lg-8 pt-4 pasos font-black ">
-                <h2>Quiénes Somos</h2>
-                Iniciamos nuestra andadura en el año 2017, pasando a formar parte del grupo Ayudatec en el año 2018. Nuestra orientación al cliente, riguroso control de calidad y adaptación a las demandas del mercado nos han posicionado como referente en el cuidado y asistencia en el hogar, convirtiéndonos en el partner de confianza de grandes entidades. Desde octubre de 2017, operamos bajo el grupo AYUDATEC y en Ecuador contamos con una red de más de 2.000 profesionales expertos en 20 gremios para la reforma, reparación, mantenimiento y cuidado del hogar, pymes y comunidades que, avalados y gestionados a través de 7 direcciones territoriales, llegan a todas las provincias del país adaptándose a las particularidades de cada zona. 
-                    
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-<section id="testimonios" class="pt-5">
-        
+	<section id="formulario" class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-12 pt-2 text-center titulo">
-                    Misión, Visión y Valores
+          <div class="row pb-5">
+              <div class="col-12 font-20px text-center">
+                -
                 </div>
-		<div class="col-12 pt-3 pb-5 text-center">
-		<h2>Nuestra Misión:</h2>
-Proporcionar a nuestros clientes la mejor asistencia del hogar y la tranquilidad de no tener que preocuparse en caso de averías urgentes, garantizándoles los mejores reparadores a precios competitivos.
-                </div>
-
-		<div class="col-12 pt-3 pb-5 text-center">
-		<h2>Nuestra Visión:</h2>
-Ser la empresa de confianza cuando se necesita una reparación o mejora en el hogar.
-                </div>
-
-		<div class="col-12 pt-3 pb-5 text-center">
-		<h2>Nuestros Valores:</h2>
-		Indica que servicio o profesional necesitas.<br>
-                Desarrollar y fomentar el talento entre nuestros empleados mostrando pasión y haciendo que las cosas sucedan.<br>
-                Combinar la innovación con la integridad y profesionalidad.<br>
-		Aspirar a ser los mejores en el mundo en lo que hacemos.
-                
-                </div>		
-
-            </div>
-        </div>
-
-    </section>
-
- <section id="ventajas" class="py-5">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <h3 class="col-12 pt-3 text-center titulo font-darkgray">
-                    Socialmente responsables
+                <h3 class="col-12 font-20px text-center">
+                    Por favor, deja tu comentario por cualquier inquietud
                 </h3>
-                <div class="col-12 col-lg-8 pt-3 text-center">
-                    <span>En Ayudatec, conscientes del valor y la responsabilidad que tenemos como empresa, llevamos a cabo un proyecto de responsabilidad social con una línea clara de trabajo, que involucra a toda nuestra plantilla y está alineada con nuestra actividad: reparar hogares.
-Nuestro proyecto AYUDATEC Responde nos brinda la oportunidad de poder ayudar a quienes más lo necesitan y de trabajar para la protección del medio ambiente. </span>
-                </div>
-            </div>
+          </div>
+          <div class="row">
+              <div class="col-12 col-md">
+                  <div class="row">
+                            <div class="col-12 col-lg-6 pb-3">
+                                <input type="text" class="form-control " placeholder="Nombres">
+                            </div>
+                            <div class="col-12 col-lg-6 pb-3">
+                                <input type="text" class="form-control " placeholder="Apellidos">
+                            </div>
+                            <div class="col-12 col-lg-6 pb-3">
+                                <input type="text" class="form-control" placeholder="Asunto">
+                            </div>
+                            <div class="col-12 col-lg-6 pb-3">
+                                <input type="text" class="form-control" placeholder="E-mail">
+                            </div>
+			    <div class="col-12 col-lg-12">
+				<textarea class="form-control" name="mensaje" id="message" placeholder="Escriba su inquietud o sugerencia aqui..." style="height:100px;"></textarea><br />
+                            </div>
+                           
+                            <div class="col-12 mt-4 text-center" role="group">
+                                <button type="button" class="btn btn-lineal btn-blue font-12px">Enviar</button>
+                            </div>
+                            
+              </div>
+          </div>
         </div>
+    </div>
+    </section>    
 
-    </section>
+
 
     <footer class="py-4 font-12px">
         <div class="container">
