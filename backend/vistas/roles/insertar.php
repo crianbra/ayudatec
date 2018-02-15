@@ -14,13 +14,13 @@
 
 
 <form action="guardar.php" method="post">
-            <fieldset>
+    <fieldset>
 		<label>Descripcion</label>
-		<input type="text" name="descripcion" autofocus required />
+		<input type="text" id="descripcion" name="descripcion" autofocus required />
         <br />
-                <button type="submit">Guardar</button>
-        </fieldset>
-	</form>
+        <button type="submit">Guardar</button>        
+    </fieldset>
+</form>
 
  
 

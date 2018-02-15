@@ -10,12 +10,10 @@ session_start();
 
 <?php
     
-include_once("../../collectors/rolCollector.php");
-    
 $descripcion = $_POST['descripcion'];
 
 //echo 'Hola ' .htmlspecialchars($descripcion) . '!';
-
+include_once("../../collectors/rolCollector.php");
 
 $RolCollectorObj = new RolCollector();
 $ObjRol = $RolCollectorObj->createRol($descripcion);
