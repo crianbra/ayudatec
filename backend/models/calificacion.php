@@ -4,11 +4,13 @@ class Calificacion
 {
     private $idcalificacion;
     private $promedio;
+    private $desempenioid;
     private $tecnicoid;
     
-	function __construct($idcalificacion,$promedio,$tecnicoid) {
+	function __construct($idcalificacion,$promedio,$desempenioid,$tecnicoid) {
       $this->idcalificacion = $idcalificacion;
       $this->promedio = $promedio;
+    $this->desempenioid = $desempenioid;
       $this->tecnicoid = $tecnicoid;
      }
   
@@ -23,6 +25,12 @@ class Calificacion
      } 
      function getPromedio(){
        return $this->promedio;
+     }
+    function setDesempenioid($desempenioid){
+       $this->desempenioid = $desempenioid;
+     } 
+     function getDesempenioid(){
+       return $this->desempenioid;
      }
     function setTecnicoid($tecnicoid){
        $this->tecnicoid = $tecnicoid;

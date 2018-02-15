@@ -78,9 +78,9 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/detcalificacionCollector.php");
+                                    include_once("../../collectors/detallecalificacionCollector.php");
                                     
-                                    $DetcalificacionCollectorObj = new DetcalificacionCollector();
+                                    $DetcalificacionCollectorObj = new DetallecalificacionCollector();
                                     $detcalificacion = $DetcalificacionCollectorObj->showDetcalificaciones();
                                     foreach ($detcalificacion as $c){
                                 ?>
@@ -89,8 +89,8 @@
                                         <td><?=$c->getFecha();?></td>
                                         <td><?=$c->getValoracion();?></td>
                                         <td><?=$c->getComentario();?></td>
-                                        <td><?=$c->getCalificacionid()-> getPromedio();?></td>
-                                        <td><?=$c->getUsuarioid()-> getNombreusuario();?></td>
+                                        <td><?=$c->getCalificacionid()->getPromedio();?></td>
+                                        <td><?=$c->getUsuarioid()->getNombreusuario();?></td>
                                         
                                         <td class="b-acciones">
                                             <a title="Editar" href="editar.php?id=<?=$c->getIdprofesion();?>"><i class="fa fa-edit"></i></a>

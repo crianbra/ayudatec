@@ -23,7 +23,7 @@ class UsuarioCollector extends collector
     $arrayUsuario = array();        
     foreach ($rows as $c){
         
-      $personaObj = new Persona($c{'idpersona'},$c{'nombre'},$c{'apellido'},$c{'cedula'},$c{'email'},$c{'telefono'},$c{'ciudad'},$c{'zona'},$c{'sexo'},$c{'foto'}); 
+      $personaObj = new Persona($c{'idpersona'},$c{'nombre'},$c{'apellido'},$c{'cedula'},$c{'email'},$c{'telefono'},$c{'ciudad'},$c{'zona'},$c{'sexo'}); 
                 
       $rolObj = new Rol ($c{'idrol'},$c{'descripcion'});
 
