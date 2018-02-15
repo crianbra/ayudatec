@@ -1,11 +1,12 @@
+ <?include_once("../constantes.php");?>
 <?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
+    //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
+    //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 
     $guardado = false;
     $msg = "";
     if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
-        session_start();
+        
         /*include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
         $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
