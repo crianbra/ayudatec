@@ -203,6 +203,24 @@
                                         </div>
                                     </div>
                                     
+                                    <div class="form-group ">
+                                        <label for="personaid" class="control-label col-lg-3">nombre</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="personaid" name="personaid" required>
+                                                    <option value="" hidden>Seleccione la persona que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/personaCollector.php");
+                                                        $PersonaCollectorObj = new PersonaCollector();
+                                                        $persona = $PersonaCollectorObj->showPersonas();
+                                                        foreach ($persona as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                    </div>
                                     
                                     <!-- 
                                     <div class="form-group ">
