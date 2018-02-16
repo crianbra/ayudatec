@@ -54,7 +54,7 @@
             <li>
                 <a href="../desempenio/index.php">
                     <i class="fa fa-signal"></i>
-                    <span>Escalas desempeño </span>
+                    <span>Escalas de desempeño </span>
                 </a>
             </li>
             <li class=" ">
