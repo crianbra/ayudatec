@@ -2,6 +2,8 @@
 
 include_once("../../collectors/usuarioCollector.php");
 include_once("../../models/usuario.php");
+echo "hola";
+exit();
 
 session_start();
 
