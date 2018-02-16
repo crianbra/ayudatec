@@ -1,9 +1,9 @@
 <?php
 
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/profesion.php');
-include_once(RUTA_BACKEND."models/usuario.php");
-include_once(RUTA_BACKEND."models/categoria.php");
+include_once('../../config/collector.php'); 
+include_once('../../models/profesion.php');
+include_once("../../models/usuario.php");
+include_once("../../models/categoria.php");
 
 class ProfesionCollector extends Collector
 {

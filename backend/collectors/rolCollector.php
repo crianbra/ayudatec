@@ -1,7 +1,7 @@
 <?php
 
-include_once(RUTA_BACKEND.'models/rol.php');
-include_once(RUTA_BACKEND.'config/collector.php');
+include_once('../../models/rol.php');
+include_once('../../config/collector.php');
 
 class RolCollector extends Collector
 {

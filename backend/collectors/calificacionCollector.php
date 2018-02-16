@@ -1,8 +1,8 @@
 <?php
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/calificacion.php');
-include_once(RUTA_BACKEND."models/usuario.php");
-include_once(RUTA_BACKEND."models/desempenio.php");
+include_once('../../config/collector.php'); 
+include_once('../../models/calificacion.php');
+include_once("../../models/usuario.php");
+include_once("../../models/desempenio.php");
 
 class CalificacionCollector extends Collector
 {
