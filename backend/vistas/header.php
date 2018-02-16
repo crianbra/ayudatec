@@ -24,9 +24,12 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="../../assets/images/avatar1_small.jpg">
                 <?php
-                    if (!isset($_SESSION['user'])){
+                    include_once("usuarios/usuarioCollector.php");
+                    $UsuarioCollectorObj = new UsuarioCollector();
+                    $usuarios = $UsuarioCollectorObj->showUsuarios();
+                    foreach ($usuarios as $c){
                                 ?>
-                <span class="username"><?=echo "<p> Hola usuario:(" . $_SESSION['user']. ")";?></span>
+                <span class="username"><?=$c->getNombreusuario();?></span>
                 <b class="caret"></b>
             </a>
             
