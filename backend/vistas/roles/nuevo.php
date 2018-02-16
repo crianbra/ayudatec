@@ -5,7 +5,7 @@
     $guardado = false;
     $msg = "";
     if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        
+        echo "El rol fue guardado con éxito";
         
         include_once("../../collectors/rolCollector.php");
         $RolCollectorObj = new RolCollector();
@@ -238,8 +238,6 @@
 <!--script for this page only-->
 <script src="../../assets/js/table-editable.js"></script>
     
-<script src="//example.com/script.js" type="text/javascript"></script>
-
 <!-- END JAVASCRIPTS -->
 <script>
     jQuery(document).ready(function() {
