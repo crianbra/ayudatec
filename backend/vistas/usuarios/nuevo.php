@@ -16,7 +16,7 @@
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
-        include_once("../../collectors/usuarioCollector.php");
+        include_once("usuarioCollector.php");
         $UsuarioCollectorObj = new UsuarioCollector();
         $usuario = $UsuarioCollectorObj->createUsuario($_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
         /* echo "Resultado: <br>";
@@ -191,18 +191,41 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="personaid" class="control-label col-lg-3">Persona ID</label>
+                                        <label for="personaid" class="control-label col-lg-3">Nombre Persona</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="personaid" name="personaid" type="text" placeholder="Persona Id"/>
+                                                <select class="form-control" id="personaid" name="personaid" required>
+                                                    <option value="" hidden>Seleccione la persona que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/personaCollector.php");
+                                                        $PersonaCollectorObj = new PersonaCollector();
+                                                        $persona = $PersonaCollectorObj->showPersonas();
+                                                        foreach ($persona as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="rolid" class="control-label col-lg-3">Rol ID</label>
+                                        <label for="rolid" class="control-label col-lg-3">Roles</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="rolid" name="rolid" type="text" placeholder="Rol ID"/>
+                                                <select class="form-control" id="rolid" name="rolid" required>
+                                                    <option value="" hidden>Seleccione el rol que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/rolCollector.php");
+                                                        $RolCollectorObj = new RolCollector();
+                                                        $rol = $RolCollectorObj->showRols();
+                                                        foreach ($rol as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdrol();?>"><?=$ca->getDescripcion();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
-                                    
                                     
                                     <!-- 
                                     <div class="form-group ">

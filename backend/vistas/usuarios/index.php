@@ -1,6 +1,16 @@
+
 <?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
+    /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
+    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
+
+include_once("../../models/usuario.php");
+
+/*if (!isset($_SESSION['user'])){
+            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
+        } else{
+            if(!$_SESSION['rol'] == 1){
+                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
+            }else{ */
 
 ?>
 
@@ -29,7 +39,7 @@
 </head>
 
 <body>
-
+    
 <section id="container" >
 <!--header start-->
 <?=include_once("../header.php");?>
@@ -157,6 +167,13 @@
 //    } );
 //} );
 </script>
+    
 
 </body>
 </html>
+
+<?php
+
+//}
+
+?> 

@@ -3,6 +3,8 @@
 <!--constantes end-->
 
 <?php
+
+    include_once("../../models/usuario.php");
     include_once("usuarioCollector.php");
 
     $guardado = false;

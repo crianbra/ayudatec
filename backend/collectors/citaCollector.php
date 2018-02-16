@@ -6,11 +6,11 @@ echo "Dirnamee";
 echo dirname(__FILE__);
 exit(); */
 
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/cita.php');
-include_once(RUTA_BACKEND."models/estado_cita.php");
-include_once(RUTA_BACKEND."models/usuario.php");
-include_once(RUTA_BACKEND."models/categoria.php");
+include_once('../../config/collector.php'); 
+include_once('../../models/cita.php');
+include_once("../../models/estado_cita.php");
+include_once("../../models/usuario.php");
+include_once("../../models/categoria.php");
 
 class CitaCollector extends Collector
 {
