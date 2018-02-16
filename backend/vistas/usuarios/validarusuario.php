@@ -1,6 +1,6 @@
 <?php
 
-include_once("usuarioCollector.php");
+include_once("usuario1Collector.php");
 include_once("../../models/usuario.php");
 
 session_start();
@@ -10,7 +10,7 @@ session_start();
 
 $nombreusuario = $_POST['nombreusuario'];
 $contrasenia = $_POST['contrasenia'];
-$UsuarioCollectorObj = new UsuarioCollector();
+$UsuarioCollectorObj = new Usuario1Collector();
 
 ?>
 <!DOCTYPE html>

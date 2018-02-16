@@ -9,7 +9,7 @@ include_once("../../models/rol.php");
 //include_once(RUTA_BACKEND.'models/persona.php');
 //include_once(RUTA_BACKEND.'models/rol.php');
 
-class UsuarioCollector extends collector
+class Usuario1Collector extends collector
 {
   
   function showUsuarios() {
@@ -54,7 +54,7 @@ function showCategoriaUsuarios($id) {
   $arrayUsuario = array();        
   foreach ($rows as $c){
 
-    $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'});
+    $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'},$c{'contrasenia'},$c{'personaid'},$c{'rolid'});
     array_push($arrayUsuario, $aux);
   }
   return $arrayUsuario;        
