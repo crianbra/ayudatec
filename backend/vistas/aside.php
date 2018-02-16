@@ -55,7 +55,11 @@
             <li>
                 <a href="../desempenio/index.php">
                     <i class="fa fa-signal"></i>
+<<<<<<< HEAD
                     <span>Escalas de desempeño </span>
+=======
+                    <span>Escalas desempeño </span>
+>>>>>>> 68144766eee12478771c30b36d6bae8e18ea5cbc
                 </a>
             </li>
         </ul></div>        
