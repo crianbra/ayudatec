@@ -3,17 +3,13 @@
     /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
 
-if(isset($_SESSION['user'])){
-	echo "<p> Hola usuario:(" . $_SESSION['user']. ")
-			[<a href='../logout.php'>Salir</a>]";
 
-/*
 if (!isset($_SESSION['user'])){
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../registro.php'>";
         }else{
             if(!$_SESSION['rol']==1){
-                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=index.php'>";
-            }else{ */
+                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../registro.php'>";
+            }else{ 
 
 ?>
 
@@ -42,7 +38,7 @@ if (!isset($_SESSION['user'])){
 </head>
 
 <body>
-
+    
 <section id="container" >
 <!--header start-->
 <?=include_once("../header.php");?>
@@ -170,6 +166,7 @@ if (!isset($_SESSION['user'])){
 //    } );
 //} );
 </script>
+    
 
 </body>
 </html>
@@ -179,5 +176,5 @@ if (!isset($_SESSION['user'])){
 }
 
              
-    
-?>
+}
+?> 
