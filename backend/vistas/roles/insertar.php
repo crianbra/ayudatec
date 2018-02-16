@@ -1,5 +1,5 @@
 <?php
-include_once('../../collectos/rolCollector.php');
+include_once('../../collectors/rolCollector.php');
 include_once('../../models/rol.php');
 
 ?>
