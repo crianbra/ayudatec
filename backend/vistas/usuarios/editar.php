@@ -1,6 +1,8 @@
 <?php
 
-    include_once("usuarioCollector.php");
+    sesion_start();
+    
+    include_once("../../collectors/usuarioCollector.php");
     include_once("../../models/usuario.php");
 
     $guardado = false;

@@ -1,6 +1,6 @@
 <?php
 
-include_once("../../collectors/usuarioCollector.php");
+include_once("usuarioCollector.php");
 include_once("../../models/usuario.php");
 
 session_start();
@@ -40,17 +40,8 @@ $UsuarioCollectorObj = new UsuarioCollector();
                     //echo "<a href='admin.php'> Administracion</a>";
                     //exit();
                     /* echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../admin/admin.php'>"; */
-                    if($_SERVER["SERVER_NAME"] == "localhost")
-                    {
-                        header("Location: http://localhost/ayudatec/backend/vistas/admin/admin.php", true, 301);
-                        exit();
-                    }
-                    else
-                    {
-                        header("Location: http://ayudatec.herokuapp.com/backend/vistas/admin/admin.php", true, 301);
-                        exit();
-                    }
-                    
+                    header("Location: http://localhost/ayudatec/backend/vistas/admin/admin.php", true, 301);
+                    exit();
 
                 }
                 if($c->getRolid()->getIdrol() == 2){
@@ -77,3 +68,5 @@ $UsuarioCollectorObj = new UsuarioCollector();
 	
     </body>
 </html>
+
+

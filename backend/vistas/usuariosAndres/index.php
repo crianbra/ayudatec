@@ -1,3 +1,19 @@
+
+<?php
+    /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
+    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
+
+include_once("../../models/usuario.php");
+
+/*if (!isset($_SESSION['user'])){
+            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
+        } else{
+            if(!$_SESSION['rol'] == 1){
+                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
+            }else{ */
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +23,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Personas</title>
+    <title>Usuarios</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +39,7 @@
 </head>
 
 <body>
-
+    
 <section id="container" >
 <!--header start-->
 <?=include_once("../header.php");?>
@@ -36,12 +52,11 @@
         <section class="wrapper">
         <!-- page start-->
 
-
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>PERSONAS</strong> </h4>
+                    <h4> <strong>USUARIOS</strong> </h4>
 
                     </header>
                     <div class="panel-body">
@@ -49,7 +64,7 @@
                             <div class="clearfix">
                                 <div class="btn-group">
                                     <a href="nuevo.php" class="btn btn-primary">
-                                        Nueva Persona <i class="fa fa-plus"></i>
+                                        Nuevo Usuario <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
                                 <div class="btn-group pull-right">
@@ -66,47 +81,37 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>IdPersona</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Cedula</th>
-                                    <th>Email</th>
-                                    <th>Telefono</th>
-                                    <th>Ciudad</th>
-                                    <th>Zona</th>
-                                    <th>Sexo</th>
-                                    
+                                    <th>IdUsuario</th>
+                                    <th>NombreUsuario</th>
+                                    <th>Contrasenia</th>
+                                    <th>PersonaId</th>
+                                    <th>RolId</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/personaCollector.php");
+                                    include_once("usuarioCollector.php");
                                     
-                                    $PersonaCollectorObj = new PersonaCollector();
-                                    $personas = $PersonaCollectorObj->showPersonas();
-                                    foreach ($personas as $c){
-                                        /* $idpersona = $_GET['idpersona']; */
+                                    $UsuarioCollectorObj = new UsuarioCollector();
+                                    $usuarios = $UsuarioCollectorObj->showUsuarios();
+                                    foreach ($usuarios as $c){
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIdpersona();?></td>
-                                        <td><?=$c->getNombre();?></td>
-                                        <td><?=$c->getApellido();?></td>
-                                        <td><?=$c->getCedula();?></td>
-                                        <td><?=$c->getEmail();?></td> 
-                                        <td><?=$c->getTelefono();?></td>
-                                        <td><?=$c->getCiudad();?></td>
-                                        <td><?=$c->getZona();?></td>
-                                        <td><?=$c->getSexo();?></td>
+                                        <td><?=$c->getIdusuario();?></td>
+                                        <td><?=$c->getNombreusuario();?></td>
+                                        <td><?=$c->getContrasenia();?></td>
+                                        <td><?=$c->getPersonaid()->getNombre();?></td>
+                                        <td><?=$c->getRolid()->getDescripcion();?></td>
                                         <td class="b-acciones">
-                                            <a title="Editar" href="editar.php?id=<?=$c->getIdpersona();?>"><i class="fa fa-edit"></i></a>
-                                            <a title="Eliminar" href="eliminar.php?id=<?=$c->getIdpersona();?>"><i class="fa fa-trash-o"></i></a>
+                                            <a title="edit" href="editar.php?id=<?=$c->getIdusuario();?>"><i class="fa fa-edit"></i></a>
+                                            <a title="delete" href="eliminar.php?id=<?=$c->getIdusuario();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
-                                    </tr> 
-                                    
-                                    <?php
+                                    </tr>
+                                <?php
                                     }
                                 ?>
+                               
                                
                                 </tbody>
                             </table>
@@ -162,6 +167,7 @@
 //    } );
 //} );
 </script>
+    
 
 </body>
 </html>
@@ -169,7 +175,5 @@
 <?php
 
 //}
-//}
 
-             
-?>
+?> 
