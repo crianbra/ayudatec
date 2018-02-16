@@ -1,6 +1,3 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
 
 <?php
     include_once("../../collectors/profesionCollector.php");

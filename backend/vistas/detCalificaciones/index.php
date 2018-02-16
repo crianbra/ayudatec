@@ -1,4 +1,4 @@
-<?include_once("../constantes.php");?>
+
 <?include_once("../../collectors/detallecalificacionCollector.php");?>
 <?include_once("../../collectors/calificacionCollector.php");?>
 

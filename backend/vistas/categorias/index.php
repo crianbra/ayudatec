@@ -1,6 +1,4 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
+
 
 <!DOCTYPE html>
 <html lang="es">

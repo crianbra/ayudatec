@@ -1,6 +1,3 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
 
 <?php
     include_once("../../collectors/profesionCollector.php");
@@ -73,7 +70,7 @@
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
                         <li><a href="index.php">Profesion</a></li>
-                        <li class="active">Eliminar profesion</li>
+                        <li class="active">Eliminar profesional</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -81,7 +78,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR PROFESION</strong> </h4>
+                    <h4> <strong>ELIMINAR A PROFESIONAL</strong> </h4>
 
                     </header>
 
@@ -99,7 +96,7 @@
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     <input type="text" name="id" hidden value="<?=$profesion->getIdprofesion();?>">
                                     <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar esta profesion?</h3>
+                                        <h3 class="text-center">¿Seguro que desea eliminar al profesional?</h3>
                                     </div>
                                     <div class="form-group ">
                                         <label for="usuario" class="control-label col-lg-3">Nombre de Usuario</label>
