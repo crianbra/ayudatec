@@ -1,6 +1,10 @@
 <?php
-include_once('rolCollector.php');
-include_once('rol.php');
+
+require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/vistas/rol/rolCollector.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/vistas/rol/rol.php';
+
+//include_once('rolCollector.php');
+//include_once('rol.php');
 
 ?>
 <!doctype html>
