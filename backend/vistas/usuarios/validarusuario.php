@@ -42,7 +42,8 @@ $UsuarioCollectorObj = new UsuarioCollector();
                     /* echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../admin/admin.php'>"; */
                     if($_SERVER["SERVER_NAME"] == "localhost")
                     {
-                        header("Location: http://localhost/ayudatec/backend/vistas/admin/admin.php", true, 301);
+                        //header("Location: http://localhost/ayudatec/backend/vistas/admin/admin.php", true, 301);
+                        echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../admin/admin.php'>";
                         exit();
                     }
                     else

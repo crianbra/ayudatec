@@ -69,15 +69,7 @@
                                         Nuevo Usuario <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Acciones <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">Imprimir</a></li>
-                                        <li><a href="#">Guardar como PDF</a></li>
-                                        <li><a href="#">Exportar a Excel</a></li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                             <div class="space15"></div>
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">

@@ -1,31 +1,33 @@
 <?include_once("../auth.php");?>
-
 <?php
-
-    include_once("../../collectors/calificacionCollector.php");
 
     $guardado = false;
     $msg = "";
-    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
+    if (isset($_POST['promedio']) && $_POST['promedio'] ==! "") {
+        session_start();
+        include_once("../../collectors/usuarioCollector.php");
+        $usuarioCollectorObj = new UsuarioCollector();
+        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+        /* var_dump($_SESSION["user"]->getIdusuario());
+        exit(); */
 
-        if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $CalificacionCollectorObj = new CalificacionCollector();
-            $resp = $CalificacionCollectorObj->deleteCalificacion($_POST['id']);
-            if ($resp == true) {
-                $msg = "La calificación fue eliminada con éxito";
-                $guardado = true;
-            } else {
+        /* echo "descripcion". $_POST['descripcion'];
+        exit(); */
 
-                $msg = "error";
-                }
+        include_once("../../collectors/calificacionCollector.php");
+        $CalificacionCollectorObj = new CalificacionCollector();
+        $calificacion = $CalificacionCollectorObj->createCalificacion($_POST['promedio'], $_POST['desempenioid'] , $_POST['tecnicoid']);
+        /* echo "Resultado: <br>";
+        var_dump($citas); */
+        if ($calificacion == true) {
+            $msg = "La calificación del técnico fue guardada con éxito";
+            $guardado = true;
         } else {
-            $CalificacionCollectorObj = new CalificacionCollector();
-            $calificacion = $CalificacionCollectorObj->showCalificacion($_GET['id']);
+            $msg = "Error:".$calificacion;
         }
 
     } else {
-            $msg = "No ha llegado ningún ID de calificación";
-            $guardado = false;
+        $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -40,7 +42,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Eliminar calificación</title>
+    <title>Nueva calificación</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -60,10 +62,10 @@
 <section id="container" >
 <!--header end-->
 <!--header start-->
-<?include_once("../header.php");?>
+<?=include_once("../header.php");?>
 <!--header end-->
 <!--aside start-->
-<?include_once("../aside.php");?>
+<?=include_once("../aside.php");?>
 <!--aside end-->
     <!--main content start-->
     <section id="main-content">
@@ -71,16 +73,16 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Calificación</a></li>
-                        <li class="active">Eliminar calificación</li>
+                        <li><a href="index.php">Calificación técnico</a></li>
+                        <li class="active">Nueva calificación de técnico</li>
                     </ul>
-                    <!--breadcrumbs end -->
+        <!--breadcrumbs end -->
 
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR CALIFICACIÓN</strong> </h4>
+                    <h4> <strong>NUEVA CALIFICACIÓN DE TÉCNICO</strong> </h4>
 
                     </header>
 
@@ -95,35 +97,56 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="calificacionForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$calificacion->getIdcalificacion();?>">
-                                    <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar esta calificación?</h3>
-                                    </div>
+                                <form class="cmxform form-horizontal " id="promedioForm" method="post" action="">
                                     <div class="form-group ">
                                         <label for="promedio" class="control-label col-lg-3">Promedio</label>
                                         <div class="col-lg-6">
-                                            <h5 id="promedio"><?=$calificacion->getPromedio();?></h5>
+                                            <input class=" form-control" id="promedio" name="promedio" type="text" placeholder=""/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="desempenioid" class="control-label col-lg-3">Desempeño</label>
                                         <div class="col-lg-6">
-                                            <h5 id="desempenioid"><?=$calificacion->getDesempenioid()->getIddesempenio();?></h5>
+                                                <select class="form-control" id="desempenioid" name="desempenioid" required>
+                                                    <option value="" hidden>Seleccione la escala que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/desempenioCollector.php");
+                                                        $DesempenioCollectorObj = new DesempenioCollector();
+                                                        $desempenio = $DesempenioCollectorObj->showDesempenios();
+                                                        foreach ($desempenio as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIddesempenio();?>"><?=$ca->getEscala();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Técnico</label>
+                                        <label for="tecnicoid" class="control-label col-lg-3">Tecnico</label>
                                         <div class="col-lg-6">
-                                            <h5 id="usuarioid"><?=$calificacion->getTecnicoid()->getIdusuario();?></h5>
+                                                <select class="form-control" id="tecnicoid" name="tecnicoid" required>
+                                                    <option value="" hidden>Seleccione el tecnico que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/usuarioCollector.php");
+                                                        $UsuarioCollectorObj = new UsuarioCollector();
+                                                        $usuario = $UsuarioCollectorObj->showUsuarios();
+                                                        foreach ($usuario as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
-                                            <button class="btn btn-primary" type="submit">Aceptar</button>
+                                            <button class="btn btn-primary" type="submit">Guardar</button>
+                                            <button class="btn btn-default" type="reset">Limpiar</button>
                                             <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
-                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
                                         </div>
                                     </div>
                                 </form>
@@ -138,9 +161,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-
-                            <a href="index.php">Volver a profesión</a>
-
+                            <a href="index.php">Volver a buscar técnicos</a>
                         </div>
                         <?php
                     }
@@ -186,12 +207,16 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-
-
-
+//    
+//     $(document).ready(function() {
+//    $('#editable-sample').DataTable( {
+//       "language": {
+//        "search": 'Buscar'
+//    }
+//    } );
+//} );
 </script>
+    
 
 </body>
 </html>
-
-

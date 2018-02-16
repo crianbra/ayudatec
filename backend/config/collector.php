@@ -2,7 +2,7 @@
 include_once('dataBase.php');
 
 // Define configuration
-/*if($_SERVER["SERVER_NAME"] == "localhost")
+if($_SERVER["SERVER_NAME"] == "localhost")
 {
     define("DB_HOST", "localhost");
     define("DB_USER", "postgres");
@@ -10,12 +10,12 @@ include_once('dataBase.php');
     define("DB_NAME", "ayudatec");
 }
 else
-{*/
+{
     define("DB_HOST", "ec2-54-221-234-62.compute-1.amazonaws.com");
     define("DB_USER", "pigmwkcawyrbuu");
     define("DB_PASS", "d36bf7d7f61744a2f19864e29e1f6379245090f571ad3c556306aeeeac45899d");
     define("DB_NAME", "d277pii1e56jri");
-//}
+}
 
 /*
 define("DB_HOST", "localhost");

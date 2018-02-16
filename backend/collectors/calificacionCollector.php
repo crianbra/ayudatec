@@ -70,8 +70,8 @@ function showTecnicoCalificacion($id){
 }
 
 
-function updateCalificacion($id,$rating){
-	return $insertrow = self::$db->updateRow("UPDATE public.calificacion SET rating= ? WHERE idcalificacion= ?", array("{$rating}", $id));
+function updateCalificacion($id,$promedio,$desempenioid, $tecnicoid){
+	return $insertrow = self::$db->updateRow("UPDATE public.calificacion SET promedio= ? , desempenioid= ? , tecnicoid= ? WHERE idcalificacion= ?", array("{$promedio}", "{$desempenioid}", "{$tecnicoid}", $id));
 
 }
 
@@ -80,8 +80,8 @@ function deleteCalificacion($id){
 
 }
 
-function createCalificacion($rating){
-	return $insertarrow = self::$db->insertRow("INSERT INTO public.calificacion (rating) VALUES (?)", array ("{$rating}"));
+function createCalificacion($promedio,$desempenioid, $tecnicoid){
+	return $insertarrow = self::$db->insertRow("INSERT INTO public.calificacion (promedio,desempenioid,tecnicoid) VALUES (?,?,?)", array ("{$promedio}","{$desempenioid}","{$tecnicoid}"));
 
 }
 
