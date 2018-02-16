@@ -1,6 +1,5 @@
+<?include_once("../auth.php");?>
 <?php
-
-    
 
     $guardado = false;
     $msg = "";

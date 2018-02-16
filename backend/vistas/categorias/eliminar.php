@@ -1,4 +1,4 @@
-
+<?include_once("../auth.php");?>
 
 <?php
 

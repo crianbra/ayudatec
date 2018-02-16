@@ -1,5 +1,5 @@
+<?include_once("../auth.php");?>
 <?php
-    session_start();
 
     $guardado = false;
     $msg = "";
