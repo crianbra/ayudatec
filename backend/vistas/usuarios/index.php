@@ -5,9 +5,9 @@
 
 include_once("../../models/usuario.php");
 
-if (!isset($_SESSION['user'])){
+/*if (!isset($_SESSION['user'])){
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
-    /*    } else{
+        } else{
             if(!$_SESSION['rol'] == 1){
                 echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
             }else{ */
@@ -174,6 +174,6 @@ if (!isset($_SESSION['user'])){
 
 <?php
 
-}
+//}
 
 ?> 
