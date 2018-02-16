@@ -3,10 +3,7 @@
     /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
 
-
-include_once("../../collectors/usuarioCollector.php");
 include_once("../../models/usuario.php");
-
 
 /*if (!isset($_SESSION['user'])){
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
@@ -94,6 +91,7 @@ include_once("../../models/usuario.php");
                                 </thead>
                                 <tbody>
                                 <?php
+                                    include_once("usuarioCollector.php");
                                     
                                     $UsuarioCollectorObj = new UsuarioCollector();
                                     $usuarios = $UsuarioCollectorObj->showUsuarios();

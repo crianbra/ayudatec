@@ -1,11 +1,7 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
 <?php
 
     include_once("../../models/usuario.php");
-    include_once("usuarioCollector.php");
+    include_once("../../collectors/usuarioCollector.php");
 
     $guardado = false;
     $msg = "";

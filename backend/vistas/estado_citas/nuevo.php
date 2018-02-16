@@ -1,7 +1,3 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
 <?php
 
     $guardado = false;

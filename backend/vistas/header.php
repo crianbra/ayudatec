@@ -22,7 +22,7 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <!-- <img alt="" src="../../assets/images/avatar1_small.jpg"> -->
                 <?php
-                    include_once("usuarios/usuarioCollector.php");
+                    include_once("../../collectors/usuarioCollector.php");
                     $UsuarioCollectorObj = new UsuarioCollector();
                     $usuarios = $UsuarioCollectorObj->showUsuarios();
                     foreach ($usuarios as $c){

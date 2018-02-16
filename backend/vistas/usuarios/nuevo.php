@@ -1,4 +1,3 @@
- <?include_once("../constantes.php");?>
 <?php
     //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
@@ -15,8 +14,8 @@
 
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
-
-        include_once("usuarioCollector.php");
+        
+        include_once("../../collectors/usuarioCollector.php");
         $UsuarioCollectorObj = new UsuarioCollector();
         $usuario = $UsuarioCollectorObj->createUsuario($_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
         /* echo "Resultado: <br>";

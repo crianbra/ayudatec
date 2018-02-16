@@ -1,23 +1,31 @@
+ <?include_once("../constantes.php");?>
 <?php
-    
-    session_start();
+    //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
+    //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
+
     $guardado = false;
     $msg = "";
-    if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        echo "El rol fue guardado con éxito";
-        
-        include_once("../../collectors/rolCollector.php");
-        $RolCollectorObj = new RolCollector();
-        $rol = $RolCollectorObj->createRol($_POST['descripcion']);
-        echo "El rol fue guardado con éxito";
+    if (isset($_POST['nombreusuario']) && $_POST['nombreusuario'] ==! "") {
+        session_start();
+        /*include_once("../../collectors/usuarioCollector.php");
+        $usuarioCollectorObj = new UsuarioCollector();
+        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
+         var_dump($_SESSION["user"]->getIdusuario());
+        exit(); */
+
+        /* echo "descripcion". $_POST['descripcion'];
+        exit(); */
+
+        include_once("usuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $usuario = $UsuarioCollectorObj->createUsuario($_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
         /* echo "Resultado: <br>";
         var_dump($citas); */
-        if ($rol == true) {
-            echo "El rol fue guardado con éxito";
-            $msg = "El rol fue guardado con éxito";
+        if ($usuario == true) {
+            $msg = "El usuario fue guardado con éxito";
             $guardado = true;
         } else {
-            $msg = "Error:".$rol;
+            $msg = "Error:".$resp;
         }
 
     } else {
@@ -36,7 +44,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nuevo Rol</title>
+    <title>Nueva Persona</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -145,8 +153,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Role</a></li>
-                        <li class="active">Nuevo Rol</li>
+                        <li><a href="index.php">Usuarios</a></li>
+                        <li class="active">Nuevo Usuario</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -154,7 +162,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO ROL</strong> </h4>
+                    <h4> <strong>NUEVO USUARIO</strong> </h4>
 
                     </header>
 
@@ -169,14 +177,63 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="rolForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="personaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="descripcion" class="control-label col-lg-3">Descripcion</label>
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre Usuario</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="descripcion" name="descripcion" type="text" placeholder="Descripcion"/>
+                                            <input class="form-control" id="nombreusuario" name="nombreusuario" type="text" placeholder="Nombre Usuario"/>
                                         </div>
                                     </div>
-                                   
+                                    <div class="form-group ">
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
+                                        <div class="col-lg-6">
+                                            <input class="form-control" id="contrasenia" name="contrasenia" type="text" placeholder="Contrasenia"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="personaid" class="control-label col-lg-3">Nombre Persona</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="personaid" name="personaid" required>
+                                                    <option value="" hidden>Seleccione la persona que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/personaCollector.php");
+                                                        $PersonaCollectorObj = new PersonaCollector();
+                                                        $persona = $PersonaCollectorObj->showPersonas();
+                                                        foreach ($persona as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="rolid" class="control-label col-lg-3">Roles</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="rolid" name="rolid" required>
+                                                    <option value="" hidden>Seleccione el rol que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/rolCollector.php");
+                                                        $RolCollectorObj = new RolCollector();
+                                                        $rol = $RolCollectorObj->showRols();
+                                                        foreach ($rol as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdrol();?>"><?=$ca->getDescripcion();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 
+                                    <div class="form-group ">
+                                        <label for="agree" class="control-label col-lg-3 col-sm-3">Activo</label>
+                                        <div class="col-lg-6 col-sm-9">
+                                            <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="activo" name="activo" checked/>
+                                        </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -236,7 +293,7 @@
 
 <!--script for this page only-->
 <script src="../../assets/js/table-editable.js"></script>
-    
+
 <!-- END JAVASCRIPTS -->
 <script>
     jQuery(document).ready(function() {
