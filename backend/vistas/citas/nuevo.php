@@ -159,7 +159,7 @@
                                                         $categorias = $categoriaCollectorObj->showCategorias();
                                                         foreach ($categorias as $ca){
                                                     ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
+                                                    <option value="<?=$ca->getIdcategoria();?>"> <?=$ca->getDescripcion();?> </option>
                                                     <?php
                                                         }
                                                     ?>
@@ -228,9 +228,6 @@
 
 <!-- END JAVASCRIPTS -->
 <script>
-    jQuery(document).ready(function() {
-        EditableTable.init();
-    });
     /* $('#categoria').val(); */
     $('#categoria').on('change', function() {
         /* alert( this.value ); */
