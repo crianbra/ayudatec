@@ -177,24 +177,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-
-
-<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCrBbuj6yLwG_t_gyfhi1bi9ZjRuLnbSDA",
-    authDomain: "ayudatec-3e0ee.firebaseapp.com",
-    databaseURL: "https://ayudatec-3e0ee.firebaseio.com",
-    projectId: "ayudatec-3e0ee",
-    storageBucket: "ayudatec-3e0ee.appspot.com",
-    messagingSenderId: "5686820743"
-  };
-  firebase.initializeApp(config);
-  
-</script>
-    
-    
     <script src="assets/js/app.js"></script>
 
 </body>

@@ -216,19 +216,6 @@
     
     
 <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCrBbuj6yLwG_t_gyfhi1bi9ZjRuLnbSDA",
-    authDomain: "ayudatec-3e0ee.firebaseapp.com",
-    databaseURL: "https://ayudatec-3e0ee.firebaseio.com",
-    projectId: "ayudatec-3e0ee",
-    storageBucket: "ayudatec-3e0ee.appspot.com",
-    messagingSenderId: "5686820743"
-  };
-  firebase.initializeApp(config);
-  
-</script>
 
 <script src="assets/js/autenticar.js"></script>
 <script src="assets/js/app.js"></script>
