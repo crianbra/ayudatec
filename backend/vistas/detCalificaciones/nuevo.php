@@ -39,7 +39,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nuevo profesional</title>
+    <title>AYUDATEC :: Califica al técnico</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -70,8 +70,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesionales</a></li>
-                        <li class="active">Nuevo profesional</li>
+                        <li><a href="index.php">Calificaciones</a></li>
+                        <li class="active">Nueva calificación</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -79,7 +79,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO PROFESIONAL</strong> </h4>
+                    <h4> <strong>NUEVO CALIFICACIÓN</strong> </h4>
 
                     </header>
 
@@ -97,10 +97,10 @@
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     
                                    <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>
+                                        <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuarioid">
-                                                    <option value="" hidden>Seleccione el usuario que busca</option>
+                                                <select class="form-control" id="tecnicoid" name="tecnicoid">
+                                                    <option value="" hidden>Seleccione al ténico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
                                                         $usuarioCollectorObj = new UsuarioCollector();
@@ -200,32 +200,7 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-    /* $('#categoria').val(); */
-    $('#categoria').on('change', function() {
-        /* alert( this.value ); */
-        var id_categoria = this.value;
-        $.ajax({
-            url: 'nuevo.php',
-            type: 'POST',
-            dataType : 'text',
-            data : 'idcategoria='+id_categoria,
-            success: function(result) {
-                $("#select_tecnico").html(result);
-            },
-            error : function(xhr, status) {
-                alert('Disculpe, existió un problema');
-            }
-        });
-
-    })
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
+    
 </script>
 
 </body>

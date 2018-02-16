@@ -8,6 +8,7 @@ class Detallecalificacion
     private $comentario;
     private $calificacionid;
     private $clienteid;
+    private $tecnicoid;
     
 	function __construct($iddetallecalificacion,$fecha,$valoracion,$comentario,$calificacionid,$clienteid) {
       $this->iddetallecalificacion = $iddetallecalificacion;
@@ -16,6 +17,7 @@ class Detallecalificacion
       $this->comentario = $comentario;
       $this->calificacionid = $calificacionid;
       $this->clienteid = $clienteid;
+      
      }
   
      function setIddetallecalificacion($iddetallecalificacion){
@@ -53,6 +55,13 @@ class Detallecalificacion
      } 
      function getClienteid(){
        return $this->clienteid;
+     }
+    
+    function setTecnicoid($tecnicoid){
+       $this->tecnicoid = $tecnicoid;
+     } 
+     function getTecnicoid(){
+       return $this->tecnicoid;
      }
 }
     

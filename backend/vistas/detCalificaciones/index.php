@@ -1,4 +1,6 @@
 <?include_once("../constantes.php");?>
+<?include_once("../../collectors/detallecalificacionCollector.php");?>
+<?include_once("../../collectors/calificacionCollector.php");?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -67,34 +69,39 @@
                             <table class="table table-striped table-hover table-bordered" id="editable-sample">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    
                                     <th>Fecha</th>
+                                    <th>Técnico</th>
+                                    <th>Promedio</th>
+                                    <th>Escala</th>
                                     <th>Valoracion</th>
+                                    <th>Cliente</th>
                                     <th>Comentario</th>
-                                    <th>Calificación</th>
-                                    <th>Nombre de usuario</th>
                                     <th></th>
                                     
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("../../collectors/detallecalificacionCollector.php");
-                                    
                                     $DetcalificacionCollectorObj = new DetallecalificacionCollector();
                                     $detcalificacion = $DetcalificacionCollectorObj->showDetcalificaciones();
                                     foreach ($detcalificacion as $c){
+                                        $calificacion1Obj= new CalificacionCollector();
+                                        $calificacion1 = $calificacion1Obj->showCalificacion($c->getCalificacionid()->getIdcalificacion());
                                 ?>
                                     <tr class="b-filas">
-                                        <td><?=$c->getIddetallecalificacion();?></td>
+                                        
                                         <td><?=$c->getFecha();?></td>
-                                        <td><?=$c->getValoracion();?></td>
-                                        <td><?=$c->getComentario();?></td>
+                                        <td> <?=$calificacion1->getTecnicoid()->getNombreusuario();?></td>
                                         <td><?=$c->getCalificacionid()->getPromedio();?></td>
+                                        <td><?=$calificacion1->getDesempenioid()->getEscala();?></td>
+                                        <td><?=$c->getValoracion();?></td>
                                         <td><?=$c->getClienteid()->getNombreusuario();?></td>
+                                        <td><?=$c->getComentario();?></td>
+                                        
                                         
                                         <td class="b-acciones">
-                                            <a title="Editar" href="editar.php?id=<?=$c->getIddetallecalificacion();?>"><i class="fa fa-edit"></i></a>
+                                        <!--<a title="Editar" href="editar.php?id=<?=$c->getIddetallecalificacion();?>"><i class="fa fa-edit"></i></a>-->
                                             <a title="Eliminar" href="eliminar.php?id=<?=$c->getIddetallecalificacion();?>"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>

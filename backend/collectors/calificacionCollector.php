@@ -35,9 +35,16 @@ class CalificacionCollector extends Collector
 
 
   function showCalificacion($id){
-    $row = self::$db->getRows("SELECT * FROM calificacion where idcalificacion= ? ", array("{$id}"));
-
-    $ObjCalificacion = new Calificacion ($row[0]{'idcalificacion'},$row[0]{'rating'});
+    $row = self::$db->getRows("
+        SELECT * FROM calificacion 
+        INNER JOIN usuario ON (calificacion.tecnicoid = usuario.idusuario )
+        INNER JOIN desempenio ON (calificacion.desempenioid = desempenio.iddesempenio)
+        WHERE idcalificacion= ? ", array("{$id}"));
+      
+    $tecnicoObj= new Usuario($row[0]{'idusuario'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
+    $desempenioObj= new Desempenio($row[0]{'iddesempenio'},$row[0]{'maximo'},$row[0]{'minimo'},$row[0]{'escala'});  
+     
+    $ObjCalificacion = new Calificacion ($row[0]{'idcalificacion'},$row[0]{'promedio'},$desempenioObj, $tecnicoObj);
     return $ObjCalificacion;
 
 }
