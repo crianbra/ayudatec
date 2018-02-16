@@ -1,33 +1,27 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
+<?include_once("../auth.php");?>
 
 <?php
 
-    include_once("../../models/usuario.php");
-    include_once("usuarioCollector.php");
-
     $guardado = false;
     $msg = "";
-    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
+    if ((isset($_POST['tecnicoid']) && $_POST['tecnicoid'] ==! "") && (isset($_POST['categoriaid']) && $_POST['categoriaid'] ==! "")) {
+        //session_start();
+        
+        include_once("../../collectors/categoriaCollector.php");
+        $CategoriaCollectorObj = new CategoriaCollector();
+        $categoria = $CategoriaCollectorObj->showCategoria($_POST['categoriaid']);
 
-        if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $UsuarioCollectorObj = new UsuarioCollector();
-            $resp = $UsuarioCollectorObj->deleteUsuario($_POST['id']);
-            if ($resp == true) {
-                $msg = "El usuario fue eliminado con éxito";
-                $guardado = true;
-            } else {
-                $msg = "Error:".$resp;
-            }
-        } else {
-            $UsuarioCollectorObj = new UsuarioCollector();
-            $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
+
+        include_once("../../collectors/usuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $tecnico = $UsuarioCollectorObj->showUsuario($_POST['tecnicoid']);
+        if (isset($_POST["valoracion"])){
+            echo "Hola";
+            exit();
         }
-
+      
     } else {
-            $msg = "No ha llegado ningún ID de Usuario";
-            $guardado = false;
+        $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -42,7 +36,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Eliminar Usuario</title>
+    <title>AYUDATEC :: Califica al técnico</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -73,8 +67,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Usuario</a></li>
-                        <li class="active">Eliminar usuario</li>
+                        <li><a href="index.php">Calificaciones</a></li>
+                        <li class="active">Nueva calificación</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -82,7 +76,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR USUARIO</strong> </h4>
+                    <h4> <strong>NUEVA CALIFICACIÓN</strong> </h4>
 
                     </header>
 
@@ -98,40 +92,36 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$usuario->getIdusuario();?>">
                                     <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar este usuario?</h3>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre de Usuario</label>
+                                        <label for="categoriaid" class="control-label col-lg-3">Categoria</label>
                                         <div class="col-lg-6">
-                                            <h5 id="nombreusuario"><?=$usuario->getNombreusuario();?></h5>
+                                            <h5 id="categoriaid"><?=$categoria->getDescripcion();?></h5>
+                                        </div>
+                                    </div>
+                                   <div class="form-group ">
+                                        <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="tecnicoid"><?=$tecnico->getNombreusuario();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
+                                        <label for="valoracion" class="control-label col-lg-3">Valoración (De 0 al 5)</label>
                                         <div class="col-lg-6">
-                                            <h5 id="contrasenia"><?=$usuario->getContrasenia();?></h5>
+                                            <input class=" form-control" id="valoracion" name="valoracion" type="number" min="0" max="5" length=""/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="personaid" class="control-label col-lg-3">Persona Id</label>
+                                        <label for="comentario" class="control-label col-lg-3">Comentario</label>
                                         <div class="col-lg-6">
-                                            <h5 id="personaid"><?=$usuario->getPersonaid();?></h5>
+                                            <textarea class=" form-control" id="comentario" name="comentario" type="textarea" placeholder="Cuéntenos qué le pareció el servicio del técnico"></textarea>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="rolid" class="control-label col-lg-3">Rol Id</label>
-                                        <div class="col-lg-6">
-                                            <h5 id="rolid"><?=$usuario->getRolid();?></h5>
-                                        </div>
-                                    </div>
+                                   
+                                    
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
-                                            <button class="btn btn-primary" type="submit">Aceptar</button>
-                                            <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
-                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
+                                            <button class="btn btn-primary" type="submit">Guardar</button>
+                                            <a href="paso2.php" class="btn btn-default" type="button">Volver</a>
                                         </div>
                                     </div>
                                 </form>
@@ -146,7 +136,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a usuarios</a>
+                            <a href="index.php">Volver a profesion</a>
                         </div>
                         <?php
                     }
@@ -192,9 +182,7 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-
-
-
+    
 </script>
 
 </body>

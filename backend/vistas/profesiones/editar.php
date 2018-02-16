@@ -1,3 +1,4 @@
+<?include_once("../auth.php");?>
 <?php
 
     
@@ -17,7 +18,7 @@
             $resp = $ProfesionCollectorObj->updateProfesion($_GET['id'], $_POST['usuarioid'], $_POST['categoriaid']);
 
             if ($resp == true) {
-                $msg = "La profesion fue modificada con éxito";
+                $msg = "La profesión fue modificada con éxito";
                 $guardado = true;
             } else {
                 $msg = "error";
@@ -43,7 +44,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Editar Profesion</title>
+    <title>Editar Profesión</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -74,8 +75,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesion</a></li>
-                        <li class="active">Editar profesion</li>
+                        <li><a href="index.php">Profesión</a></li>
+                        <li class="active">Editar profesión</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -83,7 +84,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR PROFESION</strong> </h4>
+                    <h4> <strong>EDITAR PROFESIÓN</strong> </h4>
 
                     </header>
 
@@ -101,14 +102,14 @@
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     
                                     <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Usuario</label>
+                                        <label for="usuarioid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="usuarioid" name="usuarioid">
-                                                    <option value="" hidden>Seleccione el usuario que busca</option>
+                                                    <option value="" hidden>Seleccione el técnico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
                                                         $UsuarioCollectorObj = new UsuarioCollector();
-                                                        $usuario = $UsuarioCollectorObj->showUsuarios();
+                                                        $usuario = $UsuarioCollectorObj->showTecnicos();
                                                         foreach ($usuario as $ca){
                                                             if ($ca->getIdusuario() == $profesion->getUsuarioid()){
                                                     ?>

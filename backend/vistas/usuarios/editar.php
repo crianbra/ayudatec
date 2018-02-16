@@ -8,7 +8,6 @@
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("usuarioCollector.php");
         $UsuarioCollectorObj = new UsuarioCollector();
         $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
 
@@ -120,11 +119,29 @@
                                         <div class="col-lg-6">
                                             <input class=" form-control" id="personaid" name="personaid" value="<?=$usuario->getPersonaid();?>" type="text" placeholder="Persona ID"/>
                                         </div>
-                                    </div>
-                                    <div class="form-group ">
+                                    </div> 
+                                     <!-- <div class="form-group ">
                                         <label for="rolid" class="control-label col-lg-3">Rol ID</label>
                                         <div class="col-lg-6">
                                             <input class=" form-control" id="rolid" name="rolid" value="<?=$usuario->getRolid();?>" type="text" placeholder="Rol ID"/>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-group ">
+                                        <label for="rolid" class="control-label col-lg-3">Rol</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="rolid" name="rolid" required>
+                                                    <option value="" hidden>Seleccione el rol</option>
+                                                    <?php
+                                                        include_once("../../collectors/rolCollector.php");
+                                                        $rolCollectorObj = new RolCollector();
+                                                        $roles = $rolCollectorObj->showRols();
+                                                        foreach ($roles as $rol){
+                                                    ?>
+                                                    <option value="<?=$rol->getIdrol();?>"><?=$rol->getDescripcion();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
                                                                         
@@ -147,7 +164,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+                            <a href="index.php">Volver a listar usuarios.</a>
                         </div>
                         <?php
                     }

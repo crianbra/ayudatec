@@ -1,6 +1,4 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
+<?include_once("../auth.php");?>
 
 <!DOCTYPE html>
 <html lang="es">

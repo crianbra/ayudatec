@@ -1,3 +1,4 @@
+<?include_once("../auth.php");?>
 <?php
     include_once("../../collectors/estadocitaCollector.php");
 

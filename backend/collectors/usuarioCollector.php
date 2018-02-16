@@ -41,7 +41,29 @@ class UsuarioCollector extends Collector
     $ObjUsuario = new Usuario($row[0]{'idusuario'},$row[0]{'nombreusuario'},$row[0]{'contrasenia'},$row[0]{'personaid'},$row[0]{'rolid'});
     return $ObjUsuario;
 
-}
+  }
+
+  function showTecnicos() {
+    $rows = self::$db->getRows("SELECT * 
+      FROM usuario 
+      INNER JOIN persona
+      ON (usuario.personaid = persona.idpersona)
+      INNER JOIN rol
+      ON (usuario.rolid = idrol)
+      WHERE usuario.rolid = ? ", array("2"));
+       
+    $arrayUsuario = array();        
+    foreach ($rows as $c){
+        
+      $personaObj = new Persona($c{'idpersona'},$c{'nombre'},$c{'apellido'},$c{'cedula'},$c{'email'},$c{'telefono'},$c{'ciudad'},$c{'zona'},$c{'sexo'}); 
+                
+      $rolObj = new Rol ($c{'idrol'},$c{'descripcion'});
+
+      $aux = new Usuario($c{'idusuario'},$c{'nombreusuario'},$c{'contrasenia'},$personaObj,$rolObj);
+      array_push($arrayUsuario, $aux);
+    }
+    return $arrayUsuario;
+  }
 
 function showCategoriaUsuarios($id) {
   $rows = self::$db->getRows(

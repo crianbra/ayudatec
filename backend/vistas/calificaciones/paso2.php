@@ -1,33 +1,12 @@
-<?php
-    include_once("../auth.php");
-?>
+<?include_once("../auth.php");?>
 
 <?php
 
-    $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
-        //session_start();
+    if (isset($_POST['categoriaid']) && $_POST['categoriaid'] ==! "") {
         
-        
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-        } else {
-            $msg = "error";
-            
-        }
 
-    } else {
-        $guardado = false;
     }
-    /* session_start();
-    $_SESSION["exito"] = "true"; */
 ?>
 
 <!DOCTYPE html>
@@ -82,10 +61,6 @@
                     <h4> <strong>NUEVO CALIFICACIÓN</strong> </h4>
 
                     </header>
-
-                    <?php
-                    if ($guardado == false) {
-                    ?>
                         <div class="panel-body">
                         <?php
                         if ($msg !== "") {
@@ -94,39 +69,20 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
+                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="paso3.php">
+                                    <input type="hidden" name="categoriaid" value="<?=$_POST["categoriaid"]?>">
                                    <div class="form-group ">
                                         <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="tecnicoid" name="tecnicoid">
-                                                    <option value="" hidden>Seleccione al ténico que busca</option>
+                                                    <option value="" hidden>Seleccione al técnico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
+                                                        $tecnicosCollectorObj = new UsuarioCollector();
+                                                        $tecnicos = $tecnicosCollectorObj->showCategoriaUsuarios($_POST["categoriaid"]);
+                                                        foreach ($tecnicos as $tecnico){
                                                     ?>
-                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid" required>
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
+                                                    <option value="<?=$tecnico->getIdusuario();?>"><?=$tecnico->getNombreusuario();?></option>
                                                     <?php
                                                         }
                                                     ?>
@@ -137,28 +93,13 @@
                                     
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
-                                            <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <button class="btn btn-primary" type="submit">Siguiente</button>
+                                            <a href="paso1.php" class="btn btn-default" type="button">Volver</a>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-
-                        
-
-                
-                    <?php
-                    } else {
-                        ?>
-                        <div class="panel-body">
-                            <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a profesion</a>
-                        </div>
-                        <?php
-                    }
-                    ?>
                     </section>
             </div>
         </div>

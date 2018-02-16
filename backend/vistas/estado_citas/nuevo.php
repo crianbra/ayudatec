@@ -1,9 +1,9 @@
+<?include_once("../auth.php");?>
 <?php
 
     $guardado = false;
     $msg = "";
     if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
-        session_start();
 
         $estado = 0;
         if (isset($_POST['activo'])) {

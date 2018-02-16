@@ -37,6 +37,7 @@
                 <form class="form-signin" action="backend/vistas/usuarios/validarusuario.php" method="post">
                                 
                     <div class="btn-toolbar pt-2 justify-content-center" role="toolbar">
+                    <div class="px-2 py-2 font-white font-18px">INICIE SESIÓN</div>
                         <div class="input-group pr-md-4">
                             <input type="text" id="nombreusuario" name="nombreusuario" class="form-control font-12px" placeholder="Usuario" >
                         </div>
