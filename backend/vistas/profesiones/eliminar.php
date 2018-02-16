@@ -13,7 +13,7 @@
             $ProfesionCollectorObj = new ProfesionCollector();
             $resp = $ProfesionCollectorObj->deleteProfesion($_POST['id']);
             if ($resp == true) {
-                $msg = "El rol fue eliminado con éxito";
+                $msg = "La profesión fue eliminado con éxito";
                 $guardado = true;
             } else {
 
@@ -102,15 +102,15 @@
                                         <h3 class="text-center">¿Seguro que desea eliminar esta profesion?</h3>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>
+                                        <label for="usuario" class="control-label col-lg-3">Nombre de Usuario</label>
                                         <div class="col-lg-6">
-                                            <h5 id="usuarioid"><?=$profesion->getUsuarioid();?></h5>
+                                            <h5 id="usuario"><?=$profesion->getUsuarioid()->getNombreusuario();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoria</label>
+                                        <label for="categoria" class="control-label col-lg-3">Categoria</label>
                                         <div class="col-lg-6">
-                                            <h5 id="categoriaid"><?=$profesion->getCategoriaid();?></h5>
+                                            <h5 id="categoria"><?=$profesion->getCategoriaid()->getDescripcion();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group">
