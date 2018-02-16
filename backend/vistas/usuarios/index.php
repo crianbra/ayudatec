@@ -1,8 +1,9 @@
-<?include_once("../constantes.php");?>
+
 <?php
     /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
 
+include_once("../../models/usuario.php");
 
 if (!isset($_SESSION['user'])){
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";

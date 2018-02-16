@@ -9,7 +9,7 @@ include_once("../../models/rol.php");
 //include_once(RUTA_BACKEND.'models/persona.php');
 //include_once(RUTA_BACKEND.'models/rol.php');
 
-class Usuario1Collector extends collector
+class UsuarioCollector extends collector
 {
   
   function showUsuarios() {

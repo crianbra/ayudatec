@@ -1,6 +1,6 @@
 <?php
 
-include_once("usuario1Collector.php");
+include_once("usuarioCollector.php");
 include_once("../../models/usuario.php");
 
 session_start();
@@ -10,7 +10,7 @@ session_start();
 
 $nombreusuario = $_POST['nombreusuario'];
 $contrasenia = $_POST['contrasenia'];
-$Usuario1CollectorObj = new Usuario1Collector();
+$UsuarioCollectorObj = new UsuarioCollector();
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $Usuario1CollectorObj = new Usuario1Collector();
         
         
         <?php
-        foreach($Usuario1CollectorObj->showUsuarios() as $c){
+        foreach($UsuarioCollectorObj->showUsuarios() as $c){
             
             if($c->getNombreusuario()==$nombreusuario && $c->getContrasenia()==$contrasenia){
                 
