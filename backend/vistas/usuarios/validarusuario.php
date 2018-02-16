@@ -40,8 +40,17 @@ $UsuarioCollectorObj = new UsuarioCollector();
                     //echo "<a href='admin.php'> Administracion</a>";
                     //exit();
                     /* echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../admin/admin.php'>"; */
-                    header("Location: http://localhost/ayudatec/backend/vistas/admin/admin.php", true, 301);
-                    exit();
+                    if($_SERVER["SERVER_NAME"] == "localhost")
+                    {
+                        header("Location: http://localhost/ayudatec/backend/vistas/admin/admin.php", true, 301);
+                        exit();
+                    }
+                    else
+                    {
+                        header("Location: http://ayudatec.herokuapp.com/backend/vistas/admin/admin.php", true, 301);
+                        exit();
+                    }
+                    
 
                 }
                 if($c->getRolid()->getIdrol() == 2){
