@@ -10,7 +10,7 @@ session_start();
 
 $nombreusuario = $_POST['nombreusuario'];
 $contrasenia = $_POST['contrasenia'];
-$UsuarioCollectorObj = new Usuario1Collector();
+$Usuario1CollectorObj = new Usuario1Collector();
 
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@ $UsuarioCollectorObj = new Usuario1Collector();
         
         
         <?php
-        foreach($UsuarioCollectorObj->showUsuarios() as $c){
+        foreach($Usuario1CollectorObj->showUsuarios() as $c){
             
             if($c->getNombreusuario()==$nombreusuario && $c->getContrasenia()==$contrasenia){
                 
