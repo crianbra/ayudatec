@@ -15,17 +15,18 @@ class DetallecalificacionCollector extends Collector
       INNER JOIN usuario
       ON (detalle_calificacion.clienteid = usuario.idusuario)"
     );
-    
-      echo "Hola";
       
     $arrayDetallecalificacion = array();        
     foreach ($rows as $c){
         
       $calificacionObj = new Calificacion($c{'idcalificacion'},$c{'promedio'},$c{'desempenioid'},$c{'tecnicoid'});
-      $usuarioObj = new Usuario($c{'idusuario'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
-        
+      $clienteObj = new Usuario($c{'idusuario'}, $c{'nombreusuario'}, $c{'contrasenia'}, $c{'personaid'}, $c{'rolid'});
       
-      $aux = new Detallecalificacion($c{'iddetallecalificacion'},$c{'fecha'},$c{'valoracion'},$c{'comentario'},$calificacionObj,$usuarioObj);
+       /*$tecnico = self::$db->getRows("SELECT * FROM usuario where idusuario= ? ", array("{$c{'clienteid'}}"));
+      $clienteObj = new Usuario($cliente[0]{'idusuario'}, $cliente[0]{'nombreusuario'}, $cliente[0]{'contrasenia'}, $cliente[0]{'personaid'}, $cliente[0]{'rolid'}); */
+      
+      
+      $aux = new Detallecalificacion($c{'iddetallecalificacion'},$c{'fecha'},$c{'valoracion'},$c{'comentario'},$calificacionObj,$clienteObj);
       array_push($arrayDetallecalificacion, $aux);
 
 
