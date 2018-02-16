@@ -30,9 +30,19 @@ class ProfesionCollector extends Collector
   }
 
   function showProfesion($id){
-    $row = self::$db->getRows("SELECT * FROM profesion where idprofesion= ? ", array("{$id}"));
+    $row = self::$db->getRows("SELECT * FROM profesion 
+    INNER JOIN usuario
+    ON (profesion.usuarioid = usuario.idusuario)
+    INNER JOIN categoria
+    ON (profesion.categoriaid = categoria.idcategoria)
+    WHERE idprofesion= ? ", array("{$id}"));
 
-    $ObjProfesion = new Profesion($row[0]{'idprofesion'},$row[0]{'usuarioid'},$row[0]{'categoriaid'});
+
+      $usuarioObj= new Usuario($row[0]{'idusuario'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
+      
+      $categoriaObj= new Categoria($row[0]{'idcategoria'}, $row[0]{'ca_descripcion'});
+      
+      $ObjProfesion = new Profesion($row[0]{'idprofesion'},$usuarioObj,$categoriaObj);
     return $ObjProfesion;
 
 }
