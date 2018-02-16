@@ -237,6 +237,8 @@
 
 <!--script for this page only-->
 <script src="../../assets/js/table-editable.js"></script>
+    
+<script src="//example.com/script.js" type="text/javascript"></script>
 
 <!-- END JAVASCRIPTS -->
 <script>
