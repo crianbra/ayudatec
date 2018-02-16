@@ -41,6 +41,11 @@
             include_once("../../collectors/usuarioCollector.php");
             $usuarioCollectorObj = new UsuarioCollector();
             $_SESSION["user"] = $usuarioCollectorObj->showUsuario(1);
+            /* var_dump($_SESSION["user"]->getIdusuario());
+            exit(); */
+
+            /* echo "descripcion". $_POST['descripcion'];
+            exit(); */
 
             include_once("../../collectors/citaCollector.php");
             $CitaCollectorObj = new CitaCollector();
@@ -59,7 +64,8 @@
         
         $guardado = false;
     }
-
+    /* session_start();
+    $_SESSION["exito"] = "true"; */
 ?>
 
 <!DOCTYPE html>
