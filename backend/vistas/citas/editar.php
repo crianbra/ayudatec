@@ -1,4 +1,8 @@
 <?php
+    include_once("../auth.php");
+?>
+
+<?php
 include_once("../../collectors/citaCollector.php");
 include_once("../../collectors/categoriaCollector.php");
 include_once("../../collectors/usuarioCollector.php");

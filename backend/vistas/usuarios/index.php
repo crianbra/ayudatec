@@ -3,9 +3,8 @@
     /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
 
-
-include_once("../../collectors/usuarioCollector.php");
-include_once("../../models/usuario.php");
+    include_once("../auth.php");
+    include_once("../../collectors/usuarioCollector.php");
 
 
 /*if (!isset($_SESSION['user'])){

@@ -1,9 +1,8 @@
 <?php
 
-    sesion_start();
+    include_once("../auth.php");
     
     include_once("../../collectors/usuarioCollector.php");
-    include_once("../../models/usuario.php");
 
     $guardado = false;
     $msg = "";

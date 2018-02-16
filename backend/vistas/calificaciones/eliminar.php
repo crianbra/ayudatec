@@ -1,28 +1,31 @@
-
-
 <?php
+    include_once("../auth.php");
+?>
+<?php
+    include_once("../../collectors/detallecalificacionCollector.php");
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
-        //session_start();
-        
-        
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
+    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
+
+        if (isset($_POST['id']) && $_POST['id'] ==! "") {
+            $DetalleCalificacionObj = new Detallecalificacion();
+            $resp = $DetalleCalificacionObj->deleteDetCalificacion($_POST['id']);
+            if ($resp == true) {
+                $msg = "El rol fue eliminado con éxito";
+                $guardado = true;
+            } else {
+                $msg = "error";
+                
+            }
         } else {
-            $msg = "error";
-            
+            $DetalleCalificacionObj = new Detallecalificacion();
+            $detallecaccilicacion = $DetalleCalificacionObj->showDetcalificacion($_GET['id']);
         }
 
     } else {
-        $guardado = false;
+            $msg = "No ha llegado ningún ID de detCalificacion";
+            $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -37,7 +40,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>AYUDATEC :: Califica al técnico</title>
+    <title>Eliminando detalle de calificación</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -68,8 +71,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Calificaciones</a></li>
-                        <li class="active">Nueva calificación</li>
+                        <li><a href="index.php">Valoración más Comentario</a></li>
+                        <li class="active">Eliminar valoración</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -77,7 +80,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO CALIFICACIÓN</strong> </h4>
+                    <h4> <strong>ELIMINAR VALORACIÓN</strong> </h4>
 
                     </header>
 
@@ -93,51 +96,28 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
-                                   <div class="form-group ">
-                                        <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="tecnicoid" name="tecnicoid">
-                                                    <option value="" hidden>Seleccione al ténico que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
-                                   
+                                    <input type="text" name="id" hidden value="<?=$detallecaccilicacion->getIddetallecalificacion();?>">
                                     <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
+                                        <h3 class="text-center">¿Seguro que desea eliminar esta valoración?</h3>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid" required>
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <h5 id="usuarioid"><?=$profesion->getUsuarioid();?></h5>
                                         </div>
                                     </div>
-                                   
-                                    
+                                    <div class="form-group ">
+                                        <label for="categoriaid" class="control-label col-lg-3">Categoria</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="categoriaid"><?=$profesion->getCategoriaid();?></h5>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
+                                            <button class="btn btn-primary" type="submit">Aceptar</button>
                                             <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
                                         </div>
                                     </div>
                                 </form>
@@ -152,7 +132,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a profesion</a>
+                            <a href="index.php">Volver a profesión</a>
                         </div>
                         <?php
                     }
@@ -198,7 +178,9 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-    
+
+
+
 </script>
 
 </body>

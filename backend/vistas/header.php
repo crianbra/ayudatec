@@ -22,7 +22,7 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <!-- <img alt="" src="../../assets/images/avatar1_small.jpg"> -->
-                <span class="username"><?=$_SESSION['user'];?></span>
+                <span class="username"><?=$_SESSION['user']->getNombreusuario();?></span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">

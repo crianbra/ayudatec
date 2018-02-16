@@ -22,21 +22,22 @@
                 </a>
             </li>
             <li>
-                <a href="../categorias/index.php">
-                    <i class="fa fa-th"></i>
-                    <span>Categorias de Técnicos</span>
-                </a>
-            </li>
-            <li>
                 <a href="../profesiones/index.php">
                     <i class="fa fa-gavel"></i>
                     <span>Profesionales</span>
                 </a>
             </li>
-            <li class=" ">
-                <a href="../estado_citas/index.php" >
-                    <i class="fa fa-book"></i>
-                    <span>Estado de citas</span>
+            <li>
+                <a href="../categorias/index.php">
+                    <i class="fa fa-th"></i>
+                    <span>Categorias de Técnicos</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../calificaciones/index.php">
+                    <i class="fa fa-star-o"></i>
+                    <span>Calificaciones </span>
                 </a>
             </li>
             <li class=" ">
@@ -45,22 +46,16 @@
                     <span>Citas agendadas</span>
                 </a>
             </li>
-            <li>
-                <a href="../calificaciones/index.php">
-                    <i class="fa fa-star-o"></i>
-                    <span>Calificaciones </span>
+            <li class=" ">
+                <a href="../estado_citas/index.php" >
+                    <i class="fa fa-book"></i>
+                    <span>Estado de citas</span>
                 </a>
             </li>
             <li>
                 <a href="../desempenio/index.php">
                     <i class="fa fa-signal"></i>
                     <span>Escalas desempeño </span>
-                </a>
-            </li>
-            <li class=" ">
-                <a href="../detCalificaciones/index.php">
-                    <i class="fa fa-comments-o"></i>
-                    <span>Detalle de calificaciones</span>
                 </a>
             </li>
         </ul></div>        

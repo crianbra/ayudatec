@@ -30,7 +30,7 @@ $UsuarioCollectorObj = new UsuarioCollector();
             if($c->getNombreusuario()==$nombreusuario && $c->getContrasenia()==$contrasenia){
                 
                
-                $_SESSION['user']= $nombreusuario;
+                $_SESSION['user']= $c;
                 $_SESSION['rol']= $c->getRolid();
                 
                 //echo $c->getRolid()->getIdrol(); 
