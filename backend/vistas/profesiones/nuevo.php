@@ -1,7 +1,4 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
+<?include_once("../auth.php");?>
 <?php
 
     $guardado = false;
@@ -13,8 +10,7 @@
         include_once("../../collectors/profesionCollector.php");
         $ProfesionCollectorObj = new ProfesionCollector();
         $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
+        
         if ($profesion == true) {
             $msg = "La profesion fue guardada con éxito";
             $guardado = true;
@@ -98,16 +94,17 @@
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     
                                    <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>
+                                        <label for="usuario" class="control-label col-lg-3">Nombre de Usuario</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuarioid">
+                                                <select class="form-control" id="usuarioid" name="usuario">
                                                     <option value="" hidden>Seleccione el usuario que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
                                                         $usuarioCollectorObj = new UsuarioCollector();
-                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
+                                                        $usuariosObj = $usuarioCollectorObj->showUsuarios();
+                                                        foreach ($usuariosObj as $ca){
                                                     ?>
+                            
                                                     <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
                                                     <?php
                                                         }

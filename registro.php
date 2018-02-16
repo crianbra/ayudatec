@@ -1,5 +1,9 @@
 <?php
 	session_start();
+    if (isset($_SESSION['user'])){
+                session_destroy();
+              
+        }
 ?>
 
 <!doctype html>
@@ -27,23 +31,20 @@
         <nav id="menu-registro" class="navbar navbar-expand-lg pt-3">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/images/logo_ayudatec.png" alt="Ayudatec" >
+                <img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" >
                 </a>
                 
                 <form class="form-signin" action="backend/vistas/usuarios/validarusuario.php" method="post">
                                 
                     <div class="btn-toolbar pt-2 justify-content-center" role="toolbar">
-                  <div class="input-group">
-                    <input type="text" id="nombreusuario" name="nombreusuario" class="form-control" placeholder="Usuario" >
-                  </div>
-                  <div class="input-group mt-3 mt-sm-0 ml-sm-2">
-                    <input type="password" id="contrasenia" name="contrasenia" class="form-control" placeholder="Contraseña">
-                  </div>
-                  <div class="btn-group mt-3 mt-md-0 ml-lg-2" role="group">
-                    <button type="button" id="login" class="btn btn-lineal btn-blue font-12px">INICIAR SESIÓN</button>
-                    
-                  </div>
-                    <input type="submit" class="btn btn-success" name="login" value="Entrar">
+                        <div class="input-group pr-md-4">
+                            <input type="text" id="nombreusuario" name="nombreusuario" class="form-control font-12px" placeholder="Usuario" >
+                        </div>
+                        <div class="input-group mt-3 mt-sm-0 ml-sm-2 pr-md-4">
+                            <input type="password" id="contrasenia" name="contrasenia" class="form-control font-12px" placeholder="Contraseña">
+                        </div>
+                        
+                        <input type="submit" class="btn btn-lineal btn-blue mx-2 mt-1 font-12px" name="login" value="ENTRAR">
                 </div>
                 </form>
                 
@@ -51,35 +52,50 @@
         </nav>
     </header>
 
-    <section id="formulario" class="py-5">
+     <section id="formulario" class="py-5">
         <div class="container">
-          <div class="row pb-5">
+          <!--<div class="row pb-5">
               <div class="col-12 font-20px text-center">
                 
                 </div>
                 <h3 class="col-12 font-20px text-center">
                     Regístrate y encuentra tu técnico 
                 </h3>
-          </div>
+          </div> -->
           <div class="row">
-              <div class="col-12 col-md-4 pb-4">
-                  <button type="button" id="fblogin" class="btn btn-primary  font-white">
-                      Inicia sesión con <strong>Facebook</strong>
-                  </button>
+              <div class="col-12 col-lg-6 pb-4">
+                  <div class="row">
+                    <div class="col-12 text-center text-lg-center">
+                        <h1><img src="assets/images/mascota.svg" alt=""></h1>
+                    </div>
+                  </div>
               </div>
+              <!--<form method="post" class="col-12 col-lg-8 pb-3">-->
               <div class="col-12 col-md">
                   <div class="row">
+                      <h3 class="col-12 font-20px pt-3 mb-0 text-center text-lg-left">
+                        Regístrese con su correo 
+                    </h3>
+                    <div class="col-12 font-18px pb-3 text-center text-lg-left">
+                        y encuentre a su técnico 
+                    </div>
                             <!--<div class="col-12 col-lg-7 pb-3">
                                 <input type="text" id="nombre" class="form-control " placeholder="Nombre">
                             </div>
                             <div class="col-12 col-lg-5 pb-3">
                                 <input type="text" id="telefono" class="form-control" placeholder="Telefono">
                             </div>-->
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="text" id="correo" class="form-control" placeholder="Correo">
+                            <div class="col-12 col-lg-4 pb-3 text-lg-left">
+                                Correo:
                             </div>
-                            <div class="col-12 col-lg-6 pb-3">
-                                <input type="password" id="contrasena" class="form-control" placeholder="Contraseña">
+                            <div class="col-12 col-lg-6 pb-3 text-lg-left">
+                                <input type="email" id="correo" class="form-control" placeholder="ejemplo@mail.com" required>
+                            </div>
+                            <div class="col-12 col-lg-4 pb-3 text-lg-left">
+                                Contraseña:
+                            </div>
+                            <div class="col-12 col-lg-6 pb-3 text-lg-left">
+                                <input type="password" id="contrasena" class="form-control" placeholder="mínimo 6 caracteres" required minlength="6">
                             </div>
                             
                            <!-- <div class="col-12 col-lg-4 pb-3">
@@ -117,6 +133,7 @@
                             </div>
                             <div class="col-12 mt-4 text-center" role="group">
                                 <!--<a href= "tecnicos.html" class="btn btn-lineal btn-blue font-12px">REGISTRARSE</a>-->
+                                <!--<input id="submit" type="submit" name="submit" value="REGISTRARSE" onclick="registrar()" class="btn btn-lineal btn-blue font-12px">-->
                                 <button type="button" onclick="registrar()" class="btn btn-lineal btn-blue font-12px">REGISTRARSE</button>
                             </div>
                             
@@ -125,6 +142,7 @@
                             </div>
               </div>
           </div>
+          <!--</form>-->
         </div>
     </div>
     </section>

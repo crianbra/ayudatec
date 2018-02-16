@@ -1,8 +1,8 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
 <?php
+
+    include_once("../auth.php");
+    
+    include_once("../../collectors/usuarioCollector.php");
 
     $guardado = false;
     $msg = "";

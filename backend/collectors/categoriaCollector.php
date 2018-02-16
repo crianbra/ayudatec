@@ -1,7 +1,7 @@
 <?php
 
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/categoria.php');
+include_once('../../config/collector.php');
+include_once('../../models/categoria.php');
 
 class CategoriaCollector extends Collector
 {

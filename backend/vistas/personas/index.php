@@ -1,9 +1,4 @@
-<?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-
-?>
-
+<?include_once("../auth.php");?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -92,7 +87,7 @@
                                     $PersonaCollectorObj = new PersonaCollector();
                                     $personas = $PersonaCollectorObj->showPersonas();
                                     foreach ($personas as $c){
-                                        $idpersona = $_GET['idpersona'];
+                                        /* $idpersona = $_GET['idpersona']; */
                                 ?>
                                     <tr class="b-filas">
                                         <td><?=$c->getIdpersona();?></td>
@@ -171,3 +166,11 @@
 
 </body>
 </html>
+
+<?php
+
+//}
+//}
+
+             
+?>

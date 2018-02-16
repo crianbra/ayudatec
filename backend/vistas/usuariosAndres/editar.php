@@ -1,36 +1,36 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
 <?php
 
-    
+    include_once("usuarioCollector.php");
+    include_once("../../models/usuario.php");
 
     $guardado = false;
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->showProfesion($_GET['id']);
+        include_once("usuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
 
-        if ((isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! ""))
+        if ((isset($_POST['nombreusuario']) && $_POST['nombreusuario'] ==! "") ||
+            (isset($_POST['contrasenia']) && $_POST['contrasenia'] ==! "") ||
+            (isset($_POST['personaid']) && $_POST['personaid'] ==! "") ||
+            (isset($_POST['rolid']) && $_POST['rolid'] ==! ""))
         {
 
-            $ProfesionCollectorObj = new ProfesionCollector();
-            $resp = $ProfesionCollectorObj->updateProfesion($_GET['id'], $_POST['usuarioid'], $_POST['categoriaid']);
+            $UsuarioCollectorObj = new UsuarioCollector();
+            $resp = $UsuarioCollectorObj->updateUsuario($_GET['id'], $_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
 
             if ($resp == true) {
-                $msg = "La profesion fue modificada con éxito";
+                $msg = "El usuario fue modificada con éxito";
                 $guardado = true;
             } else {
-                $msg = "error";
+                $msg = "Error";
                 
             }
         }
 
     } else {
-        $msg = "No ha llegado ningún ID de Profesion";
+        $msg = "No ha llegado ningún ID del Usuario";
         $guardado = false;
     }
     /* session_start();
@@ -46,7 +46,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Editar Profesion</title>
+    <title>Editar Usuario</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -77,8 +77,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesion</a></li>
-                        <li class="active">Editar profesion</li>
+                        <li><a href="index.php">Usuario</a></li>
+                        <li class="active">Editar usuario</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -86,7 +86,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR PROFESION</strong> </h4>
+                    <h4> <strong>EDITAR USUARIO</strong> </h4>
 
                     </header>
 
@@ -102,61 +102,31 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
                                     <div class="form-group ">
-                                        <label for="usuarioid" class="control-label col-lg-3">Usuario</label>
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre Usuario</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuarioid">
-                                                    <option value="" hidden>Seleccione el usuario que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $UsuarioCollectorObj = new UsuarioCollector();
-                                                        $usuario = $UsuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuario as $ca){
-                                                            if ($ca->getIdusuario() == $profesion->getUsuarioid()){
-                                                    ?>
-                                                                <option value="<?=$ca->getIdusuario();?>" selected><?=$ca->getNombreusuario();?></option>
-                                                    <?php
-                                                            } else {
-                                                    ?>
-                                                    
-                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
-                                                    <?php
-                                                            }
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <input class=" form-control" id="nombreusuario" name="nombreusuario" value="<?=$usuario->getNombreusuario();?>" type="text" placeholder="Nombre Usuario"/>
                                         </div>
                                     </div>
-                                   
                                     <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid">
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $CategoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $CategoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                            if ($ca->getIdcategoria() == $profesion->getCategoriaid()){
-                                                    ?>
-                                                                <option value="<?=$ca->getIdcategoria();?>" selected><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                            } else {
-                                                    ?>
-                                                    
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                            }
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <input class=" form-control" id="contrasenia" name="contrasenia" value="<?=$usuario->getContrasenia();?>" type="text" placeholder="Contrasenia"/>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
+                                    <div class="form-group ">
+                                        <label for="personaid" class="control-label col-lg-3">Persona ID</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="personaid" name="personaid" value="<?=$usuario->getPersonaid();?>" type="text" placeholder="Persona ID"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="rolid" class="control-label col-lg-3">Rol ID</label>
+                                        <div class="col-lg-6">
+                                            <input class=" form-control" id="rolid" name="rolid" value="<?=$usuario->getRolid();?>" type="text" placeholder="Rol ID"/>
+                                        </div>
+                                    </div>
+                                                                        
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
@@ -176,7 +146,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a profesion</a>
+                            <a href="index.php">Volver a buscar técnicos</a>
                         </div>
                         <?php
                     }

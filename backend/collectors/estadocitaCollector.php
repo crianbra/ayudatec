@@ -1,6 +1,6 @@
 <?php
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/estado_cita.php');
+include_once('../../config/collector.php'); 
+include_once('../../models/estado_cita.php');
 
 class EstadoCitaCollector extends Collector
 {

@@ -1,6 +1,18 @@
+
 <?php
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
+    /*define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
+    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');*/
+
+    include_once("../auth.php");
+    include_once("../../collectors/usuarioCollector.php");
+
+
+/*if (!isset($_SESSION['user'])){
+            echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
+        } else{
+            if(!$_SESSION['rol'] == 1){
+                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../index.php'>";
+            }else{ */
 
 ?>
 
@@ -29,7 +41,7 @@
 </head>
 
 <body>
-
+    
 <section id="container" >
 <!--header start-->
 <?=include_once("../header.php");?>
@@ -81,7 +93,6 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    include_once("usuarioCollector.php");
                                     
                                     $UsuarioCollectorObj = new UsuarioCollector();
                                     $usuarios = $UsuarioCollectorObj->showUsuarios();
@@ -157,6 +168,13 @@
 //    } );
 //} );
 </script>
+    
 
 </body>
 </html>
+
+<?php
+
+//}
+
+?> 

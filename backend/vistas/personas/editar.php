@@ -1,7 +1,4 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
+<?include_once("../auth.php");?>
 <?php
 
     $guardado = false;

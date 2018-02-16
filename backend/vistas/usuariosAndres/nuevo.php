@@ -1,11 +1,12 @@
-<?include_once("../auth.php");?>
+ <?include_once("../constantes.php");?>
 <?php
     //define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
     //define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['nombre']) && $_POST['nombre'] ==! "") {
+    if (isset($_POST['nombreusuario']) && $_POST['nombreusuario'] ==! "") {
+        session_start();
         /*include_once("../../collectors/usuarioCollector.php");
         $usuarioCollectorObj = new UsuarioCollector();
         $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
@@ -15,13 +16,13 @@
         /* echo "descripcion". $_POST['descripcion'];
         exit(); */
 
-        include_once("../../collectors/personaCollector.php");
-        $personaCollectorObj = new personaCollector();
-        $persona = $personaCollectorObj->createPersona($_POST['nombre'], $_POST['apellido'], $_POST['cedula'], $_POST['email'], $_POST['telefono'], $_POST['ciudad'], $_POST['zona'], $_POST['sexo']);
+        include_once("usuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $usuario = $UsuarioCollectorObj->createUsuario($_POST['nombreusuario'], $_POST['contrasenia'], $_POST['personaid'], $_POST['rolid']);
         /* echo "Resultado: <br>";
         var_dump($citas); */
-        if ($persona == true) {
-            $msg = "La persona fue guardada con éxito";
+        if ($usuario == true) {
+            $msg = "El usuario fue guardado con éxito";
             $guardado = true;
         } else {
             $msg = "Error:".$resp;
@@ -62,20 +63,98 @@
 
 <section id="container" >
 <!--header start-->
-<?=include_once("../header.php");?>
+<header class="header fixed-top clearfix">
+<!--logo start-->
+<div class="brand">
+
+    <a href="citas.php" class="logo">
+        <img src="../../assets/images/logo_ayudatec_bn.png" alt="Ayudatec">
+    </a>
+    <div class="sidebar-toggle-box">
+        <div class="fa fa-bars"></div>
+    </div>
+</div>
+<!--logo end-->
+
+<div class="top-nav clearfix">
+    <!--search & user info start-->
+    <ul class="nav pull-right top-menu">
+        <li>
+            <input type="text" class="form-control search" placeholder=" Search">
+        </li>
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                <img alt="" src="../../assets/images/avatar1_small.jpg">
+                <span class="username">John Doe</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+                <li><a href="#"><i class=" fa fa-male"></i>Perfil</a></li>
+                <li><a href="#"><i class="fa fa-lock"></i> Seguridad</a></li>
+                <li><a href="login.html"><i class="fa fa-key"></i> Cerrar sesión</a></li>
+            </ul>
+        </li>
+        <!-- user login dropdown end -->
+
+    </ul>
+    <!--search & user info end-->
+</div>
+</header>
 <!--header end-->
-<!--aside start-->
-<?=include_once("../aside.php");?>
-<!--aside end-->
+<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->            <div class="leftside-navigation">
+        <ul class="sidebar-menu" id="nav-accordion">
+            <li class="sub-menu">
+                <a href="../personas/index.php">
+                    <i class="fa fa-user"></i>
+                    <span>Personas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../tecnicos/index.php">
+                    <i class="fa fa-group"></i>
+                    <span>Técnicos</span>
+                </a>
+            </li>
+            <li class=" ">
+                <a href="index.php" class="active">
+                    <i class="fa fa-book"></i>
+                    <span>Citas agendadas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../calificacion/index.php">
+                    <i class="fa fa-comments-o"></i>
+                    <span>Feedback </span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                 <a href="">
+                    <i class="fa fa-cog"></i>
+                    <span>Configuración </span>
+                </a>
+                    <ul class="sub">
+                        <li><a href="../usuarios/index.php">Usuarios</a></li>
+                        <li><a href="../roles/index.php">Roles</a></li>
+                        <li><a href="../estado_citas/index.php">Estado de citas</a></li>
+                        <li><a href="../tecnico_x_categoria/index.php">Categoria de técnicos</a></li>
+                    </ul>
+                </li>
+        </ul></div>        
+<!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
         <!-- page start-->
-
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Personas</a></li>
-                        <li class="active">Nueva Persona</li>
+                        <li><a href="index.php">Usuarios</a></li>
+                        <li class="active">Nuevo Usuario</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -83,7 +162,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVA PERSONA</strong> </h4>
+                    <h4> <strong>NUEVO USUARIO</strong> </h4>
 
                     </header>
 
@@ -100,51 +179,51 @@
 
                                 <form class="cmxform form-horizontal " id="personaForm" method="post" action="">
                                     <div class="form-group ">
-                                        <label for="nombre" class="control-label col-lg-3">Nombre</label>
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre Usuario</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="nombre" name="nombre" type="text" placeholder="Nombre"/>
+                                            <input class="form-control" id="nombreusuario" name="nombreusuario" type="text" placeholder="Nombre Usuario"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="apellido" class="control-label col-lg-3">Apellido</label>
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="apellido" name="apellido" type="text" placeholder="Apellido"/>
+                                            <input class="form-control" id="contrasenia" name="contrasenia" type="text" placeholder="Contrasenia"/>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="cedula" class="control-label col-lg-3">Cedula</label>
+                                        <label for="personaid" class="control-label col-lg-3">Nombre Persona</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="cedula" name="cedula" type="text" placeholder="Cedula"/>
+                                                <select class="form-control" id="personaid" name="personaid" required>
+                                                    <option value="" hidden>Seleccione la persona que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/personaCollector.php");
+                                                        $PersonaCollectorObj = new PersonaCollector();
+                                                        $persona = $PersonaCollectorObj->showPersonas();
+                                                        foreach ($persona as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-3">Email</label>
+                                        <label for="rolid" class="control-label col-lg-3">Roles</label>
                                         <div class="col-lg-6">
-                                            <input class="form-control" id="email" name="email" type="text" placeholder="Email"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="telefono" class="control-label col-lg-3">Telefono</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="telefono" name="telefono" type="text" placeholder="Telefono"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="ciudad" class="control-label col-lg-3">Ciudad</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="ciudad" name="ciudad" type="text" placeholder="Ciudad"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="zona" class="control-label col-lg-3">Zona</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="zona" name="zona" type="text" placeholder="Zona"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="sexo" class="control-label col-lg-3">Sexo</label>
-                                        <div class="col-lg-6">
-                                            <input class=" form-control" id="sexo" name="sexo" type="text" placeholder="Sexo"/>
+                                                <select class="form-control" id="rolid" name="rolid" required>
+                                                    <option value="" hidden>Seleccione el rol que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/rolCollector.php");
+                                                        $RolCollectorObj = new RolCollector();
+                                                        $rol = $RolCollectorObj->showRols();
+                                                        foreach ($rol as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdrol();?>"><?=$ca->getDescripcion();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                         </div>
                                     </div>
                                     

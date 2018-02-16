@@ -1,6 +1,6 @@
 <?php
-include_once(RUTA_BACKEND.'config/collector.php'); 
-include_once(RUTA_BACKEND.'models/desempenio.php');
+include_once('../../config/collector.php'); 
+include_once('../../models/desempenio.php');
 
 class DesempenioCollector extends Collector
 {

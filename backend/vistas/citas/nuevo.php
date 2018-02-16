@@ -1,7 +1,4 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
+<?include_once("../auth.php");?>
 <?php
 
     if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
@@ -182,10 +179,7 @@
                                 </form>
                             </div>
                         </div>
-
-                        
-
-                
+ 
                     <?php
                     } else {
                         ?>
@@ -255,14 +249,6 @@
         });
 
     })
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
 </script>
 
 </body>

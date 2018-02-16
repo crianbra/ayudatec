@@ -1,31 +1,33 @@
-<?include_once("../auth.php");?>
+<!--constantes start-->
+<?include_once("../constantes.php");?>
+<!--constantes end-->
 
 <?php
 
+    include_once("../../models/usuario.php");
+    include_once("usuarioCollector.php");
+
     $guardado = false;
     $msg = "";
-    if (isset($_GET['id']) && $_GET['id'] ==! "") {
+    if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
-        include_once("../../collectors/desempenioCollector.php");
-        $DesempenioCollectorObj = new DesempenioCollector();
-        $desempenio = $DesempenioCollectorObj->showDesempenio($_GET['id']);
-
-        if (isset($_POST['maximo']) && $_POST['maximo'] ==! "")
-        {
-            $DesempenioCollectorObj = new DesempenioCollector();
-            $resp = $DesempenioCollectorObj->updateDesempenio($_GET['id'], $_POST['maximo'], $_POST['minimo'],$_POST['escala']);
-
+        if (isset($_POST['id']) && $_POST['id'] ==! "") {
+            $UsuarioCollectorObj = new UsuarioCollector();
+            $resp = $UsuarioCollectorObj->deleteUsuario($_POST['id']);
             if ($resp == true) {
-                $msg = "El parámetro de desempeño fue modificado con éxito";
+                $msg = "El usuario fue eliminado con éxito";
                 $guardado = true;
             } else {
                 $msg = "Error:".$resp;
             }
+        } else {
+            $UsuarioCollectorObj = new UsuarioCollector();
+            $usuario = $UsuarioCollectorObj->showUsuario($_GET['id']);
         }
 
     } else {
-        $msg = "No ha llegado ningún ID del parámetro de desempeño";
-        $guardado = false;
+            $msg = "No ha llegado ningún ID de Usuario";
+            $guardado = false;
     }
     /* session_start();
     $_SESSION["exito"] = "true"; */
@@ -40,7 +42,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Editar Parámetros de desempeño</title>
+    <title>Eliminar Usuario</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -71,8 +73,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Parámetros de desempeño</a></li>
-                        <li class="active">Editar parámetros de desempeño</li>
+                        <li><a href="index.php">Usuario</a></li>
+                        <li class="active">Eliminar usuario</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -80,7 +82,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>EDITAR PARÁMETRO DE DESEMPEÑO</strong> </h4>
+                    <h4> <strong>ELIMINAR USUARIO</strong> </h4>
 
                     </header>
 
@@ -95,31 +97,41 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="desempenioForm" method="post" action="">
+                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
+                                    <input type="text" name="id" hidden value="<?=$usuario->getIdusuario();?>">
                                     <div class="form-group ">
-                                        <label for="maximo" class="control-label col-lg-3">Máximo</label>
+                                        <h3 class="text-center">¿Seguro que desea eliminar este usuario?</h3>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="nombreusuario" class="control-label col-lg-3">Nombre de Usuario</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="maximo" name="maximo" value="<?=$desempenio->getMaximo();?>" type="text" placeholder="Ejemplo: 5"/>
+                                            <h5 id="nombreusuario"><?=$usuario->getNombreusuario();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="minimo" class="control-label col-lg-3">Mínimo</label>
+                                        <label for="contrasenia" class="control-label col-lg-3">Contrasenia</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="minimo" name="minimo" value="<?=$desempenio->getMinimo();?>" type="text" placeholder="Ejemplo: 1"/>
+                                            <h5 id="contrasenia"><?=$usuario->getContrasenia();?></h5>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="escala" class="control-label col-lg-3">Escala</label>
+                                        <label for="personaid" class="control-label col-lg-3">Persona Id</label>
                                         <div class="col-lg-6">
-                                            <input class=" form-control" id="escala" name="escala" value="<?=$desempenio->getEscala();?>" type="text" placeholder="Ejemplo: Sobresaliente"/>
+                                            <h5 id="personaid"><?=$usuario->getPersonaid();?></h5>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-group ">
+                                        <label for="rolid" class="control-label col-lg-3">Rol Id</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="rolid"><?=$usuario->getRolid();?></h5>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
+                                            <button class="btn btn-primary" type="submit">Aceptar</button>
                                             <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <!-- <h3>¿Seguro que desea eliminar esta cita?</h3> -->
                                         </div>
                                     </div>
                                 </form>
@@ -134,7 +146,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a listar los parámetros de desempeño</a>
+                            <a href="index.php">Volver a usuarios</a>
                         </div>
                         <?php
                     }

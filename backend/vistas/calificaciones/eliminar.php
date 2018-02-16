@@ -1,17 +1,14 @@
-<!--constantes start-->
-<?include_once("../constantes.php");?>
-<!--constantes end-->
-
+<?include_once("../auth.php");?>
 <?php
-    include_once("../../collectors/profesionCollector.php");
+    include_once("../../collectors/detallecalificacionCollector.php");
 
     $guardado = false;
     $msg = "";
     if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
         if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $ProfesionCollectorObj = new ProfesionCollector();
-            $resp = $ProfesionCollectorObj->deleteProfesion($_POST['id']);
+            $DetalleCalificacionObj = new Detallecalificacion();
+            $resp = $DetalleCalificacionObj->deleteDetCalificacion($_POST['id']);
             if ($resp == true) {
                 $msg = "El rol fue eliminado con éxito";
                 $guardado = true;
@@ -20,12 +17,12 @@
                 
             }
         } else {
-            $ProfesionCollectorObj = new ProfesionCollector();
-            $profesion = $ProfesionCollectorObj->showProfesion($_GET['id']);
+            $DetalleCalificacionObj = new Detallecalificacion();
+            $detallecaccilicacion = $DetalleCalificacionObj->showDetcalificacion($_GET['id']);
         }
 
     } else {
-            $msg = "No ha llegado ningún ID de profesion";
+            $msg = "No ha llegado ningún ID de detCalificacion";
             $guardado = false;
     }
     /* session_start();
@@ -41,7 +38,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Eliminando Profesion</title>
+    <title>Eliminando detalle de calificación</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -72,8 +69,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesion</a></li>
-                        <li class="active">Eliminar profesion</li>
+                        <li><a href="index.php">Valoración más Comentario</a></li>
+                        <li class="active">Eliminar valoración</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -81,7 +78,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>ELIMINAR PROFESION</strong> </h4>
+                    <h4> <strong>ELIMINAR VALORACIÓN</strong> </h4>
 
                     </header>
 
@@ -97,9 +94,9 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$profesion->getIdprofesion();?>">
+                                    <input type="text" name="id" hidden value="<?=$detallecaccilicacion->getIddetallecalificacion();?>">
                                     <div class="form-group ">
-                                        <h3 class="text-center">¿Seguro que desea eliminar esta profesion?</h3>
+                                        <h3 class="text-center">¿Seguro que desea eliminar esta valoración?</h3>
                                     </div>
                                     <div class="form-group ">
                                         <label for="usuarioid" class="control-label col-lg-3">Nombre de Usuario</label>

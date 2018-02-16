@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
-
-
-                
 ?>
 
 <!DOCTYPE html>
@@ -32,78 +27,36 @@ session_start();
 
 </head>
 
-<body>
-    
-<section id="container" >
+<body class="body-500">
+    <div class="error-head"> </div>
 
-    <!--main content start-->
-    <div class="container">
-        <br> <br><br> <br> <br>
-        <div class="intro-message">
+    <div class="container ">
 
-            <div id="logout">
+        <section class="error-wrapper text-center">
+            <h1><img src="../../assets/images/mascota.svg" alt=""></h1>
+            <div class="error-desk">
 
-                <?php
-        if (isset($_SESSION['user'])){
-                session_destroy();
-              echo '<h2>Ha terminado la sesión </h2><p><a href="../../index.php">INICIO</a></p>';
-        }else{
-               
-              
-        }
-    ?>
+                <div class="intro-message">
+
+                        <div id="logout">
+
+                            <?php
+                                if (isset($_SESSION['user'])){
+                                    session_destroy();
+                                echo '<h2>Ha terminado la sesión </h2>';
+                                }else{       
+                                }
+                            ?>
+                        </div>
+                </div>
+                <p>Gracias por ser parte de la primera comunidad de técnicos en el Ecuador.</p>
+            
+                <a href="../../index.php" class="back-btn"><i class="fa fa-home"></i> Ir al inicio</a>
             </div>
-        </div>
+        
+        </section>
 
     </div>
-    <!--main content end-->
-
-</section>
     
-   
-
-<!-- Placed js at the end of the document so the pages load faster -->
-
-<!--Core js-->
-<script src="../assets/js/jquery-1.10.2.min.js"></script>
-<script src="../assets/js/jquery-migrate.js"></script>
-
-<script src="../assets/bs3/js/bootstrap.min.js"></script>
-<script class="include" type="text/javascript" src="../assets/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="../assets/js/jquery.scrollTo.min.js"></script>
-<script src="../assets/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
-<script src="../assets/js/jquery.nicescroll.js"></script>
-<!--Easy Pie Chart-->
-<script src="../assets/js/easypiechart/jquery.easypiechart.js"></script>
-<!--Sparkline Chart-->
-<script src="../assets/js/sparkline/jquery.sparkline.js"></script>
-<!--jQuery Flot Chart-->
-
-<script type="text/javascript" src="../assets/js/data-tables/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../assets/js/data-tables/DT_bootstrap.js"></script>
-
-<!--common script init for all pages-->
-<script src="../assets/js/scripts.js"></script>
-
-<!--script for this page only-->
-<script src="../assets/js/table-editable.js"></script>
-
-<!-- END JAVASCRIPTS -->
-<script>
-    jQuery(document).ready(function() {
-        EditableTable.init();
-    });
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
-</script>
-    
-     
-
 </body>
 </html>

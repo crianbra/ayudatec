@@ -13,7 +13,7 @@ header {
     font-size: 0.9rem;
 }
 
-#menu-usuario {
+#menu-usuario, #menu-registro {
     background-color: #007EE5;
 }
 
@@ -60,7 +60,7 @@ header {
     border: 2px solid #FFC80A;
 }
 
-.btn-blue {
+.btn-blue-lo {
     color: #4DA1FF;
     border: 2px solid #4DA1FF;
 }
