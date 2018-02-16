@@ -71,7 +71,7 @@
                                         <td><?=$c->getFecha();?></td>
                                         <td><?=$c->getHora();?></td>
                                         <td><?=$c->getTecnico()->getNombreusuario();?></td>
-                                        <td><?=$c->getClienteid()->getNombreusuario();?></td>
+                                        <td><?=$c->getCliente()->getNombreusuario();?></td>
                                         <td><?=$c->getEstadocita()->getDescripcion();?></td>
                                         <td class="b-acciones">
                                             <a title="Editar" href="editar.php?id=<?=$c->getIdcita();?>"><i class="fa fa-edit"></i></a>
