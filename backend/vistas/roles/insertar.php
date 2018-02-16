@@ -1,5 +1,5 @@
 <?php
-include_once('../../collectors/rolCollector.php');
+include_once('../../collectos/rolCollector.php');
 include_once('../../models/rol.php');
 
 ?>
@@ -15,13 +15,12 @@ include_once('../../models/rol.php');
 
 
 <form action="guardar.php" method="post">
-            <div class="form-group">
-            <label for="descricpion">Descripcion</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" rows="6" autofocus required>
-        </div>
-        
+    <fieldset>
+        <label for="descripcion">Descripcion</label>
+		<input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" autofocus required />
+        <br />
         <button type="submit">Guardar</button>        
-    
+    </fieldset>
 </form>
 
  
