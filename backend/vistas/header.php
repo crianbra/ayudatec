@@ -1,3 +1,4 @@
+
 <!--header start-->
 <header class="header fixed-top clearfix">
 <!--logo start-->
@@ -21,19 +22,9 @@
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <!-- <img alt="" src="../../assets/images/avatar1_small.jpg"> -->
-                <?php
-                    include_once("../../collectors/usuarioCollector.php");
-                    $UsuarioCollectorObj = new UsuarioCollector();
-                    $usuarios = $UsuarioCollectorObj->showUsuarios();
-                    foreach ($usuarios as $c){
-                                ?>
-                <span class="username"><?=$c->getNombreusuario();?></span>
+                <span class="username"><?=$_SESSION['user'];?></span>
                 <b class="caret"></b>
             </a>
-            
-            <?php
-                                    }
-                                ?>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-male"></i>Perfil</a></li>
                 <li><a href="#"><i class="fa fa-lock"></i> Seguridad</a></li>

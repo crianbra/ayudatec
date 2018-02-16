@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-    define("RUTA_PRINCIPAL", $_SERVER['DOCUMENT_ROOT'].'/ayudatec/');
-    define("RUTA_BACKEND", RUTA_PRINCIPAL.'backend/');
 ?>
 
 <!DOCTYPE html>
