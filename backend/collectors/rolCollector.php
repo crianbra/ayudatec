@@ -37,7 +37,7 @@ function deleteRol($id){
 }
 
 function createRol($descripcion){
-	$insertarrow = self::$db->insertRow("INSERT INTO public.rol (descripcion) VALUES (?)", array ("{$descripcion}"));
+	return $insertarrow = self::$db->insertRow("INSERT INTO rol (descripcion) VALUES (?)", array ("{$descripcion}"));
 
 }
 
