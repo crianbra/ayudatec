@@ -7,10 +7,10 @@
 
 <?php
     
-$descripcion = $_POST['descripcion'];
+$valor = $_POST['descripcion'];
 
-echo 'Hola ' .htmlspecialchars($descripcion) . '!';
-include_once("../../collectors/rolCollector.php");
+echo 'Hola ' .htmlspecialchars($valor) . '!';
+include_once("rolCollector.php");
     
 $RolCollectorObj = new RolCollector();
 
