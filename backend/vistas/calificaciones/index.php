@@ -36,25 +36,16 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>DETALLE CALIFICACIONES</strong> </h4>
+                    <h4> <strong>CALIFICACIONES DE TÉCNICOS</strong> </h4>
 
                     </header>
                     <div class="panel-body">
                         <div class="adv-table editable-table ">
                             <div class="clearfix">
                                 <div class="btn-group">
-                                    <a href="nuevo.php" class="btn btn-primary">
-                                        Nuevo detalle calificación <i class="fa fa-plus"></i>
+                                    <a href="paso1.php" class="btn btn-primary">
+                                        Nueva calificación de Técnico<i class="fa fa-plus"></i>
                                     </a>
-                                </div>
-                                <div class="btn-group pull-right">
-                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Acciones <i class="fa fa-angle-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="#">Imprimir</a></li>
-                                        <li><a href="#">Guardar como PDF</a></li>
-                                        <li><a href="#">Exportar a Excel</a></li>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="space15"></div>

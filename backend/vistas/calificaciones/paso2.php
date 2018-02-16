@@ -1,30 +1,12 @@
 <?include_once("../auth.php");?>
+
 <?php
 
-    $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
-        //session_start();
+    if (isset($_POST['categoriaid']) && $_POST['categoriaid'] ==! "") {
         
-        
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
-        
-        if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-        } else {
-            $msg = "error";
-            
 
-        }
-
-    } else {
-        $guardado = false;
     }
-    /* session_start();
-    $_SESSION["exito"] = "true"; */
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +18,7 @@
     <meta name="description" content="">
     <link rel="shortcut icon" href="../../assets/images/favicon.png">
 
-    <title>Nuevo profesional</title>
+    <title>AYUDATEC :: Califica al técnico</title>
 
     <!--Core CSS -->
     <link href="../../assets/bs3/css/bootstrap.min.css" rel="stylesheet">
@@ -67,8 +49,8 @@
         <!-- page start-->
          <!--breadcrumbs start -->
                     <ul class="breadcrumb">
-                        <li><a href="index.php">Profesionales</a></li>
-                        <li class="active">Nuevo profesional</li>
+                        <li><a href="index.php">Calificaciones</a></li>
+                        <li class="active">Nueva calificación</li>
                     </ul>
                     <!--breadcrumbs end -->
 
@@ -76,13 +58,9 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO PROFESIONAL</strong> </h4>
+                    <h4> <strong>NUEVO CALIFICACIÓN</strong> </h4>
 
                     </header>
-
-                    <?php
-                    if ($guardado == false) {
-                    ?>
                         <div class="panel-body">
                         <?php
                         if ($msg !== "") {
@@ -94,37 +72,17 @@
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
                                     
                                    <div class="form-group ">
-                                        <label for="usuario" class="control-label col-lg-3">Nombre de Usuario</label>
+                                        <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuario">
-                                                    <option value="" hidden>Seleccione el técnico que busca</option>
+                                                <select class="form-control" id="tecnicoid" name="tecnicoid">
+                                                    <option value="" hidden>Seleccione al ténico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
-                                                        $tecnicocollectorObj = new UsuarioCollector();
-                                                        $tecnicosObj = $tecnicocollectorObj->showTecnicos();
-                                                        foreach ($tecnicosObj as $tecnico){
+                                                        $tecnicosCollectorObj = new UsuarioCollector();
+                                                        $tecnicos = $tecnicosCollectorObj->showTecnicos();
+                                                        foreach ($tecnicos as $tecnico){
                                                     ?>
-                            
                                                     <option value="<?=$tecnico->getIdusuario();?>"><?=$tecnico->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
-                                        <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid" required>
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
                                                     <?php
                                                         }
                                                     ?>
@@ -143,20 +101,6 @@
                                 </form>
                             </div>
                         </div>
-
-                        
-
-                
-                    <?php
-                    } else {
-                        ?>
-                        <div class="panel-body">
-                            <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a profesion</a>
-                        </div>
-                        <?php
-                    }
-                    ?>
                     </section>
             </div>
         </div>
@@ -198,32 +142,7 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-    /* $('#categoria').val(); */
-    $('#categoria').on('change', function() {
-        /* alert( this.value ); */
-        var id_categoria = this.value;
-        $.ajax({
-            url: 'nuevo.php',
-            type: 'POST',
-            dataType : 'text',
-            data : 'idcategoria='+id_categoria,
-            success: function(result) {
-                $("#select_tecnico").html(result);
-            },
-            error : function(xhr, status) {
-                alert('Disculpe, existió un problema');
-            }
-        });
-
-    })
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
+    
 </script>
 
 </body>

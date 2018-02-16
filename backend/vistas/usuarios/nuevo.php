@@ -123,7 +123,7 @@
                                                         $persona = $PersonaCollectorObj->showPersonas();
                                                         foreach ($persona as $ca){
                                                     ?>
-                                                    <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?></option>
+                                                    <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?><?=" "?><?=$ca->getApellido();?></option>
                                                     <?php
                                                         }
                                                     ?>

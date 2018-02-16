@@ -4,7 +4,7 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
+    if (isset($_POST['tecnicoid']) && $_POST['tecnicoid'] ==! "") {
         //session_start();
         
         
@@ -101,11 +101,11 @@
                                                     <option value="" hidden>Seleccione al ténico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
-                                                        $usuarioCollectorObj = new UsuarioCollector();
-                                                        $usuarios = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
+                                                        $tecnicosCollectorObj = new UsuarioCollector();
+                                                        $tecnicos = $tecnicosCollectorObj->showTecnicos();
+                                                        foreach ($tecnicos as $tecnico){
                                                     ?>
-                                                    <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
+                                                    <option value="<?=$tecnico->getIdusuario();?>"><?=$tecnico->getNombreusuario();?></option>
                                                     <?php
                                                         }
                                                     ?>
