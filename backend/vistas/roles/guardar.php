@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <html>
 <head>
@@ -12,13 +13,30 @@ session_start();
     
 $descripcion = $_POST['descripcion'];
 
-//echo 'Hola ' .htmlspecialchars($descripcion) . '!';
+echo 'Hola ' .htmlspecialchars($descripcion) . '!';
 include_once("../../collectors/rolCollector.php");
-
+    
 $RolCollectorObj = new RolCollector();
-$ObjRol = $RolCollectorObj->createRol($descripcion);
 
 echo "Se ha guardado correctamente </br>";
+    
+     if (isset($_POST["descripcion"])) {
+     $descripcion =($_POST["descripcion"]);
+     
+
+     if ($RolCollectorObj->createRol($descripcion)) {
+         //var_dump($obj);
+     	echo "Se ha guardado correctamente </br>";
+         header("Location: index.php");
+         exit();
+     } else {
+         
+     }
+ } else {
+    echo "Hubo un error al intentar crear el usuario.";
+}
+    
+    
 
 ?>
 
