@@ -8,14 +8,6 @@
     $msg = "";
     if (isset($_POST['descripcion']) && $_POST['descripcion'] ==! "") {
         session_start();
-        include_once("../../collectors/usuarioCollector.php");
-        $usuarioCollectorObj = new UsuarioCollector();
-        $_SESSION["user"] = $usuarioCollectorObj->showUsuario(3);
-        /* var_dump($_SESSION["user"]->getIdusuario());
-        exit(); */
-
-        /* echo "descripcion". $_POST['descripcion'];
-        exit(); */
 
         $estado = 0;
         if (isset($_POST['activo'])) {
@@ -37,8 +29,6 @@
     } else {
         $guardado = false;
     }
-    /* session_start();
-    $_SESSION["exito"] = "true"; */
 ?>
 
 <!DOCTYPE html>
@@ -129,15 +119,12 @@
                             </div>
                         </div>
 
-                        
-
-                
                     <?php
                     } else {
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+                            <a href="index.php">Volver a listar los estados de cita</a>
                         </div>
                         <?php
                     }
@@ -183,14 +170,6 @@
     jQuery(document).ready(function() {
         EditableTable.init();
     });
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
 </script>
 
 </body>
