@@ -2,7 +2,11 @@
 <?include_once("../constantes.php");?>
 <!--constantes end-->
 
+
 <?php
+include_once("../../collectors/citaCollector.php");
+include_once("../../collectors/categoriaCollector.php");
+include_once("../../collectors/usuarioCollector.php");
 
     if (isset($_POST['idcategoria']) && $_POST['idcategoria'] ==! "") {
 ?>
@@ -11,7 +15,6 @@
                     <select class="form-control" id="tecnico" name="tecnico">
                         <option value="" hidden>Seleccione el técnico</option>
                         <?php
-                            include_once("../../collectors/usuarioCollector.php");
                             $usuarioCollectorObj = new UsuarioCollector();
                             $tecnicos = $usuarioCollectorObj->showCategoriaUsuarios($_POST['idcategoria']);
                             foreach ($tecnicos as $t){
@@ -31,7 +34,6 @@
     $msg = "";
     if (isset($_GET['id']) && $_GET['id'] ==! "") {
 
-        include_once("../../collectors/citaCollector.php");
         $CitaCollectorObj = new CitaCollector();
         $cita = $CitaCollectorObj->showCita($_GET['id']);
 
@@ -149,7 +151,6 @@
                                                 <select class="form-control" id="categoria" name="categoria">
                                                     <option value="" hidden>Seleccione la categoria que busca</option>
                                                     <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
                                                         $categoriaCollectorObj = new CategoriaCollector();
                                                         $categorias = $categoriaCollectorObj->showCategorias();
                                                         foreach ($categorias as $ca){
@@ -172,11 +173,10 @@
                                         <label for="tecnico" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
                                             <select class="form-control" id="tecnico" name="tecnico">
-                                                <?php 
-                                                    include_once("../../collectors/usuarioCollector.php");
-                                                    $usuarioCollectorObj = new UsuarioCollector();
-                                                    $tecnicos = $usuarioCollectorObj->showUsuarios();
-                                                    foreach ($tecnicos as $t){
+                                                <?php
+                                                    $tecnicoCollectorObj = new UsuarioCollector();
+                                                    $tecnicosCa = $tecnicoCollectorObj->showUsuarios();
+                                                    foreach ($tecnicosCa as $t){
                                                         if ($t->getIdusuario() == $cita->getTecnico()->getIdusuario()){ ?> <option value="<?=$t->getIdusuario();?>" selected><?=$t->getNombreusuario();?></option> <?php } else { ?> <option value="<?=$t->getIdusuario();?>"><?=$t->getNombreusuario();?></option> <?php } } ?> </select> </div> </div>
                                     
                                     <div class="form-group">
@@ -248,7 +248,7 @@
         /* alert( this.value ); */
         var id_categoria = this.value;
         $.ajax({
-            url: 'nuevo.php',
+            url: 'editar.php',
             type: 'POST',
             dataType : 'text',
             data : 'idcategoria='+id_categoria,

@@ -182,10 +182,7 @@
                                 </form>
                             </div>
                         </div>
-
-                        
-
-                
+ 
                     <?php
                     } else {
                         ?>
@@ -255,14 +252,6 @@
         });
 
     })
-//    
-//     $(document).ready(function() {
-//    $('#editable-sample').DataTable( {
-//       "language": {
-//        "search": 'Buscar'
-//    }
-//    } );
-//} );
 </script>
 
 </body>

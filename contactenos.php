@@ -71,11 +71,11 @@
 	<section id="formulario" class="py-5">
         <div class="container">
           <div class="row pb-5">
-              <div class="col-12 font-20px text-center">
-                -
+          <div class="col-12 pt-5 text-center titulo font-darkgray">
+                    Contáctenos
                 </div>
-                <h3 class="col-12 font-20px text-center">
-                    Por favor, deja tu comentario por cualquier inquietud
+                <h3 class="col-12 pt-2 font-20px text-center">
+                    Por favor, deje su comentario por cualquier inquietud
                 </h3>
           </div>
           <div class="row">
