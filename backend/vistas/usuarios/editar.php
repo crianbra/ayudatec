@@ -1,6 +1,7 @@
+<?include_once("../auth.php");?>
 <?php
 
-    include_once("../auth.php");
+    //include_once("../auth.php");
     
     include_once("../../collectors/usuarioCollector.php");
 
