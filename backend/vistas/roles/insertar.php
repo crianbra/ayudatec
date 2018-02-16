@@ -1,6 +1,6 @@
 <?php
-include_once('RolCollector.php');
-include_once('Rol.php');
+include_once('rolCollector.php');
+include_once('rol.php');
 
 ?>
 <!doctype html>
