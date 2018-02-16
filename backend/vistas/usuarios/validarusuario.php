@@ -31,7 +31,7 @@ $UsuarioCollectorObj = new UsuarioCollector();
                 
                
                 $_SESSION['user']= $nombreusuario;
-                $_SESSION['rol']= $c->getRolid();
+                $_SESSION['rol']= $c->getRolid()->getIdrol();
                 
                 //echo $c->getRolid()->getIdrol(); 
                 //exit();

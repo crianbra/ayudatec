@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])){
             echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../registro.php'>";
         }else{
             if(!$_SESSION['rol']==1){
-                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../index.php'>";
+                echo "<meta HTTP-EQUIV='REFRESH' CONTENT='1;URL=../../../registro.php'>";
             }else{
 
 ?>
