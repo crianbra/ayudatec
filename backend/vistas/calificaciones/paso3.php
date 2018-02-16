@@ -15,12 +15,32 @@
         include_once("../../collectors/usuarioCollector.php");
         $UsuarioCollectorObj = new UsuarioCollector();
         $tecnico = $UsuarioCollectorObj->showUsuario($_POST['tecnicoid']);
-        if (isset($_POST["valoracion"])){
-            echo "Hola";
-            exit();
-        }
       
     } else {
+        if ((isset($_POST['tecnico']) && $_POST['tecnico'] ==! "") && (isset($_POST['valoracion']) && $_POST['valoracion'] ==! "") && (isset($_POST['comentario']) && $_POST['comentario'] ==! "")){
+            
+            include_once("../../collectors/calificacionCollector.php");
+            $CalificacionCollectorObj = new CalificacionCollector();
+            $calificacion = $CalificacionCollectorObj->showTecnicoCalificacion($_POST['tecnico']);
+            if ($calificacion !== null) {
+                echo "Existe";
+            } else {
+                echo "No existe";
+                exit();
+            }
+
+
+        } else {
+            if($_SERVER["SERVER_NAME"] == "localhost") {
+                header("Location: http://localhost/ayudatec/backend/vistas/calificaciones/", true, 301);
+                exit();
+            }
+            else
+            {
+                header("Location: http://ayudatec.herokuapp.com/backend/vistas/calificaciones/", true, 301);
+                exit();
+            }
+        }
         $guardado = false;
     }
     /* session_start();
@@ -95,12 +115,14 @@
                                     <div class="form-group ">
                                         <label for="categoriaid" class="control-label col-lg-3">Categoria</label>
                                         <div class="col-lg-6">
+                                            <input type="hidden" value="<?=$categoria->getIdcategoria();?>" name="categoria">
                                             <h5 id="categoriaid"><?=$categoria->getDescripcion();?></h5>
                                         </div>
                                     </div>
                                    <div class="form-group ">
                                         <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
+                                            <input type="hidden" value="<?=$tecnico->getIdusuario();?>" name="tecnico">
                                             <h5 id="tecnicoid"><?=$tecnico->getNombreusuario();?></h5>
                                         </div>
                                     </div>
@@ -121,7 +143,7 @@
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <a href="paso2.php" class="btn btn-default" type="button">Volver</a>
+                                            <a href="paso1.php" class="btn btn-default" type="button">Volver</a>
                                         </div>
                                     </div>
                                 </form>

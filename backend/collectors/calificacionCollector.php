@@ -49,6 +49,26 @@ class CalificacionCollector extends Collector
 
 }
 
+function showTecnicoCalificacion($id){
+  $row = self::$db->getRows("
+      SELECT * FROM calificacion 
+      INNER JOIN usuario ON (calificacion.tecnicoid = usuario.idusuario )
+      INNER JOIN desempenio ON (calificacion.desempenioid = desempenio.iddesempenio)
+      WHERE tecnicoid= ? ", array("{$id}"));
+  
+  if (!empty($row)) {
+    $tecnicoObj= new Usuario($row[0]{'idusuario'}, $row[0]{'nombreusuario'}, $row[0]{'contrasenia'}, $row[0]{'personaid'}, $row[0]{'rolid'});
+    $desempenioObj= new Desempenio($row[0]{'iddesempenio'},$row[0]{'maximo'},$row[0]{'minimo'},$row[0]{'escala'});  
+    
+    $ObjCalificacion = new Calificacion ($row[0]{'idcalificacion'},$row[0]{'promedio'},$desempenioObj, $tecnicoObj);
+    return $ObjCalificacion;
+  } else {
+    return null;
+  }
+  
+
+}
+
 
 function updateCalificacion($id,$rating){
 	return $insertrow = self::$db->updateRow("UPDATE public.calificacion SET rating= ? WHERE idcalificacion= ?", array("{$rating}", $id));
