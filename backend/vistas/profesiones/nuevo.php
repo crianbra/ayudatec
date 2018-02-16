@@ -3,7 +3,7 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") {
+    if ((isset($_POST['usuarioid']) && $_POST['usuarioid'] ==! "") && (isset($_POST['categoriaid']) && $_POST['categoriaid'] ==! ""))  {
         //session_start();
         
         
@@ -12,7 +12,7 @@
         $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
         
         if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
+            $msg = "La profesión fue guardada con éxito";
             $guardado = true;
         } else {
             $msg = "error";
@@ -96,7 +96,7 @@
                                    <div class="form-group ">
                                         <label for="usuario" class="control-label col-lg-3">Nombre de Usuario</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="usuarioid" name="usuario">
+                                                <select class="form-control" id="usuarioid" name="usuarioid">
                                                     <option value="" hidden>Seleccione el técnico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");

@@ -69,17 +69,17 @@
                         ?>
                             <div class="form">
 
-                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
+                                <form class="cmxform form-horizontal " id="citaForm" method="post" action="paso3.php">
+                                    <input type="hidden" name="categoriaid" value="<?=$_POST["categoriaid"]?>">
                                    <div class="form-group ">
                                         <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="tecnicoid" name="tecnicoid">
-                                                    <option value="" hidden>Seleccione al ténico que busca</option>
+                                                    <option value="" hidden>Seleccione al técnico que busca</option>
                                                     <?php
                                                         include_once("../../collectors/usuarioCollector.php");
                                                         $tecnicosCollectorObj = new UsuarioCollector();
-                                                        $tecnicos = $tecnicosCollectorObj->showTecnicos();
+                                                        $tecnicos = $tecnicosCollectorObj->showCategoriaUsuarios($_POST["categoriaid"]);
                                                         foreach ($tecnicos as $tecnico){
                                                     ?>
                                                     <option value="<?=$tecnico->getIdusuario();?>"><?=$tecnico->getNombreusuario();?></option>
@@ -93,9 +93,8 @@
                                     
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
-                                            <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
-                                            <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <button class="btn btn-primary" type="submit">Siguiente</button>
+                                            <a href="paso1.php" class="btn btn-default" type="button">Volver</a>
                                         </div>
                                     </div>
                                 </form>

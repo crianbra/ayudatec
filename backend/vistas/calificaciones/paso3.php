@@ -4,23 +4,22 @@
 
     $guardado = false;
     $msg = "";
-    if (isset($_POST['tecnicoid']) && $_POST['tecnicoid'] ==! "") {
+    if ((isset($_POST['tecnicoid']) && $_POST['tecnicoid'] ==! "") && (isset($_POST['categoriaid']) && $_POST['categoriaid'] ==! "")) {
         //session_start();
         
-        
-        include_once("../../collectors/profesionCollector.php");
-        $ProfesionCollectorObj = new ProfesionCollector();
-        $profesion = $ProfesionCollectorObj->createProfesion($_POST['usuarioid'],$_POST['categoriaid']);
-        /* echo "Resultado: <br>";
-        var_dump($citas); */
-        if ($profesion == true) {
-            $msg = "La profesion fue guardada con éxito";
-            $guardado = true;
-        } else {
-            $msg = "error";
-            
-        }
+        include_once("../../collectors/categoriaCollector.php");
+        $CategoriaCollectorObj = new CategoriaCollector();
+        $categoria = $CategoriaCollectorObj->showCategoria($_POST['categoriaid']);
 
+
+        include_once("../../collectors/usuarioCollector.php");
+        $UsuarioCollectorObj = new UsuarioCollector();
+        $tecnico = $UsuarioCollectorObj->showUsuario($_POST['tecnicoid']);
+        if (isset($_POST["valoracion"])){
+            echo "Hola";
+            exit();
+        }
+      
     } else {
         $guardado = false;
     }
@@ -77,7 +76,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                    <h4> <strong>NUEVO CALIFICACIÓN</strong> </h4>
+                    <h4> <strong>NUEVA CALIFICACIÓN</strong> </h4>
 
                     </header>
 
@@ -93,42 +92,28 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    
+                                    <div class="form-group ">
+                                        <label for="categoriaid" class="control-label col-lg-3">Categoria</label>
+                                        <div class="col-lg-6">
+                                            <h5 id="categoriaid"><?=$categoria->getDescripcion();?></h5>
+                                        </div>
+                                    </div>
                                    <div class="form-group ">
                                         <label for="tecnicoid" class="control-label col-lg-3">Técnico</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="tecnicoid" name="tecnicoid">
-                                                    <option value="" hidden>Seleccione al ténico que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/usuarioCollector.php");
-                                                        $tecnicosCollectorObj = new UsuarioCollector();
-                                                        $tecnicos = $tecnicosCollectorObj->showTecnicos();
-                                                        foreach ($tecnicos as $tecnico){
-                                                    ?>
-                                                    <option value="<?=$tecnico->getIdusuario();?>"><?=$tecnico->getNombreusuario();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <h5 id="tecnicoid"><?=$tecnico->getNombreusuario();?></h5>
                                         </div>
                                     </div>
-                                   
                                     <div class="form-group ">
-                                        <label for="categoriaid" class="control-label col-lg-3">Categoría</label>
+                                        <label for="valoracion" class="control-label col-lg-3">Valoración (De 0 al 5)</label>
                                         <div class="col-lg-6">
-                                                <select class="form-control" id="categoriaid" name="categoriaid" required>
-                                                    <option value="" hidden>Seleccione la categoria que busca</option>
-                                                    <?php
-                                                        include_once("../../collectors/categoriaCollector.php");
-                                                        $categoriaCollectorObj = new CategoriaCollector();
-                                                        $categorias = $categoriaCollectorObj->showCategorias();
-                                                        foreach ($categorias as $ca){
-                                                    ?>
-                                                    <option value="<?=$ca->getIdcategoria();?>"><?=$ca->getDescripcion();?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
+                                            <input class=" form-control" id="valoracion" name="valoracion" type="number" min="0" max="5" length=""/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="comentario" class="control-label col-lg-3">Comentario</label>
+                                        <div class="col-lg-6">
+                                            <textarea class=" form-control" id="comentario" name="comentario" type="textarea" placeholder="Cuéntenos qué le pareció el servicio del técnico"></textarea>
                                         </div>
                                     </div>
                                    
@@ -136,8 +121,7 @@
                                     <div class="form-group">
                                         <div class="col-lg-offset-3 col-lg-6">
                                             <button class="btn btn-primary" type="submit">Guardar</button>
-                                            <button class="btn btn-default" type="reset">Limpiar</button>
-                                            <a href="index.php" class="btn btn-default" type="button">Cancelar</a>
+                                            <a href="paso2.php" class="btn btn-default" type="button">Volver</a>
                                         </div>
                                     </div>
                                 </form>
