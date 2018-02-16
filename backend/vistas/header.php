@@ -26,7 +26,7 @@
                 <?php
                     if (!isset($_SESSION['user'])){
                                 ?>
-                <span class="username"><?echo "<p> Hola usuario:(" . $_SESSION['user']. ")";?></span>
+                <span class="username"><?=echo "<p> Hola usuario:(" . $_SESSION['user']. ")";?></span>
                 <b class="caret"></b>
             </a>
             
