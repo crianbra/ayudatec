@@ -10,7 +10,7 @@
 $valor = $_POST['descripcion'];
 
 echo 'Hola ' .htmlspecialchars($valor) . '!';
-include_once("RolCollector.php");
+include_once("../../collectors/rolCollector.php");
     
 $RolCollectorObj = new RolCollector();
 

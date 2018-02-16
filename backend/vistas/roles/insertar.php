@@ -1,10 +1,6 @@
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/vistas/rol/rolCollector.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/vistas/rol/rol.php';
-
-//include_once('rolCollector.php');
-//include_once('rol.php');
+include_once('../../collectors/rolCollector.php');
+include_once('../../models/rol.php');
 
 ?>
 <!doctype html>
@@ -19,8 +15,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/ayudatec/backend/vistas/rol/rol.php';
 
 
 <form action="guardar.php" method="post">
-    <fieldset>
-        <label for="descripcion">Descripcion</label>
+    <fieldset>        
+		<label for="descripcion">Descripcion</label>
 		<input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" autofocus required />
         <br />
         <button type="submit">Guardar</button>        
