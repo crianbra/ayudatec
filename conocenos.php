@@ -49,11 +49,11 @@
                         </li>
                     </ul>
                     <div class="btn-group font-white btnUsuario" role="group">
-                        <span class="cursor-pointer align-self-center font-20px">
+                        <!-- <span class="cursor-pointer align-self-center font-20px">
                            <i class="icon-bell-alt font-white"></i><span class="notifi">1</span>
-                        </span>
+                        </span> -->
                         <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <img style="width: 30px;" src="assets/images/ft_testimonio1.png" alt="Ayudatec">
+                         <img style="width: 30px;" src="assets/images/profile.png" alt="Ayudatec">
                         
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupUser">
