@@ -191,20 +191,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="personaid" class="control-label col-lg-3">Persona ID</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="personaid" name="personaid" type="text" placeholder="Persona Id"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="rolid" class="control-label col-lg-3">Rol ID</label>
-                                        <div class="col-lg-6">
-                                            <input class="form-control" id="rolid" name="rolid" type="text" placeholder="Rol ID"/>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group ">
-                                        <label for="personaid" class="control-label col-lg-3">nombre</label>
+                                        <label for="personaid" class="control-label col-lg-3">Nombre Persona</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="personaid" name="personaid" required>
                                                     <option value="" hidden>Seleccione la persona que busca</option>
@@ -215,6 +202,24 @@
                                                         foreach ($persona as $ca){
                                                     ?>
                                                     <option value="<?=$ca->getIdpersona();?>"><?=$ca->getNombre();?></option>
+                                                    <?php
+                                                        }
+                                                    ?>
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="rolid" class="control-label col-lg-3">Roles</label>
+                                        <div class="col-lg-6">
+                                                <select class="form-control" id="rolid" name="rolid" required>
+                                                    <option value="" hidden>Seleccione el rol que busca</option>
+                                                    <?php
+                                                        include_once("../../collectors/rolCollector.php");
+                                                        $RolCollectorObj = new RolCollector();
+                                                        $rol = $RolCollectorObj->showRols();
+                                                        foreach ($rol as $ca){
+                                                    ?>
+                                                    <option value="<?=$ca->getIdrol();?>"><?=$ca->getDescripcion();?></option>
                                                     <?php
                                                         }
                                                     ?>
