@@ -57,10 +57,7 @@
                     </a>
                     
                     <div class="btn-group font-white btnUsuario" id="usuariopanel" role="group">
-<!--                        <span class="cursor-pointer align-self-center font-20px">
-                           <i class="icon-bell-alt font-white"></i><span class="notifi">1</span>
-                        </span>
--->
+
                         <span id="nombreusuario"> </span>
                         <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <img style="width: 30px;" src="" alt="Ayudatec" id="fotousuario">
@@ -176,24 +173,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-
-
-<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCrBbuj6yLwG_t_gyfhi1bi9ZjRuLnbSDA",
-    authDomain: "ayudatec-3e0ee.firebaseapp.com",
-    databaseURL: "https://ayudatec-3e0ee.firebaseio.com",
-    projectId: "ayudatec-3e0ee",
-    storageBucket: "ayudatec-3e0ee.appspot.com",
-    messagingSenderId: "5686820743"
-  };
-  firebase.initializeApp(config);
-  
-</script>
-    
     
     <script src="assets/js/app.js"></script>
 

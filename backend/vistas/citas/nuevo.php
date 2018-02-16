@@ -137,7 +137,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="fecha" class="control-label col-lg-3">Fecha</label>
+                                        <label for="fecha" class="control-label col-lg-3">Fecha en que desea la visita del técnico</label>
                                         <div class="col-lg-6">
                                             <input class=" form-control" id="fecha" name="fecha" type="date" required/>
                                         </div>
@@ -149,7 +149,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                        <label for="categoria" class="control-label col-lg-3">Categoría</label>
+                                        <label for="categoria" class="control-label col-lg-3">Categoria del técnico que necesita</label>
                                         <div class="col-lg-6">
                                                 <select class="form-control" id="categoria" name="categoria" required>
                                                     <option value="" hidden>Seleccione la profesión que busca</option>
@@ -185,7 +185,7 @@
                         ?>
                         <div class="panel-body">
                             <h2><?=$msg?></h2>
-                            <a href="index.php">Volver a buscar técnicos</a>
+                            <a href="index.php">Volver a listar las citas agendadas</a>
                         </div>
                         <?php
                     }

@@ -94,38 +94,7 @@
                     de mantenimiento, reparación y otros
                 </h3>
 
-                <!-- <div class="col-8 mt-4 busqueda-inicio">
-                   <div class="input-group mb-3">
-                       <input type="text" class="form-control input-busqueda" placeholder="¿Qué servicio estás buscando?" aria-label="Recipient's username" aria-describedby="basic-addon2">  
-                        <div class="input-group-append">
-                        <button class="btn btn-lineal-big" type="button">Encontrar</button>
-                    </div>
-                    </div>
-                </div>-->
-
-                <!--<script type="text/javascript">
-    $(document).ready(function() {
-        var newUrl = "";
-        $("#picksite").change(function() {
-            $newUrl = $("#picksite option:selected").val();
-        });
-        $("#executelink").click(function() {
-            location = $newUrl ;
-        });
-    });
-</script>
--->
-                <!--
-<select id="picksite">
-    <option value="">Pick A Website</option>
-    <option value="http://google.com">Google</option>
-    <option value="http://facebook.com">Facebook</option>
-    <option value="http://twitter.com">Twitter</option>
-    <option value="http://gmail.com">Gmail</option>
-</select>
-
-<button id="executelink">Go To Site</button>
--->
+                <!-- 
                 <div class="col-10 col-lg-8 col-xl-6 mt-4 busqueda-inicio ">
                     <div class="input-group mb-3 ">
 
@@ -273,86 +242,6 @@
 
     </section>
 
-    <section id="testimonios" class="pt-5">
-        <!-- <div class="comillas px-0 px-sm-5">
-            <i class="icon-quote rotacion"></i>
-            <i class="icon-quote"></i>
-        </div> -->
-        <div class="container">
-            <div class="row justify-content-center">
-                <h3 class="col-12 pt-2 text-center titulo">
-                    Testimonios
-                </h3>
-                <div class="col-12 col-md-10">
-                    <div id="carouselComentarios" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators ">
-                            <li data-target="#carouselComentarios" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselComentarios" data-slide-to="1"></li>
-                            <li data-target="#carouselComentarios" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-12 text-center py-3">
-                                            <img src="assets/images/testimonios/ft_testimonio3.png" alt="testimonio1">
-                                        </div>
-                                        <h5 class="col-12 text-center">
-                                            Carlos Andrade
-                                        </h5>
-                                        <div class="col-12 col-md-10 text-center">
-                                            Contraté los servicios de un electricista y un gasfitero, me fue muy bien con los técnicos que vinieron. Los volvería a contratar.
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="carousel-item">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-12 text-center py-3">
-                                            <img src="assets/images/testimonios/ft_testimonio1.png" alt="testimonio2">
-                                        </div>
-                                        <h5 class="col-12 text-center">
-                                            Ana Rodríguez
-                                        </h5>
-                                        <div class="col-12 col-md-10 text-center">
-                                            Contraté los servicios de un electricista y un gasfitero, me fue muy bien con los técnicos que vinieron. Los volvería a contratar.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-12 text-center">
-                                            <img src="assets/images/testimonios/ft_testimonio2.png" alt="testimonio3">
-                                        </div>
-                                        <h5 class="col-12 text-center py-3">
-                                            Claudia Pérez
-                                        </h5>
-                                        <div class="col-12 col-md-10 text-center">
-                                            Contraté los servicios de un electricista y un gasfitero, me fue muy bien con los técnicos que vinieron. Los volvería a contratar.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselComentarios" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselComentarios" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
     <footer class="py-4 font-12px">
         <div class="container">
             <div class="row">
@@ -375,22 +264,6 @@
                     <a href="https://www.instagram.com/miayudatec/" target="_blank"><i class="icon-instagram-filled font-28px"></i></a>
                 </div>
 
-
-
-                <!--<div class="col-6 text-center mb-3">
-                    ¿Cómo funciona?
-                </div>
-                <div class="col-6 text-center mb-3">
-                    Preguntas frecuentes
-                </div>
-                <div class="col-6 text-center mb-3">
-                    Términos y Condiciones
-                </div>
-                <div class="col-6 text-center">
-                    <i class="icon-facebook font-28px"></i>
-                    <i class="icon-twitter font-28px"></i>
-                    <i class="icon-linkedin-squared font-28px"></i>
-                </div>-->
                 <div class="col-12 my-3 linea-hor">
                 </div>
             </div>
@@ -437,37 +310,14 @@
         </div>
     </footer>
 
-
-
-
-    <!-- Optional JavaScript -->
+<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
 
-
-
-
-
-    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCrBbuj6yLwG_t_gyfhi1bi9ZjRuLnbSDA",
-            authDomain: "ayudatec-3e0ee.firebaseapp.com",
-            databaseURL: "https://ayudatec-3e0ee.firebaseio.com",
-            projectId: "ayudatec-3e0ee",
-            storageBucket: "ayudatec-3e0ee.appspot.com",
-            messagingSenderId: "5686820743"
-        };
-        firebase.initializeApp(config);
-    </script>
-
     <script src="assets/js/app.js"></script>
-    <!--<script src="assets/js/registro.js"></script>-->
-    <!--<script src="assets/js/database.js"></script>-->
 
 </body>
 

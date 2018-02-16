@@ -19,7 +19,6 @@
 
     <title>AYUDATEC :: Conócenos</title>
 </head>
-
 <body>
 
     <header>
@@ -49,9 +48,6 @@
                         </li>
                     </ul>
                     <div class="btn-group font-white btnUsuario" role="group">
-                        <!-- <span class="cursor-pointer align-self-center font-20px">
-                           <i class="icon-bell-alt font-white"></i><span class="notifi">1</span>
-                        </span> -->
                         <button id="btnGroupUser" type="button" class="btn font-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                          <img style="width: 30px;" src="assets/images/profile.png" alt="Ayudatec">
                         
@@ -195,11 +191,10 @@ Nuestro proyecto AYUDATEC Responde nos brinda la oportunidad de poder ayudar a q
                             <a class="navbar-brand" href="#"><img src="assets/images/logo_ayudatec_bn.png" alt="Ayudatec" ></a>
                         </div>
                         <div class="col-12 font-lightgray font-w-100">
-                            © 2017 Ayudatec. Todos los derechos reservados.
+                            © 2018 Ayudatec. Todos los derechos reservados.
                         </div>
                     </div>
                 </div>
-
 
 
             </div>
