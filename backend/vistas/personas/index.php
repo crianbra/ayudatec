@@ -86,7 +86,7 @@
                                     $PersonaCollectorObj = new PersonaCollector();
                                     $personas = $PersonaCollectorObj->showPersonas();
                                     foreach ($personas as $c){
-                                        $idpersona = $_GET['idpersona'];
+                                        /* $idpersona = $_GET['idpersona']; */
                                 ?>
                                     <tr class="b-filas">
                                         <td><?=$c->getIdpersona();?></td>
