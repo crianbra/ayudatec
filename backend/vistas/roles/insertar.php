@@ -15,15 +15,13 @@ include_once('../../models/rol.php');
 
 
 <form action="guardar.php" method="post">
-    <fieldset>
-        
-        <div class="form-group">
+            <div class="form-group">
             <label for="descricpion">Descripcion</label>
             <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" rows="6" autofocus required>
         </div>
         
         <button type="submit">Guardar</button>        
-    </fieldset>
+    
 </form>
 
  
