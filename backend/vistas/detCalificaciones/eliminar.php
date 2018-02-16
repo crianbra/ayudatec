@@ -1,14 +1,14 @@
 
 <?php
-    include_once("../../collectors/profesionCollector.php");
+    include_once("../../collectors/detallecalificacionCollector.php");
 
     $guardado = false;
     $msg = "";
     if ((isset($_GET['id']) && $_GET['id'] ==! "")) {
 
         if (isset($_POST['id']) && $_POST['id'] ==! "") {
-            $ProfesionCollectorObj = new ProfesionCollector();
-            $resp = $ProfesionCollectorObj->deleteProfesion($_POST['id']);
+            $DetalleCalificacionObj = new Detallecalificacion();
+            $resp = $DetalleCalificacionObj->deleteDetCalificacion($_POST['id']);
             if ($resp == true) {
                 $msg = "El rol fue eliminado con éxito";
                 $guardado = true;
@@ -17,8 +17,8 @@
                 
             }
         } else {
-            $ProfesionCollectorObj = new ProfesionCollector();
-            $profesion = $ProfesionCollectorObj->showProfesion($_GET['id']);
+            $DetalleCalificacionObj = new Detallecalificacion();
+            $detallecaccilicacion = $DetalleCalificacionObj->showDetcalificacion($_GET['id']);
         }
 
     } else {
@@ -94,7 +94,7 @@
                             <div class="form">
 
                                 <form class="cmxform form-horizontal " id="citaForm" method="post" action="">
-                                    <input type="text" name="id" hidden value="<?=$profesion->getIdprofesion();?>">
+                                    <input type="text" name="id" hidden value="<?=$detallecaccilicacion->getIddetallecalificacion();?>">
                                     <div class="form-group ">
                                         <h3 class="text-center">¿Seguro que desea eliminar esta valoración?</h3>
                                     </div>

@@ -49,12 +49,12 @@ function updateDetcalificacion($id,$fecha, $valoracion, $comentario, $calificaci
 
 }
 
-function deleteCalificacion($id){
+function deleteDetCalificacion($id){
 	$deleterow = self::$db->deleteRow("DELETE FROM public.detalle_calificacion WHERE iddetallecalificacion= ?", array("{$id}"));
 
 }
 
-function createCalificacion($fecha, $valoracion, $comentario, $calificacionid, $clienteid){
+function createDetcalificacion($fecha, $valoracion, $comentario, $calificacionid, $clienteid){
 	$insertarrow = self::$db->insertRow("INSERT INTO public.detalle_calificacion (fecha, valoracion, comentario, calificacionid, clienteid) VALUES (?,?,?,?,?)", array ("{$fecha}","{$valoracion}","{$comentario}","{$calificacionid}","{$clienteid}"));
 
 }

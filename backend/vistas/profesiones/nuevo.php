@@ -102,8 +102,9 @@
                                                         include_once("../../collectors/usuarioCollector.php");
                                                         $usuarioCollectorObj = new UsuarioCollector();
                                                         $usuariosObj = $usuarioCollectorObj->showUsuarios();
-                                                        foreach ($usuarios as $ca){
+                                                        foreach ($usuariosObj as $ca){
                                                     ?>
+                            
                                                     <option value="<?=$ca->getIdusuario();?>"><?=$ca->getNombreusuario();?></option>
                                                     <?php
                                                         }
